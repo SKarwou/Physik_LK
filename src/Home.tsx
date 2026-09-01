@@ -17,7 +17,7 @@ export default function Home() {
         <div className="hero-copy">
           <span className="kicker">Leistungsfach · Baden-Württemberg · Kursstufe</span>
           <h1>Physik verstehen.<br /><em>Argumentieren.</em> Anwenden.</h1>
-          <p>Ein ausführlicher Lernweg für zwei Schuljahre: vom elektrischen Feld bis zur Quantenphysik – mit Herleitungen, Beispielen, Experimenten, Rechenaufgaben und abiturtypischen Begründungen.</p>
+          <p>Lernweg: vom elektrischen Feld bis zur Quantenphysik – mit Herleitungen, Beispielen, Experimenten, Rechenaufgaben und abiturtypischen Begründungen.</p>
           <div className="hero-actions"><a className="button button-primary" href="#lernweg">Kapitel entdecken</a><span className="motto">✦ Physik macht Spaß!</span></div>
           <dl className="hero-stats"><div><dt>15</dt><dd>Lernkapitel</dd></div><div><dt>2</dt><dd>Schuljahre</dd></div><div><dt>AFB I–III</dt><dd>Abiturniveau</dd></div></dl>
         </div>
