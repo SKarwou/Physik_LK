@@ -2,6 +2,16 @@
 
 Kapitel 01 führt von den Grundlagen der Mittelstufe zum elektrischen Feld. Es enthält die Teile 00–09 mit interaktiven Experimenten, Messprotokollen, Diagrammen auf Klick, 64 Lexikoneinträgen und Übungen. Die Startseite übernimmt die Überschriften und die Hierarchie aus Abschnitt 3.6 des Bildungsplans (Leistungsfach 11/12). Nur „3.6.2.1 Elektrisches Feld“ ist bereits ausgearbeitet; die übrigen Themen sind „In Vorbereitung“.
 
+## Neu in V8: Selbstlernstrecke zum Aufladen und Entladen
+
+Teil 07 enthält jetzt sechs Lernblöcke mit insgesamt 360 Minuten Lernzeit, 24 nummerierte Aufgaben, vier zusätzliche Zahlenchecks, konkrete Heftaufträge und einzeln aufklappbare Erwartungshorizonte. Aufgaben 1–19 gehören zum Lernweg; Aufgaben 20–24 sind zusätzliche Vertiefungen. Die Kapazität wird vorausgesetzt.
+
+Die Lernstrecke führt von eigenen Messwerten über die Spannungsbilanz, das Ohm’sche Gesetz und die Stromdefinition zu den Differenzialgleichungen und Exponentialfunktionen. Kettenregel, Anfangsbedingungen, Stromvorzeichen, Zeitkonstante, Halbwertszeit, Logarithmen und Ladung als Strom-Zeit-Fläche werden erklärt. Ein Größenverzeichnis definiert 24 Symbole und Begriffe jeweils einzeln.
+
+Das neue RC-Experiment zeigt einen Umschalter, Messgeräte und die Plattenladung. Messwerte werden einzeln aufgenommen; gemerkte Reihen bleiben beim Verändern der Bauteile für Vergleiche verfügbar und lassen sich als CSV sichern. Beim direkten Umschalten wird die tatsächlich erreichte Kondensatorspannung übernommen. Die Stromrichtung bleibt für beide Vorgänge fest: Laden positiv, Entladen negativ. Diagramme zeigen nur aufgenommene Messkreuze und bleiben bis „Diagramm zeichnen“ leer. Die Flächenwerkstatt vergleicht Rechteck- und Trapeznäherungen.
+
+Der Button „Selbstlernabschnitt drucken“ druckt diesen Lernweg mit Aufgaben und leeren Diagrammrastern. Experimentbedienung und aufklappbare Lösungen werden dabei ausgeblendet. Die Buchfotos sind nicht im öffentlichen Websitepaket enthalten; Texte, Aufgaben und SVG-Skizzen sind neu ausgearbeitet.
+
 ## Dieses Update hochladen
 
 1. Das ZIP entpacken und den Ordner `GitHub_Upload` öffnen.
@@ -40,7 +50,7 @@ Der Build landet in `docs`. Das Vite-Basisverzeichnis bleibt `/Physik_LK/`.
 - Das Online-Lexikon speichert keine persönlichen Einträge. Mustererklärungen und 245 einzelne Symbolerklärungen mit Einheiten sind frei aufklappbar. Die zwei älteren Word-Downloads bleiben als solche gekennzeichnet.
 - Formeln verwenden E bzw. ΔE für Energie und Malpunkte zwischen Faktoren. W erscheint weiterhin korrekt als Einheit Watt.
 - Die Drahtlupe trennt ungeordnete Elektronenbewegung, langsame Drift und schnelle Ausbreitung der elektrischen Wirkung. Im Schaltplan kreisen keine Teilchenpunkte.
-- Zehn Versuche erhalten sichtbare Anleitungen zu Aufbau und Durchführung. Beim RC-Versuch stehen die Modellwerte vor dem Diagramm.
+- Die Versuche enthalten sichtbare Anleitungen zu Aufbau und Durchführung. Beim RC-Versuch erarbeiten die Lernenden eigene Modellmessreihen; die Tabellen stehen vor den auf Klick sichtbaren Diagrammen.
 - Die verschlüsselten Lösungen der bisherigen Heftaufgaben bleiben unverändert. Eine private Passwortliste ist nicht Teil des Pakets.
 - Bildquelle des Cartoons und Erstellungsnotiz: `src/electric/assets/ASSET_NOTES.md`.
 

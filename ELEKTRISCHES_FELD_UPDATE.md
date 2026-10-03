@@ -1,4 +1,17 @@
-# Aktueller Stand · V7 · 3. Oktober 2026
+# Aktueller Stand · V8 · 3. Oktober 2026
+
+- Teil 07: ausführliche Selbstlernstrecke zum Aufladen und Entladen für sechs Zeitstunden (360 min); Kapazität als bekannt vorausgesetzt.
+- Sechs Lernblöcke, sechs Heftaufträge, 24 nummerierte Aufgaben (19 im Lernweg, fünf Vertiefungen), vier weitere Zahlenchecks und offene, einzeln aufklappbare Lösungen.
+- RC-Schaltung als SVG mit Umschalter, Reihenschaltung des Amperemeters und parallelem Voltmeter. Manuelle Messwertaufnahme, gemerkte Vergleichsreihen und CSV-Ausgabe.
+- Direktes Umschalten erhält die erreichte Kondensatorspannung; standardmäßige Vorbereitungen setzen getrennt einen leeren bzw. geladenen Anfangszustand. Offener Schalter hält die Ladung im idealen Modell.
+- Ausführliche Herleitungen aus Spannungsbilanz, Ohm’schem Gesetz, Q = C · U und I = dQ/dt. Kettenregel, Anfangsbedingungen und die Betragskonvention einzelner Bücher werden explizit erklärt.
+- Zeitkonstante, Halbwertszeit, Parametervergleiche, Logarithmen zum Bestimmen von Zeiten und Ladung als Stromfläche. Eigene Flächenwerkstatt mit Rechtecken und Trapezen; klare Trennung zwischen abgeflossener und verbleibender Ladung.
+- Signiertes I-t-Diagramm unterstützt negative Ströme. Messkreuze erst auf Klick, keine Verbindungslinien. Neue Messwerte oder Darstellungen verbergen die Punkte erneut.
+- Formelsammlung mit echten Brüchen und Malpunkten sowie 24 einzelne Größen-/Symbolerklärungen. Druckfunktion für die RC-Lernstrecke mit ausgeblendeten Lösungen und leeren Rastern.
+- Alle zehn bereitgestellten Buchfotos verglichen; keine Buchscans veröffentlicht. Inkonsistente Zeit-/Spannungspaare aus einer Tabelle durch konsistente Modellwerte ersetzt.
+- Produktionsbuild, physikalische Modellprüfung und Browserprüfung mit Desktop, Mobilansichten (320, 390, 768 px), CSV und Druck bestanden. ZIP V8 und Offline-Vorschau V8 vorbereitet; keine Veröffentlichung auf GitHub durch Codex.
+
+## Vorheriger Stand · V7
 
 - Kapitelüberschriften und Themenhierarchie auf der Startseite entsprechend der von Sara bereitgestellten Bildungsplanabbildung: 3.6.1 bis 3.6.7, einschließlich der drei Unterkapitel zu elektromagnetischen Feldern.
 - Influenzmaschine vereinfacht: feste SVG-Aufbauskizze, „Einmal kurbeln“ und Rücksetzen. Keine rotierenden Scheiben oder Einstellungen zu Neutralisatoren und Funkenstrecke mehr. Die qualitative Bilanz zeigt 8/8 → 8/5 und 8/11 positive Ladungsanteile/Elektronen.
