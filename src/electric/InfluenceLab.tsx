@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import ExperimentGuide from './ExperimentGuide';
+import { useState } from 'react';
 import { Choices, Slider, Task, ZoomScene } from './LabUI';
 
 export function ElectroscopeLab() {
@@ -8,6 +9,7 @@ export function ElectroscopeLab() {
   const leaf = charge + induction, top = charge - induction;
   const angle = Math.min(55, Math.abs(leaf) * 48), color = (q: number) => q < 0 ? '#4862a5' : '#b8485b';
   return <div className="ef-lab ef-electroscope">
+    <ExperimentGuide kind="electroscope" />
     <div className="ef-lab-grid"><div><Choices label="Ladung des Stabs" value={sign} set={setSign} options={[{ value: 'negative', label: 'Stab negativ' }, { value: 'positive', label: 'Stab positiv' }]} /><Slider label="Abstand des Stabs (schematisch)" value={distance} set={setDistance} min={0} max={100} unit="%" /><p>0 % bedeutet nah am Teller, 100 % außerhalb des hier dargestellten Einflussbereichs. Der Stab berührt den Teller beim Annähern noch nicht.</p><div className="ef-toolbar"><button type="button" onClick={() => { setCharge(polarity); setDistance(100); }}>Teller berühren, dann Stab entfernen</button><button type="button" onClick={() => { setCharge(0); setDistance(100); }}>Elektroskop neutralisieren</button></div></div>
       <svg className="ef-scene" viewBox="0 0 640 340" role="img" aria-label={`Elektroskop mit ${Math.abs(leaf) < .01 ? 'nicht ausgeschlagenem' : 'ausgeschlagenem'} Zeiger`}>
         <rect x="230" y="114" width="195" height="205" rx="20" fill="#f9fbf5" stroke="#aebdad" strokeWidth="2" />
@@ -26,77 +28,47 @@ export function ElectroscopeLab() {
   </div>;
 }
 
-type MachineState = { tick: number; stored: number; strength: number; sparks: number; flashed: boolean };
-export function machineStep(state: MachineState, seeded: boolean, connected: boolean, capacity: number, threshold: number): MachineState {
-  const tick = state.tick + 1;
-  const strength = seeded && connected ? Math.min(18, Math.max(1, state.strength) * 1.11) : state.strength;
-  const stored = state.stored + (tick % 4 === 0 && seeded && connected ? strength * 2 : 0);
-  const flashed = stored / capacity >= threshold;
-  return { tick, strength, stored: flashed ? 0 : stored, sparks: state.sparks + Number(flashed), flashed };
-}
-const initialMachine: MachineState = { tick: 0, stored: 0, strength: 1, sparks: 0, flashed: false };
-const phases = [
-  { title: 'Ladung sammeln', text: 'Die Sammelkämme übertragen Ladung auf die beiden getrennten Anschlüsse. Links wächst der Elektronenüberschuss, rechts der Elektronenmangel. Die Spannung steigt.' },
-  { title: 'Durch Influenz verschieben', text: 'Eine kleine Restladung beeinflusst einen leitenden Sektor der anderen Scheibe. Elektronen werden angezogen oder abgestoßen.' },
-  { title: 'Über die Bürsten trennen', text: 'Der Neutralisator verbindet kurzzeitig gegenüberliegende Sektoren. Elektronen können zwischen ihnen fließen; die Sektoren erhalten entgegengesetzte Ladungen.' },
-  { title: 'Mit den Scheiben transportieren', text: 'Beim Weiterdrehen verlassen die Sektoren die Bürsten und nehmen ihre Ladung mit. Die gegenläufige zweite Scheibe verstärkt die Trennung durch weitere Influenz.' },
-];
-function Disc({ x, rotation, back, strength, seedOnly = false }: { x: number; rotation: number; back: boolean; strength: number; seedOnly?: boolean }) {
-  return <g><circle cx={x} cy="270" r="118" fill={back ? '#eef0fa' : '#edf4e5'} stroke={back ? '#a6afc8' : '#92aa86'} strokeWidth="3" />
-    {Array.from({ length: 16 }, (_, i) => {
-      const angle = (i * 22.5 + rotation) * Math.PI / 180;
-      const positive = seedOnly || Math.cos(angle + (back ? 1 : -1) * Math.PI / 4) > 0;
-      const charged = strength > 0 && (!seedOnly || i === 0);
-      return <g key={i} transform={`translate(${x + 92 * Math.cos(angle)} ${270 + 92 * Math.sin(angle)}) rotate(${i * 22.5 + rotation})`}><rect x="-19" y="-9" width="38" height="18" rx="3" fill={charged ? positive ? '#dc8f96' : '#829bc9' : '#d5dbd6'} stroke="#7f8c86" /><text x="0" y="6" textAnchor="middle" fill="#183e32" fontSize="16" transform={`rotate(${-i * 22.5 - rotation})`}>{charged ? positive ? '+' : '−' : ''}</text></g>;
-    })}
-    <circle cx={x} cy="270" r="15" fill="#526a59" />
-    <text x={x} y="425" textAnchor="middle" fill="#375541">{back ? 'Rückscheibe ↶' : 'Vorderscheibe ↷'}</text>
-  </g>;
+function ChargeBalance({ positive, charged }: { positive: boolean; charged: boolean }) {
+  const electrons = charged ? positive ? 5 : 11 : 8;
+  return <div className="ef-charge-balance" data-balance={positive ? 'positive' : 'negative'}>
+    <h4>{positive ? 'Kugel links' : 'Kugel rechts'} · {charged ? positive ? 'positiv' : 'negativ' : 'neutral'}</h4>
+    <svg viewBox="0 0 300 205" role="img" aria-label={`Teilchenbilanz: 8 positive Ladungsanteile und ${electrons} Elektronen; ${charged ? positive ? 'Elektronenmangel' : 'Elektronenüberschuss' : 'neutral'}`}>
+      <circle cx="150" cy="100" r="90" fill={charged ? positive ? '#fce7e5' : '#e7edf9' : '#f2f4ed'} stroke={positive ? '#b8485b' : '#4862a5'} strokeWidth="2" />
+      {Array.from({ length: 8 }, (_, i) => <g key={`p${i}`}><circle cx={102 + i % 4 * 31} cy={66 + Math.floor(i / 4) * 43} r="10" fill="#b8485b" /><text x={102 + i % 4 * 31} y={71 + Math.floor(i / 4) * 43} textAnchor="middle" fill="white" fontSize="16">+</text></g>)}
+      {Array.from({ length: electrons }, (_, i) => <g key={`e${i}`}><circle cx={95 + i % 4 * 34} cy={84 + Math.floor(i / 4) * 38} r="7" fill="#4862a5" /><text x={95 + i % 4 * 34} y={89 + Math.floor(i / 4) * 38} textAnchor="middle" fill="white" fontSize="14">−</text></g>)}
+    </svg>
+    <p><b>8 positive Ladungsanteile · {electrons} Elektronen</b><br />{charged ? positive ? '3 Elektronen fehlen: Elektronenmangel.' : '3 Elektronen zusätzlich: Elektronenüberschuss.' : 'Die Ladungen gleichen sich aus.'}</p>
+  </div>;
 }
 export default function InfluenceMachine() {
-  const [state, setState] = useState<MachineState>(initialMachine), [running, setRunning] = useState(false);
-  const [seed, setSeed] = useState('residual'), [neutralizer, setNeutralizer] = useState(true), [jars, setJars] = useState('with'), [gap, setGap] = useState(2);
-  const capacity = jars === 'with' ? 2 : 1, threshold = 18 + gap * 8;
-  const voltage = state.stored / capacity;
-  const phase = phases[state.tick % 4];
-  function reset(nextSeed = seed, nextJars = jars) { setRunning(false); setSeed(nextSeed); setJars(nextJars); setState({ ...initialMachine, strength: nextSeed === 'residual' ? 1 : 0 }); }
-  useEffect(() => {
-    if (!running) return;
-    const timer = window.setInterval(() => setState(previous => machineStep(previous, seed === 'residual', neutralizer, capacity, threshold)), 650);
-    return () => clearInterval(timer);
-  }, [running, seed, neutralizer, capacity, threshold]);
-  useEffect(() => {
-    if (!state.flashed) return;
-    const timer = window.setTimeout(() => setState(previous => ({ ...previous, flashed: false })), 600);
-    return () => clearTimeout(timer);
-  }, [state.flashed]);
-  const symbols = Math.min(5, Math.ceil(voltage / 7));
+  const [charged, setCharged] = useState(false);
   return <div className="ef-lab ef-influence-machine">
-    <p>Eine Influenzmaschine trennt vorhandene Ladungen und erzeugt dadurch eine hohe Spannung. Die Energie kommt aus deiner Kurbelarbeit. Hier ist eine <b>Wimshurst-Maschine</b> mit zwei gegenläufigen Scheiben schematisch dargestellt.</p>
-    <Task><ol><li>Kurble schrittweise. Beobachte die Sektoren, die Sammler und das Spannungsniveau.</li><li>Trenne den Neutralisator. Nimmt die gespeicherte Ladung weiter zu?</li><li>Vergleiche einen Neustart mit und ohne Leidener Flaschen. Wann entsteht der erste Funke?</li><li>Starte das ideale Modell ohne Restladung. Warum hilft Kurbeln allein dort nicht?</li></ol></Task>
-    <div className="ef-machine-controls"><div className="ef-toolbar"><button type="button" disabled={running} onClick={() => setState(previous => machineStep(previous, seed === 'residual', neutralizer, capacity, threshold))}>Ein Stück kurbeln</button><button type="button" aria-pressed={running} onClick={() => setRunning(!running)}>{running ? 'Kurbel anhalten' : 'Kurbel starten'}</button><button type="button" disabled={!state.stored} onClick={() => { setRunning(false); setState(previous => ({ ...previous, stored: 0, flashed: false })); }}>Sammler entladen</button><button type="button" onClick={() => reset()}>Versuch zurücksetzen</button></div>
-    <Choices label="Startbedingung (neuer Versuch)" value={seed} set={value => reset(value)} options={[{ value: 'residual', label: 'Mit kleiner Restladung' }, { value: 'none', label: 'Ideal ohne Restladung' }]} />
-    <Choices label="Ladung speichern (neuer Versuch)" value={jars} set={value => reset(seed, value)} options={[{ value: 'with', label: 'Mit Leidener Flaschen' }, { value: 'without', label: 'Ohne Leidener Flaschen' }]} />
-    <button className="ef-action" type="button" aria-pressed={neutralizer} onClick={() => setNeutralizer(!neutralizer)}>Neutralisator {neutralizer ? 'trennen' : 'verbinden'}</button>
-    <Slider label="Funkenstrecke (relative Länge)" value={gap} set={setGap} min={1} max={3} />
-    </div>
-    <ZoomScene><svg className="ef-scene ef-machine-scene" viewBox="0 0 800 565" role="img" aria-label={`Influenzmaschine mit zwei gegenläufigen Scheiben; ${state.sparks} Funken; ${Math.round(voltage / threshold * 100)} Prozent des modellierten Überschlagsniveaus`}>
-      <text x="400" y="25" textAnchor="middle" fill="#375541">Scheiben zur Übersicht nebeneinander dargestellt</text>
-      <g fill="none" stroke="#849387" strokeWidth="4"><path d="M135 270H91V88H330 M665 270H709V88H470 M91 270V454 M709 270V454" /><path d="M135 239V301 M665 239V301" strokeWidth="5" />{[0, 1, 2, 3, 4].map(i => <path key={i} d={`M135 ${245 + i * 12}h12 M665 ${245 + i * 12}h-12`} strokeWidth="2" />)}</g>
-      <Disc x={260} rotation={state.tick * 22.5} back={false} seedOnly={state.strength <= 1} strength={seed === 'residual' ? state.strength : 0} /><Disc x={540} rotation={-state.tick * 22.5} back strength={seed === 'residual' && state.strength > 1 ? state.strength : 0} />
-      <g stroke={neutralizer ? '#b28843' : '#a8afa9'} strokeWidth="6" strokeDasharray={neutralizer ? undefined : '9 8'}><path d="M183 347L337 193 M463 193L617 347" /></g>
-      <text x="400" y="154" textAnchor="middle" fill="#83632e">Neutralisatoren und Bürsten</text>
-      <g><circle cx={370 - gap * 10} cy="88" r="21" fill="#829bc9" /><circle cx={430 + gap * 10} cy="88" r="21" fill="#dc8f96" /><path d={`M330 88H${370 - gap * 10} M470 88H${430 + gap * 10}`} stroke="#849387" strokeWidth="4" /><text x={370 - gap * 10} y="95" textAnchor="middle">−</text><text x={430 + gap * 10} y="95" textAnchor="middle">+</text></g>
-      {state.flashed && <path className="ef-machine-spark" d={`M${392 - gap * 10} 88L390 75L409 95L420 77L${408 + gap * 10} 88`} stroke="#e2a72e" strokeWidth="5" fill="none" />}
-      <text x="400" y="57" textAnchor="middle" fill="#375541">Funkenstrecke</text>
-      <text x="84" y="323" textAnchor="middle" fill="#4862a5">Sammler −</text><text x="716" y="323" textAnchor="middle" fill="#b8485b">Sammler +</text>
-      <text x="90" y="352" textAnchor="middle" fill="#4862a5">{'−'.repeat(symbols)}</text><text x="710" y="352" textAnchor="middle" fill="#b8485b">{'+'.repeat(symbols)}</text>
-      {jars === 'with' ? <g><path d="M58 447V510H124V447 M676 447V510H742V447" fill="#e5ede7" stroke="#647867" strokeWidth="3" /><path d="M91 454V495 M709 454V495 M91 465H110 M709 465H690" stroke="#b28843" strokeWidth="5" /><path d="M124 499H676" stroke="#647867" strokeWidth="2" /><text x="91" y="540" textAnchor="middle">Leidener Flasche</text><text x="709" y="540" textAnchor="middle">Leidener Flasche</text></g> : <text x="400" y="532" textAnchor="middle">Nur die kleinere Kapazität der Anschlüsse</text>}
-      <g transform={`translate(400 466) rotate(${state.tick * 22.5})`} stroke="#385641" strokeWidth="6"><circle r="29" fill="#e0ead8" /><path d="M0 0H57" /><circle cx="57" r="10" fill="#b28843" /></g><text x="400" y="555" textAnchor="middle">Kurbelarbeit → elektrische Energie</text>
+    <p><b>Der Aufbau:</b> Zwei isolierende Scheiben tragen Metallsegmente. Bürsten, Verbindungsstäbe und Sammelkämme ermöglichen die Ladungstrennung. Die beiden Konduktorkugeln (leitende Metallkugeln) sind elektrisch voneinander isoliert. Die Leidener Flaschen speichern zusätzliche Ladung wie Kondensatoren.</p>
+    <Task><p>Vergleiche zunächst die beiden neutralen Kugeln. Klicke dann einmal auf „Einmal kurbeln“. Beschreibe für jede Kugel, was sich an der Elektronenzahl geändert hat. Prüfe auch die gesamte Ladungsbilanz beider Kugeln.</p></Task>
+    <div className="ef-toolbar"><button type="button" disabled={charged} onClick={() => setCharged(true)}>Einmal kurbeln</button><button type="button" disabled={!charged} onClick={() => setCharged(false)}>Auf neutral zurücksetzen</button></div>
+    <ZoomScene><svg className="ef-scene ef-machine-scene" viewBox="0 0 800 420" role="img" aria-label={`Feste Aufbauskizze einer Influenzmaschine: linke Kugel ${charged ? 'positiv' : 'neutral'}, rechte Kugel ${charged ? 'negativ' : 'neutral'}`}>
+      <path d="M100 375H700 M315 305V372 M485 305V372" stroke="#63786b" strokeWidth="8" />
+      <circle cx="415" cy="219" r="127" fill="#e6ecdf" stroke="#95a692" strokeWidth="3" /><circle cx="388" cy="219" r="121" fill="#f4f5eacc" stroke="#748e75" strokeWidth="3" />
+      {Array.from({ length: 16 }, (_, i) => <rect key={i} x="479" y="211" width="24" height="16" rx="2" fill="#a5b3a3" transform={`rotate(${i * 22.5} 388 219)`} />)}
+      <path d="M308 138L468 300 M332 300L493 140" stroke="#b49a64" strokeWidth="5" />
+      <path d="M270 219H155V94H200 M535 219H645V94H600 M155 219V324 M645 219V324" fill="none" stroke="#677e6c" strokeWidth="5" />
+      <path d="M268 192V246 M537 192V246" stroke="#677e6c" strokeWidth="5" />
+      {[0,1,2,3,4].map(i => <path key={i} d={`M268 ${197+i*10}h12 M537 ${197+i*10}h-12`} stroke="#677e6c" strokeWidth="2" />)}
+      <circle cx="215" cy="94" r="31" fill={charged ? '#dc8f96' : '#d1d9d0'} stroke="#b8485b" strokeWidth="2" /><circle cx="585" cy="94" r="31" fill={charged ? '#829bc9' : '#d1d9d0'} stroke="#4862a5" strokeWidth="2" />
+      <text x="215" y="102" textAnchor="middle" fontSize="28">{charged ? '+' : '0'}</text><text x="585" y="102" textAnchor="middle" fontSize="28">{charged ? '−' : '0'}</text>
+      <text x="215" y="38" textAnchor="middle">Konduktorkugel links</text><text x="585" y="38" textAnchor="middle">Konduktorkugel rechts</text>
+      <path d="M127 312V363H183V312 M617 312V363H673V312 M183 350H617" fill="none" stroke="#718574" strokeWidth="3" /><path d="M155 310V346 M645 310V346" stroke="#b49a64" strokeWidth="5" />
+      <circle cx="388" cy="219" r="13" fill="#677e6c" /><path d="M388 219H438V248" fill="none" stroke="#526b59" strokeWidth="6" /><circle cx="438" cy="249" r="9" fill="#b49a64" />
+      <text x="395" y="82" textAnchor="middle" fontSize="16">Scheiben mit Metallsegmenten</text>
+      <text x="102" y="270" textAnchor="middle" fontSize="16">Sammelkamm</text><text x="698" y="270" textAnchor="middle" fontSize="16">Sammelkamm</text>
+      <text x="155" y="404" textAnchor="middle" fontSize="16">Leidener Flasche</text><text x="645" y="404" textAnchor="middle" fontSize="16">Leidener Flasche</text><text x="411" y="337" textAnchor="middle" fontSize="16">Kurbel</text>
     </svg></ZoomScene>
-    <div className="ef-readings"><div><small>Sammler links · Modellladung</small><strong data-machine="negative">−{Math.round(state.stored)}</strong></div><div><small>Sammler rechts · Modellladung</small><strong data-machine="positive">+{Math.round(state.stored)}</strong></div><div><small>Funken bisher</small><strong data-machine="sparks">{state.sparks}</strong></div></div>
-    <label className="ef-voltage-level">Spannungsniveau bis zum Überschlag<progress max={threshold} value={voltage} /><span>{Math.round(voltage / threshold * 100)} % · relative Modellskala</span></label>
-    <div className="ef-machine-explanation" role="status"><b>{seed === 'none' ? 'Keine anfängliche Ladungsunsymmetrie' : !neutralizer ? 'Neutralisator getrennt' : state.tick === 0 ? 'Bereit: Eine kleine Restladung ist vorhanden' : state.flashed ? 'Funke: Ladungsausgleich!' : phase.title}</b><p>{seed === 'none' ? 'Im vollkommen neutralen, symmetrischen Idealmodell beginnt keine Verstärkung. In Wirklichkeit sind kleine Restladungen bzw. Unsymmetrien meist vorhanden.' : !neutralizer ? 'Im vereinfachten Modell wird ohne die leitende Verbindung über die Bürsten keine weitere Ladung gesammelt. Bereits gespeicherte Ladung bleibt erhalten.' : state.flashed ? 'Die Luft in der Funkenstrecke wird leitfähig. Ladung gleicht sich zwischen den Anschlüssen aus; das Spannungsniveau fällt. Danach kann die Maschine erneut aufladen.' : state.tick === 0 ? 'Mit der Kurbel setzt du die Scheiben in Bewegung. Die Ladungszeichen stellen Überschuss bzw. Mangel an Elektronen dar.' : phase.text}</p></div>
-    <details className="ef-real"><summary>Aufbau und Funktionsweise genauer erklärt</summary><div><ol><li><b>Scheiben und Sektoren:</b> Zwei isolierende Scheiben tragen leitende Metallsegmente und drehen entgegengesetzt. Eine kleine anfängliche Ladungsunsymmetrie setzt die Verstärkung in Gang.</li><li><b>Neutralisatoren:</b> Leitende Stangen verbinden über Bürsten gegenüberliegende Segmente einer Scheibe. Die elektrische Wirkung benachbarter Ladungen verschiebt Elektronen in dieser Verbindung. Die Segmente werden mit entgegengesetzten Ladungen voneinander getrennt.</li><li><b>Rückkopplung und Sammler:</b> Geladene Segmente beeinflussen weitere Segmente. Spitze Sammelkämme übertragen Ladung auf die Anschlüsse. Dort entstehen Elektronenüberschuss und Elektronenmangel.</li><li><b>Leidener Flaschen:</b> Das sind Kondensatoren. Ihre inneren Beläge sind mit je einem Anschluss verbunden, die äußeren miteinander. Sie vergrößern die Speicherkapazität: Für dieselbe Spannung muss mehr Ladung getrennt werden. Ein Funke kann dadurch mehr Energie umsetzen.</li><li><b>Energiebilanz:</b> Beim Kurbeln leistest du Arbeit gegen elektrische Kräfte. Ladung wird getrennt, nicht aus dem Nichts erzeugt. Die Ladungsbilanz bleibt erhalten.</li></ol><p>Das Modell zeigt die Vorgänge nacheinander; in der echten Maschine laufen sie an vielen Sektoren gleichzeitig ab. Die Scheiben liegen dort dicht hintereinander. Farbbereiche und Zahlen sind qualitative Modellgrößen, keine Vorhersage realer Coulomb- oder Voltwerte. Leckströme und Luftfeuchtigkeit sind nicht modelliert. Am realen Hochspannungsgerät arbeitet die Lehrkraft nach Geräteanleitung; geladene Teile werden nicht berührt.</p><p className="ef-model">Zum Vertiefen: <a href="https://www.leifiphysik.de/elektrizitaetslehre/ladungen-felder-mittelstufe/versuche/influenzmaschine-von-holtz-und-wimshurst" target="_blank" rel="noreferrer">LEIFIphysik · Influenzmaschine</a> · <a href="https://www.coe.ufrj.br/~acmq/whyhow.html" target="_blank" rel="noreferrer">A. C. M. de Queiroz (UFRJ) · Funktionsprinzip</a></p></div></details>
+    <p className="ef-model">Feste, vereinfachte Aufbauskizze. „Einmal kurbeln“ steht für eine Aufladephase; die echte Maschine benötigt je nach Aufbau mehrere Umdrehungen. Das gezeigte Vorzeichen links/rechts ist ein Beispiel.</p>
+    <div className="ef-charge-pair"><ChargeBalance positive charged={charged} /><ChargeBalance positive={false} charged={charged} /></div>
+    <p className="ef-machine-explanation" role="status">{charged ? 'Die linke Kugel hat Elektronen abgegeben, die rechte hat Elektronen aufgenommen. Die positiven Ladungsanteile bleiben unverändert. Insgesamt sind weiterhin 16 Elektronen und 16 positive Ladungsanteile vorhanden: Es wurde Ladung getrennt.' : 'Beide Kugeln sind zunächst neutral: In jeder gleichen sich positive und negative Ladungen aus.'}</p>
+    <h4>Was geschieht beim Kurbeln?</h4><ol className="ef-method-steps"><li><b>Beeinflussen:</b> Eine kleine anfängliche Ladungsunsymmetrie verschiebt durch Influenz Elektronen auf benachbarten leitenden Segmenten.</li><li><b>Trennen und sammeln:</b> Bürsten verbinden kurzzeitig Segmente. Durch die Drehung werden getrennte Ladungen weitertransportiert und über die Sammelkämme auf die Anschlüsse übertragen. Viele solche Vorgänge verstärken die Trennung.</li><li><b>Energie übertragen:</b> Du führst beim Kurbeln mechanisch Energie zu. Dadurch wächst die im elektrischen Feld gespeicherte Energie und zwischen den Kugeln entsteht eine Spannung.</li></ol>
+    <aside className="ef-memory"><b>Positiv heißt Elektronenmangel.</b><p>Es entstehen keine zusätzlichen Protonen. Die positiven Atomrümpfe bleiben im Metall. In den beiden Bilanzbildern stehen die wenigen Zeichen stellvertretend für viele Teilchen; sie zeigen eine Zählbilanz, keine räumliche Verteilung. Die überschüssige Nettoladung liegt im elektrostatischen Gleichgewicht auf den Leiteroberflächen.</p></aside>
+    <details className="ef-real"><summary>Kontrollfrage: Warum bleiben beide Kugeln zusammen neutral?</summary><div><p>Die eine Kugel verliert genau so viele Elektronen, wie die andere im Bilanzmodell gewinnt. Der Elektronenmangel ergibt eine positive, der gleich große Überschuss eine negative Nettoladung. Ihre Summe bleibt null. Die mechanisch zugeführte Energie verändert diese Ladungsbilanz nicht.</p></div></details>
+    <p className="ef-model">Funktionsprinzip zum Nachlesen: <a href="https://www.coe.ufrj.br/~acmq/whyhow.html" target="_blank" rel="noreferrer">A. C. M. de Queiroz (UFRJ) · Wimshurst-Maschine</a>.</p>
   </div>;
 }

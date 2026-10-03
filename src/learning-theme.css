@@ -9,3 +9,43 @@
 
 .ef-toolbar button[aria-pressed=true],.ef-action[aria-pressed=true]{background:#234d3b;color:#fffefa;border-color:#234d3b}.ef-scene-scroll{max-width:100%;overflow-x:auto;border-radius:10px}.ef-scene-scroll.is-zoomed>.ef-scene{min-width:760px;max-height:none}.ef-zoom-button{border:1px solid #b4c5aa;background:#f1f5e9;color:#31513c;border-radius:7px;font-size:12px;padding:9px 13px;margin:9px 0 15px}.ef-zoom-button[aria-pressed=true]{background:#234d3b;color:#fffefa}.ef-zoom-scene{min-width:0}
 .ef-toolbar button[aria-pressed=true]:hover:not(:disabled),.ef-action[aria-pressed=true]:hover{background:#234d3b;color:#fffefa}
+
+/* Kapitelstruktur, Versuchswege und einzeln erklärte Formelgrößen. */
+.physics-curriculum { display: grid; gap: 14px; margin-top: 30px; }
+.physics-curriculum > article { padding: 24px 28px; border: 1px solid #c7d1c0; border-radius: 12px; background: #fffefa; }
+.physics-curriculum h3 { margin: 9px 0 0; font: 600 clamp(22px, 2.5vw, 29px)/1.25 Georgia, serif; }
+.physics-curriculum .physics-curriculum-fields { background: #e8efdd; }
+.physics-curriculum-subtopics { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 16px; margin-top: 22px; }
+.physics-curriculum-subtopics > * { color: #183e32; padding: 20px; background: #fffefa; border: 1px solid #c7d1c0; border-radius: 9px; text-decoration: none; }
+.physics-curriculum-subtopics > a { border-color: #183e32; box-shadow: inset 0 4px #183e32; }
+.physics-curriculum-subtopics h4 { font: 600 23px/1.25 Georgia,serif; margin: 12px 0; }
+.ef-experiment-guide { border-left: 3px solid #88a46e; padding: 4px 0 5px 22px; margin: 0 0 26px; max-width: 88ch; }
+.ef-experiment-guide h4 { font-size: 17px; margin: 18px 0 10px; }
+.ef-experiment-guide ol, .ef-method-steps { padding-left: 22px; }
+.ef-experiment-guide li, .ef-method-steps li { margin: 12px 0; padding-left: 5px; line-height: 1.6; }
+.ef-charge-pair { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 22px; margin: 24px 0; }
+.ef-charge-balance { background: #fffefa; border: 1px solid #ccd4c5; padding: 18px; border-radius: 12px; text-align: center; }
+.ef-charge-balance h4 { margin: 0 0 12px; font-size: 20px; }
+.ef-charge-balance svg { width: 100%; max-width: 300px; }
+.ef-charge-balance p { font-size: 15px; }
+.ef-conduction-model { padding: 24px; background: #fffefa; border: 1px solid #ccd4c5; border-radius: 12px; margin: 25px 0; }
+.ef-conduction-model h4 { font: 600 24px/1.25 Georgia,serif; margin-top: 0; }
+.ef-conduction-model > .ef-scene { max-width: 780px; display: block; margin: 15px auto; }
+.ef-symbol-explanations { margin-top: 22px; padding-top: 8px; border-top: 1px solid #ccd4c5; }
+.ef-symbol-explanations h5 { font-size: 15px; margin: 12px 0; }
+.ef-symbol-explanations dl { margin: 0; }
+.ef-symbol-explanations dl > div { display: grid; grid-template-columns: minmax(70px,auto) 1fr; gap: 16px; padding: 14px 0; border-top: 1px solid #e4e7de; align-items: start; }
+.ef-symbol-explanations dt { padding-top: 2px; }
+.ef-symbol-explanations dd { margin: 0; font-size: 15px; line-height: 1.6; min-width: 0; }
+.ef-symbol-explanations dd small { display: block; margin-top: 7px; font-size: 13px; color: #526451; }
+.ef-math-display { padding-block: 8px; }
+.ef-formula-lines { gap: 16px; }
+.ef-glossary-answer > .ef-math-display { overflow-x: auto; max-width: 100%; }
+@media(max-width: 760px) { .physics-curriculum-subtopics { grid-template-columns: 1fr; } }
+@media(max-width: 540px) {
+  .physics-curriculum > article { padding: 20px; }
+  .ef-charge-pair { grid-template-columns: 1fr; }
+  .ef-conduction-model { padding: 15px; }
+  .ef-symbol-explanations dl > div { grid-template-columns: 1fr; gap: 7px; }
+  .ef-experiment-guide { padding-left: 14px; }
+}

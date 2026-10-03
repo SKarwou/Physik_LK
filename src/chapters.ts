@@ -91,7 +91,7 @@ export const chapters: Chapter[] = [
       { id: "e2", title: "Linearisierung", level: "AFB II · Heft", prompt: "Für r = 4, 5, 6, 8, 10 cm werden F = 2,25; 1,44; 1,00; 0,562; 0,360 mN gemessen. Ergänze 1/r² und zeichne F gegen 1/r²." },
       { id: "e3", title: "Feldlinienkarte", level: "AFB II · Zeichnung", prompt: "Zeichne Punktladung, Plattenfeld und Dipol mit mindestens acht Feldlinien. Markiere Symmetrien, starke Bereiche und je eine Modellgrenze." },
       { id: "e4", title: "Vektoren überlagern", level: "AFB II", prompt: "Am Punkt P wirken 3,0 kN/C nach Osten und 4,0 kN/C nach Norden. Bestimme Gesamtfeld und Winkel zeichnerisch und rechnerisch." },
-      { id: "e5", title: "Potential und Arbeit", level: "AFB II", prompt: "Ein Elektron bewegt sich von A nach B mit φ_B − φ_A = +850 V. Bestimme Betrag und Vorzeichen seiner potentiellen Energieänderung und erläutere die Änderung der kinetischen Energie." },
+      { id: "e5", title: "Potential und Energie", level: "AFB II", prompt: "Ein Elektron bewegt sich von A nach B mit φ_B − φ_A = +850 V. Bestimme Betrag und Vorzeichen seiner potentiellen Energieänderung und erläutere die Änderung der kinetischen Energie." },
       { id: "e6", title: "Blitzableiter-Behauptung", level: "AFB III · Argumentation", prompt: "Beurteile: 'Ein Blitzableiter zieht Blitze an und macht ein Haus deshalb gefährlicher.' Verwende Feldstärke, Ionisation, Leitfähigkeit und Systemgrenze.", hint: "Trenne Entstehung des Blitzes und sicheren Strompfad." },
     ],
   },

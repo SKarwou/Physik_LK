@@ -34,7 +34,7 @@ export default function SolutionVault({ slug, exercises, renderText = text => te
   if (solutions) return (
     <section id="loesungen" className="solution-vault unlocked">
       <div className="vault-heading"><span>✓ Freigeschaltet</span><h2>Lösungen & Erwartungshorizont</h2><button onClick={() => setSolutions(null)}>Wieder sperren</button></div>
-      <div className="solution-list">{solutions.map((solution, index) => <details key={solution.id}><summary><span>{String(index + 1).padStart(2, "0")}</span>{solution.title}</summary><div><p>{renderText(solution.solution)}</p>{solution.checkpoints?.length ? <ul>{solution.checkpoints.map((point) => <li key={point}>{renderText(point)}</li>)}</ul> : null}</div></details>)}</div>
+      <div className="solution-list">{solutions.map((solution, index) => <details key={solution.id}><summary><span>{String(index + 1).padStart(2, "0")}</span>{exercises.find(exercise => exercise.id === solution.id)?.title ?? solution.title}</summary><div><p>{renderText(solution.solution)}</p>{solution.checkpoints?.length ? <ul>{solution.checkpoints.map((point) => <li key={point}>{renderText(point)}</li>)}</ul> : null}</div></details>)}</div>
     </section>
   );
 

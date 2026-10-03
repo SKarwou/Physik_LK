@@ -33,7 +33,7 @@ const worksheets = [
     xLabel: 't in s', yLabel: 'U_C in V', xMax: 5, yMax: 10,
     values: [[0, 10.0], [.5, 6.1], [1, 3.7], [1.5, 2.2], [2, 1.4], [3, .5], [4, .2], [5, .1]],
     tasks: ['Übertrage die Messwerte in ein Spannung-Zeit-Diagramm. Verwende einzelne Messkreuze.', 'Skizziere von Hand eine glatte Ausgleichskurve. Verbinde die Messpunkte nicht als Zickzacklinie.', 'Lies die Zeit ab, bei der noch etwa 37 % der Anfangsspannung vorhanden sind. Was bedeutet diese Zeit?'],
-    solution: String.raw`Es entsteht näherungsweise ein exponentieller Abfall. Bei $U_C\approx3{,}7\,\mathrm V$ liest man $t\approx1{,}0\,\mathrm s$ ab. Das ist die Zeitkonstante $\tau=RC$. Die Kurve nähert sich null; sie schneidet die Zeitachse im idealen Modell nicht.`,
+    solution: String.raw`Es entsteht näherungsweise ein exponentieller Abfall. Bei $U_C\approx3{,}7\,\mathrm V$ liest man $t\approx1{,}0\,\mathrm s$ ab. Das ist die Zeitkonstante $\tau=R\cdot C$. Die Kurve nähert sich null; sie schneidet die Zeitachse im idealen Modell nicht.`,
   },
 ];
 

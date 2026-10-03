@@ -121,7 +121,7 @@ export default function CoulombLab() {
       <ul><li><b>Abstand:</b> Bei doppeltem Abstand sinkt der Kraftbetrag auf ein Viertel. Im Diagramm <MathFormula tex="F" /> gegen <MathFormula tex="\frac{1}{r^2}" /> liegen die idealen Messpunkte auf einer Ursprungsgeraden.</li>
         <li><b>Ladungen:</b> Verdoppelt man eine Ladung bei sonst gleichen Bedingungen, verdoppelt sich der Kraftbetrag. Verdoppelt man beide, vervierfacht er sich.</li>
         <li><b>Richtung:</b> Gleichnamige Ladungen stoßen sich ab, ungleichnamige ziehen sich an. Beide Kugeln erfahren gleich große, entgegengesetzte elektrische Kräfte.</li></ul>
-      <Formula tex={[String.raw`F=k\,\frac{|Qq|}{r^2}`, String.raw`k=\frac{1}{4\pi\varepsilon_0}\approx8{,}99\cdot10^9\,\frac{\mathrm{N\,m^2}}{\mathrm{C^2}}`]} note="Betrag der Coulomb-Kraft im Vakuum, näherungsweise in Luft. Ladungen in C und Mittelpunktabstand in m einsetzen; dann erhältst du F in N." />
+      <Formula tex={[String.raw`F=k\cdot\frac{|Q\cdot q|}{r^2}`, String.raw`k=\frac{1}{4\cdot\pi\cdot\varepsilon_0}\approx8{,}99\cdot10^9\,\frac{\mathrm N\cdot\mathrm{m^2}}{\mathrm{C^2}}`]} note="Betrag der Coulomb-Kraft im Vakuum, näherungsweise in Luft. Ladungen in C und Mittelpunktabstand in m einsetzen; dann erhältst du F in N." />
       <p className="ef-model"><b>Grenzen des Modells:</b> Die Simulation behandelt die Kugeln als Punktladungen. Im realen Versuch müssen ihre Radien klein gegenüber dem Abstand sein. Influenz, Luftfeuchtigkeit und Ladungsverlust können die Messwerte verändern; deshalb Ladungen kontrollieren und Halterungen elektrisch isolieren.</p>
     </details>
   </div>;

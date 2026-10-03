@@ -1,3 +1,4 @@
+import ExperimentGuide from './ExperimentGuide';
 import { useMemo, useState, type PointerEvent } from 'react';
 import { Arrow, Choices, RealExperiment, Task } from './LabUI';
 import { chargesFor, fieldAt, fieldLines, pathOf, type FieldKind, type Point } from './physics';
@@ -21,7 +22,9 @@ export default function FieldMapLab() {
   function point(e: PointerEvent<SVGSVGElement>): Point {
     const svg = e.currentTarget; const p = new DOMPoint(e.clientX, e.clientY).matrixTransform(svg.getScreenCTM()!.inverse()); return { x: p.x, y: p.y };
   }
-  return <div className="ef-lab"><Choices label="Elektrodenanordnung" value={kind} set={change} options={[{ value: 'plate', label: 'Platten' }, { value: 'positive', label: '+ Punktladung' }, { value: 'negative', label: '− Punktladung' }, { value: 'dipole', label: 'Dipol +/−' }, { value: 'pair', label: 'Zwei positive' }]} />
+  return <div className="ef-lab">
+    <ExperimentGuide kind="grains" />
+    <Task><ol><li>Wähle eine Anordnung und skizziere zuerst deine Vermutung.</li><li>Schalte das Feld ein. Ergänze Pfeile: von der positiven Quelle zur negativen Senke bzw. ins Unendliche.</li><li>Vergleiche Plattenfeld, Radialfeld und Dipol. Erkläre den Feldnullpunkt zwischen zwei gleich großen positiven Ladungen.</li></ol></Task><Choices label="Elektrodenanordnung" value={kind} set={change} options={[{ value: 'plate', label: 'Platten' }, { value: 'positive', label: '+ Punktladung' }, { value: 'negative', label: '− Punktladung' }, { value: 'dipole', label: 'Dipol +/−' }, { value: 'pair', label: 'Zwei positive' }]} />
     <div className="ef-toolbar"><button aria-pressed={on} onClick={() => setOn(!on)}>{on ? 'Feld ausschalten' : 'Feld einschalten'}</button><button aria-pressed={draw} onClick={() => setDraw(!draw)}>Selbst zeichnen</button><button aria-pressed={show} onClick={() => setShow(!show)}>Feldlinien {show ? 'ausblenden' : 'vergleichen'}</button><button onClick={() => setStrokes([])}>Zeichnung löschen</button></div>
     <svg className={`ef-scene ${draw ? 'ef-draw' : ''}`} viewBox="0 0 640 380" role="img" aria-label="Ölwanne mit Grießkörnern und wählbarer Feldanordnung" onPointerDown={e => { if (!draw) return; e.currentTarget.setPointerCapture(e.pointerId); setActive(true); const p = point(e); setStrokes(s => [...s, [p]]); }} onPointerMove={e => { if (!active) return; const p = point(e); setStrokes(s => [...s.slice(0, -1), [...s[s.length - 1], p]]); }} onPointerUp={() => setActive(false)} onPointerCancel={() => setActive(false)}>
       <rect x="15" y="20" width="610" height="340" rx="28" fill="#fffae9" stroke="#dfcf99" />
@@ -35,7 +38,7 @@ export default function FieldMapLab() {
     </svg>
     <p className="ef-model">{on ? 'Die länglichen Körnchen richten sich durch Polarisation aus. Ihre Achse zeigt den Verlauf, aber noch keine Pfeilrichtung.' : 'Feld aus: Die Körnchen liegen ungeordnet. Sage vor dem Einschalten ihre Ausrichtung voraus.'} Feldlinien sind Modelllinien, keine Flugbahnen. Die Punktladungsbilder zeigen einen Schnitt durch dreidimensionale Felder; das Plattenfeld ist ohne Randfelder idealisiert.</p>
     {draw && <p>Zeichne mit Maus, Stift oder Finger in die Wanne. Alternativ: Skizziere auf Papier und blende anschließend die Modelllinien ein.</p>}
-    <Task><ol><li>Wähle eine Anordnung und skizziere zuerst deine Vermutung.</li><li>Schalte das Feld ein. Ergänze Pfeile: von der positiven Quelle zur negativen Senke bzw. ins Unendliche.</li><li>Vergleiche Plattenfeld, Radialfeld und Dipol. Erkläre den Feldnullpunkt zwischen zwei gleich großen positiven Ladungen.</li></ol></Task>
+
     <RealExperiment title="Grieß in Öl"><p><b>Material:</b> transparente Feldlinienwanne, isolierendes Öl, wenige Grießkörner, Platten- und Rundelektroden, zugelassenes schulisches Elektrostatikgerät.</p><p><b>Ablauf:</b> Elektroden im ausgeschalteten Zustand anordnen, Körner dünn verteilen, einschalten, Wanne vorsichtig anklopfen, Muster skizzieren. Vor jedem Umbau abschalten und Elektroden entladen. Hochspannungsaufbau ausschließlich durch die Lehrkraft nach Geräteanleitung und schulischer Gefährdungsbeurteilung.</p><p><b>Auswertung:</b> Die Körner polarisieren sich und bilden Ketten. Die Pfeilrichtung folgt aus der Wirkung auf eine positive Probeladung, nicht aus der Orientierung der Körner allein.</p></RealExperiment>
   </div>;
 }

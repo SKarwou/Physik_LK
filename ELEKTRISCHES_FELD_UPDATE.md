@@ -1,3 +1,19 @@
+# Aktueller Stand · V7 · 3. Oktober 2026
+
+- Kapitelüberschriften und Themenhierarchie auf der Startseite entsprechend der von Sara bereitgestellten Bildungsplanabbildung: 3.6.1 bis 3.6.7, einschließlich der drei Unterkapitel zu elektromagnetischen Feldern.
+- Influenzmaschine vereinfacht: feste SVG-Aufbauskizze, „Einmal kurbeln“ und Rücksetzen. Keine rotierenden Scheiben oder Einstellungen zu Neutralisatoren und Funkenstrecke mehr. Die qualitative Bilanz zeigt 8/8 → 8/5 und 8/11 positive Ladungsanteile/Elektronen.
+- Stromkreis mit statischen Richtungspfeilen und lokaler Drahtlupe. Elektronen bewegen sich ungeordnet und bei Stromfluss zusätzlich mit gerichteter Drift; die positiven Atomrümpfe haben feste mittlere Gitterplätze. Die schnelle Feldwirkung wird ausdrücklich von der Drift getrennt. Animation pausierbar; reduzierte Bewegung wird berücksichtigt.
+- Energie konsistent als E mit Index bzw. ΔE. Potentialkonvention: U_AB = φ_A − φ_B, ΔE_pot = −q · U_AB und bei alleiniger elektrischer Kraft ΔE_kin = q · U_AB. Einheit Watt weiterhin W.
+- Echte Brüche und explizite Malpunkte mit etwas zusätzlichem Abstand zwischen Faktoren.
+- Online-Lexikon: 64 Begriffe, 245 einzelne Erklärungen zu Symbolen, Größen und Konstanten einschließlich Einheiten. Keine Eingabefelder; Lösungen einzeln oder gemeinsam aufklappbar. Die früheren Word-Dateien sind unverändert und als ältere Vorlagen gekennzeichnet.
+- Zehn detaillierte Versuchsanleitungen. RC-Modellwerte als Tabelle vor dem zunächst leeren Diagramm. Coulomb-Aufbau und Messablauf beibehalten.
+- Offline-Vorschau und vollständiges GitHub-Uploadpaket V7. Keine Veröffentlichung durch Codex erfolgt.
+
+Physikalische Referenz zur Drahtlupe: https://openstax.org/books/university-physics-volume-2/pages/9-2-model-of-conduction-in-metals
+Funktionsprinzip der Influenzmaschine: https://www.coe.ufrj.br/~acmq/whyhow.html
+
+## Frühere Entwicklungsstände (historisch, durch V7 teilweise ersetzt)
+
 # Elektrisches Feld: Update vom 1. Oktober 2026
 
 Das bestehende Kapitel `?page=kapitel/elektrisches-feld` verwendet jetzt eine eigene Lernumgebung mit acht Stationen. Der Rest der Website und die verschlüsselten Lösungen bleiben bestehen.

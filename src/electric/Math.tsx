@@ -4,6 +4,8 @@ import katex from 'katex';
 // Precisely identified legacy spellings also occur in exercise and unit labels.
 // Keep ordinary slashes (e.g. school years and counts) as text.
 const legacyMath: Record<string, string> = {
+  'J/s': String.raw`\frac{\mathrm J}{\mathrm s}`,
+  'N/kg': String.raw`\frac{\mathrm N}{\mathrm{kg}}`,
   'kN/C': String.raw`\frac{\mathrm{kN}}{\mathrm C}`,
   'N/C': String.raw`\frac{\mathrm N}{\mathrm C}`,
   'V/m': String.raw`\frac{\mathrm V}{\mathrm m}`,
@@ -17,7 +19,7 @@ const legacyMath: Record<string, string> = {
   'F/q': String.raw`\frac{F}{q}`,
   'U/d': String.raw`\frac{U}{d}`,
   'Q/U': String.raw`\frac{Q}{U}`,
-  'qE/m': String.raw`\frac{qE}{m}`,
+  'qE/m': String.raw`\frac{q\cdot E}{m}`,
   'x/d': String.raw`\frac{x}{d}`,
   '½': String.raw`\frac{1}{2}`,
 };
@@ -25,7 +27,8 @@ const legacyPattern = new RegExp(`(${Object.keys(legacyMath).sort((a, b) => b.le
 
 /** Native MathML keeps fractions and vectors crisp, accessible and available offline. */
 export const MathFormula = memo(function MathFormula({ tex, display = false }: { tex: string; display?: boolean }) {
-  const html = katex.renderToString(display ? tex : `\\displaystyle ${tex}`, { output: 'mathml', displayMode: display, throwOnError: true, trust: false, strict: 'error' });
+  const spaced = tex.replace(/\\cdot(?![A-Za-z])/g, String.raw`\,\cdot\,`);
+  const html = katex.renderToString(display ? spaced : `\\displaystyle ${spaced}`, { output: 'mathml', displayMode: display, throwOnError: true, trust: false, strict: 'error' });
   return <span className={display ? 'ef-math ef-math-display' : 'ef-math'} dangerouslySetInnerHTML={{ __html: html }} />;
 });
 
