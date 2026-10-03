@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import type { Exercise } from "../chapters";
 import { encryptedSolutions } from "../encryptedSolutions";
 
@@ -18,7 +18,7 @@ async function decrypt(slug: string, password: string): Promise<Solution[]> {
   return JSON.parse(new TextDecoder().decode(plain)) as Solution[];
 }
 
-export default function SolutionVault({ slug, exercises }: { slug: string; exercises: Exercise[] }) {
+export default function SolutionVault({ slug, exercises, renderText = text => text }: { slug: string; exercises: Exercise[]; renderText?: (text: string) => ReactNode }) {
   const [password, setPassword] = useState("");
   const [solutions, setSolutions] = useState<Solution[] | null>(null);
   const [error, setError] = useState("");
@@ -34,7 +34,7 @@ export default function SolutionVault({ slug, exercises }: { slug: string; exerc
   if (solutions) return (
     <section id="loesungen" className="solution-vault unlocked">
       <div className="vault-heading"><span>✓ Freigeschaltet</span><h2>Lösungen & Erwartungshorizont</h2><button onClick={() => setSolutions(null)}>Wieder sperren</button></div>
-      <div className="solution-list">{solutions.map((solution, index) => <details key={solution.id}><summary><span>{String(index + 1).padStart(2, "0")}</span>{solution.title}</summary><div><p>{solution.solution}</p>{solution.checkpoints?.length ? <ul>{solution.checkpoints.map((point) => <li key={point}>{point}</li>)}</ul> : null}</div></details>)}</div>
+      <div className="solution-list">{solutions.map((solution, index) => <details key={solution.id}><summary><span>{String(index + 1).padStart(2, "0")}</span>{solution.title}</summary><div><p>{renderText(solution.solution)}</p>{solution.checkpoints?.length ? <ul>{solution.checkpoints.map((point) => <li key={point}>{renderText(point)}</li>)}</ul> : null}</div></details>)}</div>
     </section>
   );
 

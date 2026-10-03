@@ -1,33 +1,44 @@
 # Physik-Lernlabor · Leistungsfach Baden-Württemberg
 
-Ausführliche Lernwebsite für die Kursstufe 11/12 mit 15 Kapiteln, Theorie auf Abiturniveau, Formelnetzen, Experimenten, interaktiven Parameterlaboren, Vertiefungen und 90 Aufgaben für Papier und Heft. Die Lösungen sind kapitelweise verschlüsselt und werden erst nach Eingabe des jeweiligen Lehrkraft-Passworts im Browser entschlüsselt.
+Kapitel 01 führt von den Grundlagen der Mittelstufe zum elektrischen Feld. Es enthält die Teile 00–09 mit interaktiven Experimenten, Messprotokollen, Diagrammen auf Klick, 64 Lexikoneinträgen und Übungen. Die weiteren Kapitel sind auf der Startseite als „In Vorbereitung“ gekennzeichnet.
 
-## Direkt auf GitHub Pages veröffentlichen
+## Dieses Update hochladen
 
-1. Alle Dateien und Ordner dieses Pakets in die oberste Ebene des Repositorys `Physik_LK` hochladen.
-2. Unter **Settings → Pages** bei **Build and deployment** die Option **Deploy from a branch** auswählen.
-3. Als Branch **main** und als Ordner **/docs** auswählen, anschließend **Save** anklicken.
-4. Nach kurzer Wartezeit ist die Seite unter `https://skarwou.github.io/Physik_LK/` erreichbar.
+1. Das ZIP entpacken und den Ordner `GitHub_Upload` öffnen.
+2. Im Repository `SKarwou/Physik_LK` zur obersten Ebene wechseln, dann **Add file → Upload files** öffnen.
+3. Den **Inhalt** von `GitHub_Upload` hochladen: insbesondere die Ordner `src`, `public`, `docs` und die Dateien daneben. Den Ordner `GitHub_Upload` selbst nicht als zusätzliche Ebene hochladen. Die ZIP-Datei wird von GitHub nicht automatisch entpackt.
+4. Änderungen mit einer Beschreibung wie „Kapitel 01 mit Grundlagen und interaktiven Experimenten“ auf `main` speichern. Falls Änderungen über einen Pull Request erfolgen, muss dieser anschließend übernommen werden, damit der vorhandene Workflow startet.
+5. Unter **Actions** den vorhandenen Workflow „Physik-Website automatisch veröffentlichen“ prüfen. Nach erfolgreichem Lauf die Seite öffnen und gegebenenfalls neu laden.
 
-Der Ordner `docs` enthält bereits die fertige GitHub-Pages-Version. Für das reine Veröffentlichen ist keine lokale Installation nötig.
+Website: https://skarwou.github.io/Physik_LK/
 
-## Website später bearbeiten
+Die bestehenden Pages-Einstellungen müssen für dieses Update nicht geändert werden. Der vorhandene Workflow baut den Inhalt aus `src` und veröffentlicht `docs`. Der fertige `docs`-Ordner ist zusätzlich bereits enthalten. Falls die bestehende Veröffentlichung stattdessen über `main` und `/docs` eingerichtet ist, ist auch dieser Ordner vollständig vorbereitet.
 
-Für Änderungen wird Node.js benötigt:
+GitHub-Anleitung: https://docs.github.com/en/repositories/working-with-files/managing-files/adding-a-file-to-a-repository
+
+## Lokal weiterbearbeiten
+
+Node.js 24 verwenden:
 
 ```bash
-npm install
+npm ci
 npm run dev
 ```
 
-Nach Änderungen die veröffentlichte Version neu erzeugen:
+Produktionsversion erzeugen:
 
 ```bash
 npm run build
 ```
 
-Der Build wird automatisch in `docs` geschrieben. Danach die geänderten Dateien erneut zu GitHub hochladen.
+Der Build landet in `docs`. Das Vite-Basisverzeichnis bleibt `/Physik_LK/`.
 
-## Wichtiger Hinweis zur Passwortliste
+## Inhalt und Grenzen
 
-Die separate Word-Datei mit den Kapitelpasswörtern gehört ausschließlich zur Lehrkraft. Sie ist absichtlich nicht Bestandteil dieses öffentlichen Pakets und darf nicht in das GitHub-Repository hochgeladen werden.
+- Die Influenzmaschine und das Elektroskop sind qualitative, erklärte Modelle. Sie liefern keine realen Messwerte in Volt oder Coulomb.
+- Stromkreis, Coulomb-Versuch und weitere quantitative Experimente liefern ideale Modellwerte. Die gesonderten Zeichenaufgaben kennzeichnen ihre simulierte Streuung.
+- Das Lexikon speichert keine persönlichen Einträge. Mustererklärungen sind frei aufklappbar.
+- Die verschlüsselten Lösungen der bisherigen Heftaufgaben bleiben unverändert. Eine private Passwortliste ist nicht Teil des Pakets.
+- Bildquelle des Cartoons und Erstellungsnotiz: `src/electric/assets/ASSET_NOTES.md`.
+
+Die separate Vorschau-Datei außerhalb von `GitHub_Upload` ist zum lokalen Öffnen vorgesehen und gehört nicht zum Upload.

@@ -1,0 +1,936 @@
+[
+  {
+    "id": 0,
+    "title": "Grundlagen aus der Mittelstufe",
+    "note": "Die Schaltungsformeln gelten für ideale ohmsche Widerstände.",
+    "entries": [
+      {
+        "id": 58,
+        "term": "Elektrische Leistung",
+        "explanation": "Übertragene oder umgewandelte Energie pro Zeit. Die Einheit ist Watt (W). Bei konstanter Gleichspannung und Stromstärke gilt das Produkt aus U und I.",
+        "details": [
+          {
+            "tex": "P=UI=\\frac{W_{\\mathrm{el}}}{\\Delta t}"
+          }
+        ]
+      },
+      {
+        "id": 59,
+        "term": "Elektrische Energie im Stromkreis",
+        "explanation": "Energie, die eine Quelle abgibt und ein Bauteil beispielsweise in innere Energie oder Licht umwandelt. Die Einheit ist Joule (J).",
+        "details": [
+          {
+            "tex": "W_{\\mathrm{el}}=UI\\,\\Delta t\\quad\\text{bei konstantem }U,I"
+          }
+        ]
+      },
+      {
+        "id": 60,
+        "term": "Technische Stromrichtung",
+        "explanation": "Im äußeren Stromkreis verläuft die technische Stromrichtung vom Pluspol zum Minuspol. Die Elektronen in Metalldrähten driften entgegengesetzt.",
+        "details": []
+      },
+      {
+        "id": 61,
+        "term": "Reihenschaltung",
+        "explanation": "Bauteile liegen nacheinander im selben Stromweg. Durch alle Bauteile fließt dieselbe Stromstärke. Die Teilspannungen addieren sich.",
+        "details": [
+          {
+            "tex": "R_{\\mathrm{ges}}=R_1+R_2\\quad U=U_1+U_2"
+          }
+        ]
+      },
+      {
+        "id": 62,
+        "term": "Parallelschaltung",
+        "explanation": "Bauteile liegen an denselben beiden Knoten. An jedem Zweig liegt dieselbe Spannung an. Die Teilströme addieren sich.",
+        "details": [
+          {
+            "tex": "\\frac{1}{R_{\\mathrm{ges}}}=\\frac{1}{R_1}+\\frac{1}{R_2}\\quad I=I_1+I_2"
+          }
+        ]
+      },
+      {
+        "id": 63,
+        "term": "Amperemeter",
+        "explanation": "Messgerät für die Stromstärke. Es wird in Reihe in den zu messenden Stromweg eingebaut und hat einen sehr kleinen Innenwiderstand. Parallel zu einer Quelle würde es einen Kurzschluss verursachen.",
+        "details": []
+      },
+      {
+        "id": 64,
+        "term": "Voltmeter",
+        "explanation": "Messgerät für die Spannung zwischen zwei Punkten. Es wird parallel zum betrachteten Bauteil angeschlossen und hat einen sehr großen Innenwiderstand.",
+        "details": []
+      }
+    ]
+  },
+  {
+    "id": 1,
+    "title": "Ladungen und elektrische Kräfte",
+    "entries": [
+      {
+        "id": 1,
+        "term": "Elektrische Ladung",
+        "explanation": "Eigenschaft von Teilchen und Körpern. Es gibt positive und negative Ladungen. Ein Körper ist elektrisch neutral, wenn sich seine positiven und negativen Ladungen ausgleichen.",
+        "details": [
+          {
+            "tex": "Q=n\\cdot  e"
+          },
+          {
+            "text": "Formelzeichen Q oder q; Einheit Coulomb (C). n ist eine ganze Zahl."
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "term": "Elementarladung",
+        "explanation": "Kleinster frei auftretender Ladungsbetrag. Ein Proton trägt die Ladung +e, ein Elektron die Ladung −e.",
+        "details": [
+          {
+            "tex": "e=1{,}602\\cdot10^{-19}\\,\\mathrm C"
+          },
+          {
+            "text": "Gerundeter Wert."
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "term": "Punktladung",
+        "explanation": "Modell eines geladenen Körpers, dessen räumliche Ausdehnung gegenüber den betrachteten Abständen vernachlässigt wird.",
+        "details": [
+          {
+            "text": "Der Abstand r wird zur Punktladung gemessen."
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "term": "Elektrische Kraft",
+        "explanation": "Kraft, die ein elektrisches Feld auf eine Ladung ausübt. Zwei ruhende geladene Körper üben gleich große, entgegengesetzt gerichtete Kräfte aufeinander aus.",
+        "details": [
+          {
+            "tex": "{\\vec{F}}_{12}=-{\\vec{F}}_{21}"
+          },
+          {
+            "text": "Elektrostatische Kraft; Einheit Newton (N)."
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "term": "Anziehung",
+        "explanation": "Ungleichnamige Ladungen ziehen sich an. Die Kräfte zeigen auf den jeweils anderen Körper zu.",
+        "details": [
+          {
+            "tex": "{Q}_{1}{Q}_{2}<0"
+          },
+          {
+            "text": "Positive und negative Ladung."
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "term": "Abstoßung",
+        "explanation": "Gleichnamige Ladungen stoßen sich ab. Die Kräfte zeigen vom jeweils anderen Körper weg.",
+        "details": [
+          {
+            "tex": "{Q}_{1}{Q}_{2}>0"
+          },
+          {
+            "text": "Zwei positive oder zwei negative Ladungen."
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "term": "Coulombsches Gesetz",
+        "explanation": "Beschreibt den Kraftbetrag zwischen zwei Punktladungen im Vakuum. Er wächst mit den Ladungsbeträgen und nimmt mit dem Quadrat des Abstands ab.",
+        "details": [
+          {
+            "tex": "F=\\frac{1}{4\\pi {\\varepsilon }_{0}}\\frac{|{Q}_{1}{Q}_{2}|}{{r}^{2}}"
+          },
+          {
+            "text": "r: Abstand der Ladungen. In Luft näherungsweise gültig. Doppelter Abstand: ein Viertel der Kraft."
+          }
+        ]
+      }
+    ],
+    "note": "Beträge von Kräften sind positiv. Die Richtung folgt aus den Vorzeichen der Ladungen."
+  },
+  {
+    "id": 2,
+    "title": "Struktur elektrischer Felder",
+    "entries": [
+      {
+        "id": 8,
+        "term": "Elektrisches Feld",
+        "explanation": "Jedem Ort wird eine elektrische Feldstärke zugeordnet. Das Feld beschreibt, welche elektrische Kraft dort auf eine Ladung wirkt.",
+        "details": [
+          {
+            "tex": "\\vec{E}=\\vec{E}(\\vec{r})"
+          },
+          {
+            "text": "Vektorfeld: Betrag und Richtung hängen vom Ort ab."
+          }
+        ]
+      },
+      {
+        "id": 9,
+        "term": "Feldlinie",
+        "explanation": "Gedachte Linie, deren Tangente die Feldrichtung angibt. Ihre Pfeilrichtung entspricht der Kraft auf eine positive Probeladung. Feldlinien schneiden sich nicht.",
+        "details": [
+          {
+            "text": "Eine höhere Feldliniendichte veranschaulicht ein stärkeres Feld; Feldlinien sind keine Teilchenbahnen."
+          }
+        ]
+      },
+      {
+        "id": 10,
+        "term": "Homogenes Feld",
+        "explanation": "Feld mit überall gleicher Feldstärke und gleicher Richtung. Seine Feldlinien verlaufen parallel und haben gleiche Abstände.",
+        "details": [
+          {
+            "tex": "\\vec{E}=\\text{konstant}"
+          },
+          {
+            "text": "Beispiel: Inneres eines idealen Plattenkondensators, fern von den Rändern."
+          }
+        ]
+      },
+      {
+        "id": 11,
+        "term": "Radiales Feld einer Punktladung",
+        "explanation": "Kugelsymmetrisches Feld. Feldlinien zeigen bei einer positiven Ladung radial nach außen, bei einer negativen radial nach innen.",
+        "details": [
+          {
+            "tex": "E(r)=\\frac{|Q|}{4\\pi {\\varepsilon }_{0}{r}^{2}}"
+          },
+          {
+            "text": "Inhomogenes Feld; Formel für den Betrag im Vakuum."
+          }
+        ]
+      },
+      {
+        "id": 12,
+        "term": "Elektrischer Dipol",
+        "explanation": "Anordnung zweier gleich großer, entgegengesetzter Ladungen mit einem Abstand voneinander. Die Feldlinien verlaufen von der positiven zur negativen Ladung.",
+        "details": [
+          {
+            "tex": "{Q}_{+}=+Q,   {Q}_{-}=-Q"
+          },
+          {
+            "text": "Das Dipolfeld ist inhomogen und entsteht durch Überlagerung beider Einzelfelder."
+          }
+        ]
+      },
+      {
+        "id": 13,
+        "term": "Quelle",
+        "explanation": "Positive Ladung, von der elektrische Feldlinien ausgehen.",
+        "details": [
+          {
+            "text": "Feldlinien können auch aus dem Unendlichen kommen."
+          }
+        ]
+      },
+      {
+        "id": 14,
+        "term": "Senke",
+        "explanation": "Negative Ladung, an der elektrische Feldlinien enden.",
+        "details": [
+          {
+            "text": "Feldlinien können auch ins Unendliche laufen."
+          }
+        ]
+      },
+      {
+        "id": 15,
+        "term": "Superposition",
+        "explanation": "Überlagerungsprinzip: Die gesamte Feldstärke an einem Ort ist die vektorielle Summe der dortigen einzelnen Feldstärken.",
+        "details": [
+          {
+            "tex": "{\\vec{E}}_{\\mathrm{ges}}={\\vec{E}}_{1}+{\\vec{E}}_{2}+\\cdots "
+          },
+          {
+            "text": "Richtungen beachten; Feldbeträge allein dürfen im Allgemeinen nicht addiert werden."
+          }
+        ]
+      }
+    ],
+    "note": "Skizzen eignen sich besonders für Feldlinien, homogenes Feld, Radialfeld und Dipolfeld."
+  },
+  {
+    "id": 3,
+    "title": "Feldstärke und Materie im Feld",
+    "entries": [
+      {
+        "id": 16,
+        "term": "Probeladung",
+        "explanation": "Kleine Ladung, mit der ein Feld untersucht wird. Sie soll die Ladungsverteilung und damit das zu messende Feld möglichst wenig verändern.",
+        "details": [
+          {
+            "tex": "q>0  \\text{oder}   q<0"
+          },
+          {
+            "text": "Für die Definition der Feldrichtung denkt man sich eine positive Probeladung."
+          }
+        ]
+      },
+      {
+        "id": 17,
+        "term": "Elektrische Feldstärke",
+        "explanation": "Elektrische Kraft pro Ladung. Sie ist eine Eigenschaft des Feldes und hängt bei unverändertem Feld nicht von der Probeladung ab.",
+        "details": [
+          {
+            "tex": "\\vec{E}=\\frac{{\\vec{F}}_{\\mathrm{el}}}{q}"
+          },
+          {
+            "tex": "{\\vec{F}}_{\\mathrm{el}}=q\\vec{E}"
+          },
+          {
+            "tex": "[E]=\\frac{\\mathrm N}{\\mathrm C}=\\frac{\\mathrm V}{\\mathrm m}"
+          },
+          {
+            "text": "Für q < 0 wirken Kraft und Feld in entgegengesetzte Richtungen."
+          }
+        ]
+      },
+      {
+        "id": 18,
+        "term": "Kraftmessung im elektrischen Feld",
+        "explanation": "Eine kleine geladene Kugel wird an einem isolierenden Faden zwischen Kondensatorplatten aufgehängt. Man misst ihre Auslenkung bei verschiedenen bekannten Ladungen am gleichen Ort.",
+        "details": [
+          {
+            "tex": "{F}_{\\mathrm{el}}=mg\\tan \\alpha "
+          },
+          {
+            "tex": "{F}_{\\mathrm{el}}\\propto  q  (q>0)"
+          },
+          {
+            "text": "Waagerechtes Feld, Gleichgewicht; α zur Vertikalen. Die Steigung im F-q-Diagramm ist E."
+          }
+        ]
+      },
+      {
+        "id": 19,
+        "term": "Elektrischer Leiter",
+        "explanation": "Stoff mit frei beweglichen Ladungsträgern. Im elektrostatischen Gleichgewicht ist das Innere eines Leiters feldfrei; überschüssige Ladung sitzt auf seiner Oberfläche.",
+        "details": [
+          {
+            "tex": "{\\vec{E}}_{\\mathrm{innen}}=0"
+          },
+          {
+            "text": "Der gesamte Leiter hat dann dasselbe Potential."
+          }
+        ]
+      },
+      {
+        "id": 20,
+        "term": "Isolator",
+        "explanation": "Stoff, in dem Ladungsträger weitgehend gebunden sind. Ladungen können nicht wie in einem Leiter frei durch den Körper wandern.",
+        "details": [
+          {
+            "text": "Auch Isolatoren können auf ein elektrisches Feld durch Polarisation reagieren."
+          }
+        ]
+      },
+      {
+        "id": 21,
+        "term": "Influenz",
+        "explanation": "Umverteilung frei beweglicher Ladungen in einem Leiter durch ein äußeres elektrisches Feld. Es entstehen Bereiche mit entgegengesetzten Oberflächenladungen.",
+        "details": [
+          {
+            "text": "Ohne Erdung oder Ladungsübertragung bleibt die Gesamtladung eines isolierten, zunächst neutralen Leiters null."
+          }
+        ]
+      },
+      {
+        "id": 22,
+        "term": "Polarisation",
+        "explanation": "Verschiebung gebundener positiver und negativer Ladungen gegeneinander oder Ausrichtung vorhandener molekularer Dipole in einem Isolator.",
+        "details": [
+          {
+            "text": "Es entstehen gebundene Polarisationsladungen. Ihr Feld wirkt dem angelegten Feld im Dielektrikum entgegen."
+          }
+        ]
+      }
+    ],
+    "note": "Beim Messversuch müssen andere Kräfte, insbesondere die Gewichtskraft, berücksichtigt werden."
+  },
+  {
+    "id": 4,
+    "title": "Potential und Spannung",
+    "entries": [
+      {
+        "id": 23,
+        "term": "Elektrische potentielle Energie",
+        "explanation": "Energie einer Ladung aufgrund ihrer Lage im elektrischen Feld. Ihr Wert hängt vom gewählten Nullniveau ab; Energieänderungen sind eindeutig.",
+        "details": [
+          {
+            "tex": "{E}_{\\mathrm{pot}}=q\\varphi "
+          },
+          {
+            "tex": "\\Delta  {E}_{\\mathrm{pot}}=q\\Delta \\varphi "
+          },
+          {
+            "text": "Einheit Joule (J). q bleibt bei der Ortsänderung konstant."
+          }
+        ]
+      },
+      {
+        "id": 24,
+        "term": "Elektrisches Potential",
+        "explanation": "Potentielle Energie pro Ladung an einem Ort. Das Potential ist eine skalare Größe und wird relativ zu einem gewählten Bezugspunkt angegeben.",
+        "details": [
+          {
+            "tex": "\\varphi =\\frac{{E}_{\\mathrm{pot}}}{q}"
+          },
+          {
+            "tex": "\\varphi (r)=\\frac{Q}{4\\pi {\\varepsilon }_{0}r}"
+          },
+          {
+            "text": "Einheit Volt (V). Zweite Formel: Punktladung, Nullpotential im Unendlichen."
+          }
+        ]
+      },
+      {
+        "id": 25,
+        "term": "Elektrische Spannung",
+        "explanation": "Potentialdifferenz zwischen zwei Punkten. Sie gibt an, wie viel Energie pro Ladung beim Weg zwischen diesen Punkten übertragen werden kann.",
+        "details": [
+          {
+            "tex": "{U}_{AB}={\\varphi }_{A}-{\\varphi }_{B}"
+          },
+          {
+            "tex": "1\\,\\mathrm V=1\\,\\frac{\\mathrm J}{\\mathrm C}"
+          },
+          {
+            "text": "Hier gilt durchgehend diese Vorzeichenkonvention für U_AB."
+          }
+        ]
+      },
+      {
+        "id": 26,
+        "term": "Äquipotentiallinie und Äquipotentialfläche",
+        "explanation": "Verbindung von Orten mit gleichem Potential. Elektrische Feldlinien stehen senkrecht auf Äquipotentialflächen. Entlang einer solchen Fläche verrichtet die Feldkraft keine Arbeit.",
+        "details": [
+          {
+            "tex": "\\varphi =\\text{konstant}"
+          },
+          {
+            "tex": "{U}_{AB}=0"
+          },
+          {
+            "text": "Homogenes Feld: parallele Ebenen. Dipolfeld: gekrümmte Flächen; die Mittelsenkrechtenebene hat bei ±Q das Potential null."
+          }
+        ]
+      },
+      {
+        "id": 27,
+        "term": "Elektrische Arbeit",
+        "explanation": "Arbeit der Feldkraft beim Verschieben einer Ladung von A nach B. Sie entspricht der Abnahme ihrer elektrischen potentiellen Energie.",
+        "details": [
+          {
+            "tex": "{W}_{A\\to  B}=q{U}_{AB}"
+          },
+          {
+            "tex": "{W}_{A\\to  B}=-\\Delta  {E}_{\\mathrm{pot}}"
+          },
+          {
+            "text": "Positive Arbeit der Feldkraft erhöht bei freier Bewegung die kinetische Energie."
+          }
+        ]
+      },
+      {
+        "id": 28,
+        "term": "Feldstärke und Potentialgefälle",
+        "explanation": "Das elektrische Feld zeigt in Richtung abnehmenden Potentials. Im homogenen Feld ist der Betrag der Spannung proportional zum Abstand in Feldrichtung.",
+        "details": [
+          {
+            "tex": "E=\\frac{|{U}_{AB}|}{d}"
+          },
+          {
+            "tex": "\\Delta \\varphi =-E\\Delta  s"
+          },
+          {
+            "text": "d: Abstand entlang des Feldes. Δs wird positiv in Feldrichtung gezählt."
+          }
+        ]
+      }
+    ],
+    "note": "Feldstärke E und Energie E_pot sind verschiedene Größen. Die Indizes kennzeichnen hier die Energien."
+  },
+  {
+    "id": 5,
+    "title": "Kondensator und Energiespeicherung",
+    "entries": [
+      {
+        "id": 29,
+        "term": "Kondensator",
+        "explanation": "Bauteil aus zwei gegeneinander isolierten Leitern. Bei der Ladungstrennung tragen sie die Ladungen +Q und −Q; zwischen ihnen entsteht eine Spannung.",
+        "details": [
+          {
+            "tex": "Q=CU"
+          },
+          {
+            "text": "Q bezeichnet den positiven Betrag der Ladung auf einer Platte."
+          }
+        ]
+      },
+      {
+        "id": 30,
+        "term": "Plattenkondensator",
+        "explanation": "Kondensator mit zwei parallelen leitenden Platten. Im Inneren ist das Feld näherungsweise homogen, wenn der Plattenabstand klein gegenüber den Plattenabmessungen ist.",
+        "details": [
+          {
+            "tex": "E=\\frac{U}{d}"
+          },
+          {
+            "tex": "C={\\varepsilon }_{0}{\\varepsilon }_{r}\\frac{A}{d}"
+          },
+          {
+            "text": "A: Fläche einer Platte; d: Abstand; U: Spannungsbetrag. Randfelder werden vernachlässigt."
+          }
+        ]
+      },
+      {
+        "id": 31,
+        "term": "Kapazität",
+        "explanation": "Maß dafür, wie viel Ladung ein Kondensator pro angelegter Spannung speichert. Sie hängt von Geometrie und Material zwischen den Leitern ab.",
+        "details": [
+          {
+            "tex": "C=\\frac{Q}{U}"
+          },
+          {
+            "tex": "1\\,\\mathrm F=1\\,\\frac{\\mathrm C}{\\mathrm V}"
+          },
+          {
+            "text": "Einheit Farad (F). Größere Fläche erhöht C; größerer Plattenabstand verkleinert C."
+          }
+        ]
+      },
+      {
+        "id": 32,
+        "term": "Permittivität des Vakuums",
+        "explanation": "Elektrische Feldkonstante. Sie tritt unter anderem im Coulombschen Gesetz und in der Kapazität eines Plattenkondensators auf.",
+        "details": [
+          {
+            "tex": "\\varepsilon_0\\approx8{,}854\\cdot10^{-12}\\,\\frac{\\mathrm F}{\\mathrm m}"
+          },
+          {
+            "text": "Formelzeichen ε₀. Gerundeter Wert."
+          }
+        ]
+      },
+      {
+        "id": 33,
+        "term": "Relative Permittivität",
+        "explanation": "Dimensionslose Materialgröße. Sie beschreibt bei vollständiger Füllung, um welchen Faktor die Kapazität gegenüber dem Vakuum vergrößert wird.",
+        "details": [
+          {
+            "tex": "{\\varepsilon }_{r}=\\frac{C}{{C}_{\\mathrm{Vakuum}}}"
+          },
+          {
+            "text": "Im Vakuum εᵣ = 1, in Luft näherungsweise 1. Für übliche Dielektrika in der Elektrostatik größer als 1."
+          }
+        ]
+      },
+      {
+        "id": 34,
+        "term": "Dielektrikum",
+        "explanation": "Isolierender Stoff zwischen den Kondensatorplatten. Durch Polarisation erhöht er die Kapazität. Die Wirkung auf Spannung und Feld hängt von der Verbindung zur Spannungsquelle ab.",
+        "details": [
+          {
+            "tex": "C\\uparrow   \\text{bei Einbringen}"
+          },
+          {
+            "text": "Bei angeschlossener Quelle: U konstant, Q steigt. Beim isolierten Kondensator: Q konstant, U und E sinken."
+          }
+        ]
+      },
+      {
+        "id": 35,
+        "term": "Energie des Kondensators",
+        "explanation": "Beim Aufladen wird Arbeit geleistet und Energie im elektrischen Feld gespeichert. Diese Energie kann beim Entladen abgegeben werden.",
+        "details": [
+          {
+            "tex": "{E}_{\\mathrm{Kond}}=\\frac{1}{2}C{U}^{2}"
+          },
+          {
+            "tex": "{E}_{\\mathrm{Kond}}=\\frac{{Q}^{2}}{2C}=\\frac{1}{2}QU"
+          },
+          {
+            "text": "Einheit Joule (J). Gültig für eine konstante Kapazität; ein Kondensator ist ein Energiespeicher."
+          }
+        ]
+      }
+    ],
+    "note": "Ideales Modell: parallele Platten und ein homogenes, lineares Dielektrikum, das den Zwischenraum vollständig füllt."
+  },
+  {
+    "id": 6,
+    "title": "Aufladen und Entladen",
+    "entries": [
+      {
+        "id": 36,
+        "term": "Elektrische Stromstärke",
+        "explanation": "Ladungsmenge, die pro Zeit einen Leiterquerschnitt passiert. Beim Kondensator entspricht sie der zeitlichen Änderung der Ladung auf der betrachteten Platte.",
+        "details": [
+          {
+            "tex": "I=\\frac{dQ}{dt}"
+          },
+          {
+            "tex": "I=C\\frac{d{U}_{C}}{dt}"
+          },
+          {
+            "text": "Einheit Ampere (A). Die zweite Formel gilt bei konstanter Kapazität und zur Ladung passender Stromrichtung."
+          }
+        ]
+      },
+      {
+        "id": 37,
+        "term": "Ohmscher Widerstand",
+        "explanation": "Bauteil beziehungsweise Größe, die den Strom begrenzt. Beim Laden und Entladen beeinflusst der Widerstand, wie schnell sich die Kondensatorspannung ändert.",
+        "details": [
+          {
+            "tex": "R=\\frac{{U}_{R}}{I}"
+          },
+          {
+            "tex": "[R]=\\Omega "
+          },
+          {
+            "text": "Größeres R: kleinerer Anfangsstrom und langsamerer Verlauf."
+          }
+        ]
+      },
+      {
+        "id": 38,
+        "term": "RC Schaltung",
+        "explanation": "Schaltung mit Widerstand R und Kondensator C. Beim Laden teilt sich die konstante Quellenspannung auf Widerstand und Kondensator auf.",
+        "details": [
+          {
+            "tex": "{U}_{0}=RI+{U}_{C}"
+          },
+          {
+            "text": "Die folgenden Formeln gelten für ideale Bauteile mit konstanten R und C."
+          }
+        ]
+      },
+      {
+        "id": 39,
+        "term": "Aufladevorgang",
+        "explanation": "Ein zunächst ungeladener Kondensator wird über R an die Spannung U₀ gelegt. U_C steigt von 0 auf U₀; der Ladestrom fällt von U₀/R auf 0.",
+        "details": [
+          {
+            "tex": "{U}_{C}(t)={U}_{0}(1-{\\mathrm e}^{-\\frac{t}{\\tau}})"
+          },
+          {
+            "tex": "I(t)=\\frac{{U}_{0}}{R}{\\mathrm e}^{-\\frac{t}{\\tau}}"
+          },
+          {
+            "text": "Die Grenzwerte werden nur asymptotisch erreicht."
+          }
+        ]
+      },
+      {
+        "id": 40,
+        "term": "Entladevorgang",
+        "explanation": "Ein auf U₀ geladener Kondensator wird bei abgetrennter Quelle über R entladen. Spannung und Strombetrag fallen exponentiell gegen null.",
+        "details": [
+          {
+            "tex": "{U}_{C}(t)={U}_{0}{\\mathrm e}^{-\\frac{t}{\\tau}}"
+          },
+          {
+            "tex": "I(t)=-\\frac{{U}_{0}}{R}{\\mathrm e}^{-\\frac{t}{\\tau}}"
+          },
+          {
+            "text": "Das Minuszeichen gilt, wenn die positive Stromrichtung wie beim Aufladen gewählt wird."
+          }
+        ]
+      },
+      {
+        "id": 41,
+        "term": "Zeitkonstante",
+        "explanation": "Charakteristische Zeit der RC Schaltung. Nach einer Zeitkonstante sind beim Laden etwa 63 % der Endspannung erreicht; beim Entladen bleiben etwa 37 % übrig.",
+        "details": [
+          {
+            "tex": "\\tau =RC"
+          },
+          {
+            "tex": "[\\tau]=\\mathrm s"
+          },
+          {
+            "text": "Größeres R oder C verlangsamt den Vorgang. Nach 5τ ist er praktisch abgeschlossen (> 99 % geladen)."
+          }
+        ]
+      },
+      {
+        "id": 42,
+        "term": "Exponentialfunktion",
+        "explanation": "Funktion, bei der in gleichen Zeitabschnitten derselbe Anteil einer Größe abnimmt. Bei der RC Schaltung beschreibt sie den Strom und den verbleibenden Spannungsunterschied zum Endwert.",
+        "details": [
+          {
+            "tex": "f(t)=f(0){\\mathrm e}^{-\\frac{t}{\\tau}}"
+          },
+          {
+            "text": "e ≈ 2,718 ist hier die Eulersche Zahl, nicht die Elementarladung."
+          }
+        ]
+      },
+      {
+        "id": 43,
+        "term": "U t Diagramm und I t Diagramm",
+        "explanation": "Zeitdiagramme von Spannung und Strom. Die Steigung des U_C-t-Graphen ist proportional zum Strom; die vorzeichenbehaftete Fläche unter dem I-t-Graphen ist die Ladungsänderung.",
+        "details": [
+          {
+            "tex": "I=C\\frac{d{U}_{C}}{dt}"
+          },
+          {
+            "tex": "\\Delta  Q={\\int }_{{t}_{1}}^{{t}_{2}}I(t) dt"
+          },
+          {
+            "text": "Laden: U_C steigt immer flacher. Entladen: U_C fällt immer flacher; I ist bei obiger Zählrichtung negativ."
+          }
+        ]
+      }
+    ],
+    "note": "U₀ bezeichnet beim Laden die konstante Quellenspannung, beim Entladen die Anfangsspannung des Kondensators."
+  },
+  {
+    "id": 7,
+    "title": "Elektrisches Feld und Gravitationsfeld",
+    "entries": [
+      {
+        "id": 44,
+        "term": "Gravitationsfeld",
+        "explanation": "Feld, in dem eine Masse eine Gravitationskraft erfährt. Seine Feldlinien zeigen die Richtung der Kraft auf eine positive Probemasse.",
+        "details": [
+          {
+            "tex": "{\\vec{F}}_{G}=m\\vec{g}"
+          },
+          {
+            "text": "Massen ziehen sich im hier betrachteten klassischen Modell immer an."
+          }
+        ]
+      },
+      {
+        "id": 45,
+        "term": "Gravitationsfeldstärke",
+        "explanation": "Gravitationskraft pro Probemasse. Sie entspricht der Fallbeschleunigung am betrachteten Ort.",
+        "details": [
+          {
+            "tex": "\\vec{g}=\\frac{{\\vec{F}}_{G}}{m}"
+          },
+          {
+            "tex": "[g]=\\frac{\\mathrm N}{\\mathrm{kg}}=\\frac{\\mathrm m}{\\mathrm{s^2}}"
+          },
+          {
+            "text": "Nahe der Erdoberfläche beträgt g ungefähr 9,81 m/s²."
+          }
+        ]
+      },
+      {
+        "id": 46,
+        "term": "Newtonsches Gravitationsgesetz",
+        "explanation": "Beschreibt den Betrag der Anziehungskraft zwischen Punktmassen. Für kugelsymmetrische Körper gilt es außerhalb ebenfalls mit dem Abstand der Mittelpunkte.",
+        "details": [
+          {
+            "tex": "{F}_{G}=G\\frac{{m}_{1}{m}_{2}}{{r}^{2}}"
+          },
+          {
+            "text": "G: Gravitationskonstante. Wie die Coulombkraft nimmt die Kraft mit 1/r² ab."
+          }
+        ]
+      },
+      {
+        "id": 47,
+        "term": "Ladung und Masse als Feldquellen",
+        "explanation": "Ladungen erzeugen elektrische Felder, Massen Gravitationsfelder. Ladungen können positiv oder negativ sein; im Schulmodell sind Massen positiv.",
+        "details": [
+          {
+            "tex": "{\\vec{F}}_{\\mathrm{el}}=q\\vec{E}"
+          },
+          {
+            "tex": "{\\vec{F}}_{G}=m\\vec{g}"
+          },
+          {
+            "text": "Elektrisch: Anziehung und Abstoßung. Gravitation: Anziehung. Beide Felder überlagern sich vektoriell."
+          }
+        ]
+      },
+      {
+        "id": 48,
+        "term": "Homogene Felder im Vergleich",
+        "explanation": "In beiden homogenen Feldern wirkt auf einen gegebenen Probekörper eine konstante Kraft. Das Plattenfeld und das erdnahe Schwerefeld sind begrenzte Näherungen.",
+        "details": [
+          {
+            "tex": "\\vec{E}=\\text{konstant}"
+          },
+          {
+            "tex": "\\vec{g}=\\text{konstant}"
+          },
+          {
+            "text": "Elektrische Beschleunigung hängt von q/m ab; die Fallbeschleunigung ist unabhängig von der Probemasse."
+          }
+        ]
+      },
+      {
+        "id": 49,
+        "term": "Radiale Felder im Vergleich",
+        "explanation": "Punktladungen und Punktmassen erzeugen kugelsymmetrische Felder. Die Feldstärken nehmen mit dem Quadrat des Abstands ab.",
+        "details": [
+          {
+            "tex": "E=\\frac{|Q|}{4\\pi {\\varepsilon }_{0}{r}^{2}}"
+          },
+          {
+            "tex": "g=G\\frac{M}{{r}^{2}}"
+          },
+          {
+            "text": "Elektrisches Feld: nach außen oder innen. Gravitationsfeld: stets zur erzeugenden Masse M hin."
+          }
+        ]
+      }
+    ],
+    "note": "Die Vergleiche beziehen sich auf Elektrostatik und Newtonsche Gravitation."
+  },
+  {
+    "id": 8,
+    "title": "Bewegung geladener Teilchen",
+    "entries": [
+      {
+        "id": 50,
+        "term": "Newtonsches Grundgesetz",
+        "explanation": "Die resultierende Kraft verursacht eine Beschleunigung. Wirkt nur die elektrische Kraft, ist die Beschleunigung im homogenen Feld konstant.",
+        "details": [
+          {
+            "tex": "m\\vec{a}={\\vec{F}}_{\\mathrm{res}}"
+          },
+          {
+            "tex": "\\vec{a}=\\frac{q}{m}\\vec{E}"
+          },
+          {
+            "text": "Die elektrische Beschleunigung hängt vom Verhältnis q/m ab."
+          }
+        ]
+      },
+      {
+        "id": 51,
+        "term": "Bewegung parallel zum Feld",
+        "explanation": "Bei Anfangsgeschwindigkeit entlang der Feldachse bleibt die Bahn geradlinig. Je nach Ladungsvorzeichen und Bewegungsrichtung wird das Teilchen schneller oder langsamer und kann umkehren.",
+        "details": [
+          {
+            "tex": "a=\\frac{qE}{m}"
+          },
+          {
+            "tex": "v(t)={v}_{0}+at"
+          },
+          {
+            "tex": "s(t)={s}_{0}+{v}_{0}t+\\frac{1}{2}a{t}^{2}"
+          },
+          {
+            "text": "Die s-Achse zeigt in Feldrichtung; q und v₀ werden mit Vorzeichen eingesetzt."
+          }
+        ]
+      },
+      {
+        "id": 52,
+        "term": "Bewegung senkrecht zum Feld",
+        "explanation": "Bei Eintritt quer zum Feld bleibt die Geschwindigkeitskomponente in Eintrittsrichtung konstant. In Feldrichtung wird das Teilchen gleichmäßig beschleunigt.",
+        "details": [
+          {
+            "tex": "x={v}_{0}t"
+          },
+          {
+            "tex": "y=\\frac{qE}{2m}{t}^{2}"
+          },
+          {
+            "tex": "{v}_{x}={v}_{0},   {v}_{y}=\\frac{qE}{m} t"
+          },
+          {
+            "text": "Start im Ursprung; x quer zum Feld, y in Feldrichtung; anfänglich v_y = 0."
+          }
+        ]
+      },
+      {
+        "id": 53,
+        "term": "Parabelbahn und Ablenkung",
+        "explanation": "Aus gleichförmiger Bewegung quer zum Feld und gleichmäßig beschleunigter Bewegung in Feldrichtung entsteht innerhalb des Feldes eine Parabel.",
+        "details": [
+          {
+            "tex": "y(x)=\\frac{qE}{2m{v}_{0}^{2}}{x}^{2}"
+          },
+          {
+            "tex": "y(L)=\\frac{qE{L}^{2}}{2m{v}_{0}^{2}}"
+          },
+          {
+            "text": "L: Länge des Feldbereichs in x-Richtung. Nach dem Feld folgt ohne weitere Kräfte eine gerade Bahn entlang der Austrittstangente."
+          }
+        ]
+      },
+      {
+        "id": 54,
+        "term": "Kinetische Energie",
+        "explanation": "Energie eines Teilchens aufgrund seiner Bewegung. Der Geschwindigkeitsbetrag enthält bei zweidimensionaler Bewegung beide Komponenten.",
+        "details": [
+          {
+            "tex": "{E}_{\\mathrm{kin}}=\\frac{1}{2}m{v}^{2}"
+          },
+          {
+            "tex": "{v}^{2}={v}_{x}^{2}+{v}_{y}^{2}"
+          },
+          {
+            "text": "Einheit Joule (J). Formel gilt für Geschwindigkeiten deutlich unterhalb der Lichtgeschwindigkeit."
+          }
+        ]
+      },
+      {
+        "id": 55,
+        "term": "Energieerhaltung",
+        "explanation": "Wenn nur die elektrostatische Kraft Arbeit verrichtet, bleibt die Summe aus kinetischer und elektrischer potentieller Energie konstant.",
+        "details": [
+          {
+            "tex": "{E}_{\\mathrm{kin}}+{E}_{\\mathrm{pot}}=\\text{konstant}"
+          },
+          {
+            "tex": "\\Delta  {E}_{\\mathrm{kin}}=q{U}_{AB}"
+          },
+          {
+            "text": "Bei positiver Arbeit des Feldes sinkt die potentielle Energie und die kinetische Energie steigt."
+          }
+        ]
+      },
+      {
+        "id": 56,
+        "term": "Beschleunigungsspannung",
+        "explanation": "Spannungsbetrag U_B, den ein Teilchen in beschleunigender Richtung durchläuft. Aus der Ruhe gewinnt es die kinetische Energie |q|U_B.",
+        "details": [
+          {
+            "tex": "\\frac{1}{2}m{v}^{2}=|q|{U}_{B}"
+          },
+          {
+            "tex": "v=\\sqrt{\\frac{2|q|{U}_{B}}{m}}"
+          },
+          {
+            "text": "Voraussetzungen: Start aus der Ruhe, keine Energieverluste und nichtrelativistische Bewegung."
+          }
+        ]
+      },
+      {
+        "id": 57,
+        "term": "Elektronenvolt",
+        "explanation": "Energieeinheit für Teilchen. Ein Elektron gewinnt bei einer beschleunigenden Spannung von 1 V die Energie 1 eV.",
+        "details": [
+          {
+            "tex": "1\\,\\mathrm{eV}=1{,}602\\cdot10^{-19}\\,\\mathrm J"
+          },
+          {
+            "text": "Elektronenvolt ist eine Energieeinheit, keine Einheit der Spannung."
+          }
+        ]
+      }
+    ],
+    "note": "Modellannahmen: homogenes Feld, keine Stöße; Gewichtskraft und andere Kräfte werden vernachlässigt."
+  }
+]

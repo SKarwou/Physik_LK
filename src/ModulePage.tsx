@@ -2,10 +2,12 @@ import Link from "./Link";
 import { chapters } from "./chapters";
 import PhysicsLab from "./components/PhysicsLab";
 import SolutionVault from "./components/SolutionVault";
+import ElectricFieldChapter from "./electric/ElectricFieldChapter";
 
 export default function ModulePage({ slug }: { slug: string }) {
   const chapter = chapters.find((item) => item.slug === slug);
   if (!chapter) return <main className="empty-state"><h1>Kapitel nicht gefunden</h1><Link href="/">Zur Übersicht</Link></main>;
+  if (slug === "elektrisches-feld") return <ElectricFieldChapter chapter={chapter} />;
 
   return (
     <main>

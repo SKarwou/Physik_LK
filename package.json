@@ -3,11 +3,22 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "scripts": { "dev": "vite", "build": "tsc -b && vite build", "preview": "vite preview" },
-  "dependencies": { "@vitejs/plugin-react": "6.0.2", "vite": "8.0.13", "typescript": "5.9.3", "react": "19.2.6", "react-dom": "19.2.6" },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "6.0.2",
+    "katex": "0.18.10",
+    "react": "19.2.6",
+    "react-dom": "19.2.6",
+    "typescript": "5.9.3",
+    "vite": "8.0.13"
+  },
   "devDependencies": {
-  "@types/node": "^24.0.0",
-  "@types/react": "19.2.14",
-  "@types/react-dom": "19.2.3"
-}
+    "@types/node": "^24.0.0",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3"
   }
+}
