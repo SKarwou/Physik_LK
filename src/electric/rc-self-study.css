@@ -120,5 +120,40 @@
   .rc-self-study .rc-print-chart .ef-chart{max-height:82mm}
   .rc-self-study .rc-writing-space{display:block;height:18mm;border-bottom:1px solid #bbb}
   .rc-self-study .rc-notebook .rc-paper-note{font-size:9pt}
-  .rc-self-study .rc-time-plan{display:block!important}
+.rc-self-study .rc-time-plan{display:block!important}
+}
+
+.rc-reading-first{background:#faf4d9;border:1px solid #dbc77d;border-left:5px solid #ab8732;border-radius:12px;padding:26px 30px;margin:24px 0;scroll-margin-top:24px}
+.rc-reading-first>h4{margin-top:12px;font-size:24px}
+.rc-reading-first .ef-eyebrow{color:#76601e}
+.rc-self-study h5{font-size:18px;line-height:1.5;color:#274b35;margin:26px 0 12px}
+.rc-foundation{border:1px solid #d0dcca;border-radius:10px;background:#f4f7ed;padding:22px 26px;margin:22px 0}
+.rc-foundation>h5:first-child,.rc-foundation>h4:first-child{margin-top:0}
+.rc-work-now{border-left:4px solid #537b3f;border-radius:0 10px 10px 0;background:#eaf2df;padding:18px 24px;margin:22px 0}
+.rc-work-now>b{display:block;font-size:16px;color:#254d31}
+.rc-work-now p:last-child{margin-bottom:0}
+.rc-ready{border:1px solid #b6c9a8;border-radius:10px;padding:20px 25px;margin-top:25px;background:#f6f9ef}
+.rc-ready>b{font-size:18px;color:#244d35}
+.rc-ready>a{display:inline-block;font-size:15px;color:#315b30;text-underline-offset:4px}
+.rc-ready p:last-of-type{font-size:14px}
+.rc-hint>div{padding-top:12px}
+.rc-guided-protocol{border-top:1px solid #cdd8c1;padding-top:10px;margin-top:28px}
+.rc-equation-choice table{min-width:750px}
+.rc-prerequisites table{min-width:650px}
+.rc-self-study .rc-derivation>ol{max-width:100%}
+.rc-self-study .rc-derivation li>p{margin-bottom:10px}
+@media(max-width:560px){
+  .rc-reading-first{padding:22px 18px}
+  .rc-reading-first>h4{font-size:21px}
+  .rc-foundation,.rc-work-now,.rc-ready{padding:18px}
+  .rc-self-study h5{font-size:17px}
+}
+@media print{
+  .rc-reading-first{display:block!important;background:none;padding:14px;border-color:#777}
+  .rc-reading-first>h4{font-size:15pt}
+  .rc-self-study h5{font-size:12pt;break-after:avoid}
+  .rc-foundation,.rc-work-now,.rc-ready{display:block!important;background:none;border-color:#888;padding:12px}
+  .rc-ready>a{display:none!important}
+  .rc-equation-choice table,.rc-prerequisites table{min-width:0}
+  .rc-work-now,.rc-ready{break-inside:avoid}
 }

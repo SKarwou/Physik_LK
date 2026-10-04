@@ -2,15 +2,17 @@
 
 Kapitel 01 führt von den Grundlagen der Mittelstufe zum elektrischen Feld. Es enthält die Teile 00–09 mit interaktiven Experimenten, Messprotokollen, Diagrammen auf Klick, 64 Lexikoneinträgen und Übungen. Die Startseite übernimmt die Überschriften und die Hierarchie aus Abschnitt 3.6 des Bildungsplans (Leistungsfach 11/12). Nur „3.6.2.1 Elektrisches Feld“ ist bereits ausgearbeitet; die übrigen Themen sind „In Vorbereitung“.
 
-## Neu in V8: Selbstlernstrecke zum Aufladen und Entladen
+## Neu in V9: kleinschrittiger Selbstlernweg in Teil 07
 
-Teil 07 enthält jetzt sechs Lernblöcke mit insgesamt 360 Minuten Lernzeit, 24 nummerierte Aufgaben, vier zusätzliche Zahlenchecks, konkrete Heftaufträge und einzeln aufklappbare Erwartungshorizonte. Aufgaben 1–19 gehören zum Lernweg; Aufgaben 20–24 sind zusätzliche Vertiefungen. Die Kapazität wird vorausgesetzt.
+Die sechs Lernblöcke beginnen mit einem verbindlichen Leseauftrag zur Schulbuch-Doppelseite 124–125. Die 15 Minuten Lesezeit sind Teil der insgesamt 360 Minuten. Ein Symbolvergleich verbindet die Buchschaltung und die Buchbezeichnung Q_C mit der Simulation. Die Kapazität bleibt bekannt; Ladung, Spannung, Stromstärke, Einheiten und drei Grundbeziehungen werden aufgefrischt.
 
-Die Lernstrecke führt von eigenen Messwerten über die Spannungsbilanz, das Ohm’sche Gesetz und die Stromdefinition zu den Differenzialgleichungen und Exponentialfunktionen. Kettenregel, Anfangsbedingungen, Stromvorzeichen, Zeitkonstante, Halbwertszeit, Logarithmen und Ladung als Strom-Zeit-Fläche werden erklärt. Ein Größenverzeichnis definiert 24 Symbole und Begriffe jeweils einzeln.
+Die Messanleitung erklärt jeden Bedienungsschritt, die Messwertaufnahme und das Sichern der Reihen. Die Herleitungen erklären jede algebraische Operation und die Wahl jeder Grundbeziehung. Exponentialfaktor, Kettenregel, Anfangsbedingung, die fehlende Ladung beim Aufladen, Zeitkonstante, Halbwertszeit, Logarithmus und Stromfläche haben eigene Hilfen und kurze Zwischenaufträge. Fünf Kontrollpunkte und sechs Heftaufträge begleiten die Arbeit.
 
-Das neue RC-Experiment zeigt einen Umschalter, Messgeräte und die Plattenladung. Messwerte werden einzeln aufgenommen; gemerkte Reihen bleiben beim Verändern der Bauteile für Vergleiche verfügbar und lassen sich als CSV sichern. Beim direkten Umschalten wird die tatsächlich erreichte Kondensatorspannung übernommen. Die Stromrichtung bleibt für beide Vorgänge fest: Laden positiv, Entladen negativ. Diagramme zeigen nur aufgenommene Messkreuze und bleiben bis „Diagramm zeichnen“ leer. Die Flächenwerkstatt vergleicht Rechteck- und Trapeznäherungen.
+Eine Tabelle beantwortet ausdrücklich „Welche Gleichung benutze ich wann?“. Ein vollständig begründetes Rechenbeispiel und ein Gegenbeispiel zum Aufladen bereiten auf die 24 bestehenden Aufgaben vor. Aufgaben 1–19 gehören zum Lernweg; 20–24 sowie die Buchaufgaben auf Seite 125 sind Vertiefungen. Lösungen bleiben einzeln aufklappbar. Die Zeitangaben sind Richtwerte.
 
-Der Button „Selbstlernabschnitt drucken“ druckt diesen Lernweg mit Aufgaben und leeren Diagrammrastern. Experimentbedienung und aufklappbare Lösungen werden dabei ausgeblendet. Die Buchfotos sind nicht im öffentlichen Websitepaket enthalten; Texte, Aufgaben und SVG-Skizzen sind neu ausgearbeitet.
+Im Experiment bleiben Messpunkte bis „Diagramm zeichnen“ verborgen. Eigene Messreihen lassen sich merken und als CSV sichern. Beim direkten Umschalten bleibt die Kondensatorspannung stetig. Der feste Strompfeil der Website (Entladen negativ) und die im Buch verwendete positive Entladestromrichtung werden ausdrücklich gegenübergestellt.
+
+Die Druckfassung enthält Leseauftrag, Arbeitsaufträge und Heftanweisungen. Hilfen, Lösungen und Bedienung werden dabei ausgeblendet. Die Buchfotos sind nicht im öffentlichen Uploadpaket enthalten; Texte und Skizzen sind neu ausgearbeitet.
 
 ## Dieses Update hochladen
 
