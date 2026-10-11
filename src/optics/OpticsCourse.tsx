@@ -1,3 +1,4 @@
+import OpticsDerivations from './Derivations';
 import CoursePage from '../learning/CoursePage';
 import {MathFormula,MathText} from '../electric/Math';
 import {opticsData,type OpticsLessonData} from './lessonData';
@@ -10,7 +11,7 @@ function Lesson({lesson:l}:{lesson:OpticsLessonData}){
  <section className="optics-experiment"><span className="kicker">BEOBACHTEN · VERMUTEN · IM HEFT AUSWERTEN</span><h2>{l.experiment}</h2><p><b>Material und Aufbau: </b>{l.materials}</p><OpticsSketch kind={l.id}/><h3>Durchführung</h3><ol>{l.steps.map((s,i)=><li key={i}><MathText>{s}</MathText></li>)}</ol><aside className="heft-step"><b>✎ Zuerst ins Heft</b><p><MathText>{l.task}</MathText></p><p>Notiere Aufbau, feste Größen, eigene Daten und Unsicherheiten auf Papier. Falls der Versuch nicht möglich ist, verwende die ausgefüllten Ersatzdaten. Die Website erfasst keine Messwerte.</p></aside>
  <details><summary>Versuch nicht möglich? Ausgefüllte Ersatzdaten öffnen</summary><p><MathText>{l.dataNote}</MathText></p><div className="optics-table-wrap"><table><caption>Didaktischer Ersatzdatensatz · keine behauptete reale Messung</caption><thead><tr>{l.columns.map(c=><th key={c} scope="col"><MathText>{c}</MathText></th>)}</tr></thead><tbody>{l.rows.map((row,i)=><tr key={i}>{row.map((c,j)=><td key={j}><MathText>{c}</MathText></td>)}</tr>)}</tbody></table></div></details>
  <details><summary>Nach der Heftauswertung: Lösung und Interpretation</summary><p><MathText>{l.evaluation}</MathText></p></details></section>
- <section><h2>Erklärung · Schritt für Schritt</h2>{l.theory.map((p,i)=><p key={i}><MathText>{p}</MathText></p>)}<div className="optics-formulas">{l.formulas.map(f=><MathFormula key={f} display tex={f}/>)}</div><aside className="optics-memory"><b>💡 Merksatz</b><p><MathText>{l.memory}</MathText></p></aside></section>
+ <section><h2>Erklärung · Schritt für Schritt</h2>{l.theory.map((p,i)=><p key={i}><MathText>{p}</MathText></p>)}<OpticsDerivations lesson={l.id}/><div className="optics-formulas">{l.formulas.map(f=><MathFormula key={f} display tex={f}/>)}</div><aside className="optics-memory"><b>💡 Merksatz</b><p><MathText>{l.memory}</MathText></p></aside></section>
  {l.model==='slits'&&<SlitModel single={l.id==='einzelspalt'}/>} {l.model==='michelson'&&<MichelsonModel/>} {l.model==='polarisation'&&<PolarisationModel/>}
  <section><h2>Üben und anwenden · im Heft</h2>{l.exercises.map(e=><article className="optics-exercise" key={e.title}><h3>{e.title}</h3><p><MathText>{e.task}</MathText></p><details><summary>Erst nach deinem Versuch: Lösung vergleichen</summary><p><MathText>{e.solution}</MathText></p></details></article>)}</section></div>;
 }
