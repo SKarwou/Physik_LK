@@ -44,3 +44,9 @@
 .mg-course-content .mg-current-readings dt { font-size:.9rem; }
 .mg-course-content .mg-current-readings dd { margin:.3rem 0 0; font-size:1.2rem; font-weight:700; }
 .mg-course-content .mg-notebook-data { margin:1.2rem 0; }
+.mg-course-content .mg-lab-label { display:flex; align-items:center; justify-content:center; width:100%; height:100%; color:#233e36; font:15px/1.3 system-ui,sans-serif; text-align:center; }
+.mg-course-content .mg-lab-label .ef-math { overflow:visible; font-size:inherit; }
+.mg-course-content .mg-lab-notebook { margin:1.4rem 0; padding:1rem 1.2rem; border-left:4px solid #ad8537; border-radius:0 12px 12px 0; background:#fbf2dd; }
+.mg-course-content .mg-added-lab h4 { margin:1.6rem 0 .7rem; font-size:1.15rem; line-height:1.4; }
+.mg-course-content .mg-added-lab button[aria-pressed="true"] { background:#103b30; box-shadow:inset 0 0 0 2px #e4bd65; }
+.mg-course-content .mg-added-lab { min-width:0; }
