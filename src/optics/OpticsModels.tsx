@@ -1,3 +1,4 @@
+import {PlotGrid} from '../components/PlotGrid';
 import {useState,type ReactNode} from 'react';
 import {MathFormula,MathText} from '../electric/Math';
 const t=String.raw;
@@ -31,9 +32,9 @@ function Plot({xmin,xmax,xlabel,curve,extra,marker}:{xmin:number;xmax:number;xla
  const px=(x:number)=>65+(x-xmin)/(xmax-xmin)*530,py=(y:number)=>245-y*175;
  const path=(fn:(x:number)=>number)=>Array.from({length:1201},(_,i)=>{const x=xmin+(xmax-xmin)*i/1200;return `${i?'L':'M'}${px(x)},${py(fn(x))}`}).join(' ');
  return <div className="optics-svg-scroll optics-plot" tabIndex={0} role="group" aria-label="Modelldiagramm; auf schmalen Bildschirmen seitlich verschiebbar"><svg viewBox="0 0 680 330" role="img" aria-label={'Normierte Intensität gegen '+xlabel}>
- <path d="M65 55V245H615" stroke="#668477" fill="none"/>
- {[0,.25,.5,.75,1].map(v=><g key={v}><path d={`M65 ${py(v)}H595`} stroke="#d7e3db"/><text x="54" y={py(v)+5} textAnchor="end">{v.toLocaleString('de-DE')}</text></g>)}
- {[0,.25,.5,.75,1].map(v=><text key={v} x={px(xmin+v*(xmax-xmin))} y="268" textAnchor="middle">{(xmin+v*(xmax-xmin)).toLocaleString('de-DE',{maximumFractionDigits:1})}</text>)}
+ <PlotGrid left={65} top={70} width={530} height={175} yAxisX={px(Math.max(xmin,Math.min(xmax,0)))} gridSize={25}/>
+ {[0,.25,.5,.75,1].map(v=><g key={v}><path d={`M${px(Math.max(xmin,Math.min(xmax,0)))-4} ${py(v)}h4`} stroke="#668477"/><text x={px(Math.max(xmin,Math.min(xmax,0)))-9} y={py(v)+5} textAnchor="end">{v.toLocaleString('de-DE')}</text></g>)}
+ {[0,.25,.5,.75,1].map(v=><g key={v}><path d={`M${px(xmin+v*(xmax-xmin))} 245v5`} stroke="#668477"/><text x={px(xmin+v*(xmax-xmin))} y="268" textAnchor="middle">{(xmin+v*(xmax-xmin)).toLocaleString('de-DE',{maximumFractionDigits:1})}</text></g>)}
  <foreignObject x="65" y="8" width="560" height="43"><div className="optics-svg-label"><MathText>{t`Normierte Intensität $I/I_{\max}$ in $1$`}</MathText></div></foreignObject><foreignObject x="80" y="284" width="550" height="42"><div className="optics-svg-label optics-align-right"><MathText>{xlabel}</MathText></div></foreignObject>
  {extra&&<path d={path(extra)} stroke="#acbcb3" strokeWidth="2" strokeDasharray="6 5" fill="none"/>}<path d={path(curve)} stroke="#266e76" strokeWidth="2.5" fill="none"/>{marker!==undefined&&<circle cx={px(marker)} cy={py(curve(marker))} r="6" fill="#b6733b" stroke="white" strokeWidth="2"/>}
  </svg></div>
