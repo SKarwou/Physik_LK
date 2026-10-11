@@ -1,3 +1,4 @@
+import { MathText } from './Math';
 import { useId, useState } from 'react';
 import { Arrow, RevealChart, Choices, Formula, Slider, Task, downloadCsv, fmt } from './LabUI';
 import { MathFormula } from './Math';
@@ -73,7 +74,7 @@ export default function CoulombLab() {
     </section>
 
     <div data-step="task"><Task><p><b>Wie hängen Kraft, Abstand und Ladung zusammen?</b> Formuliere vor jeder Messreihe eine Vermutung.</p><ol>
-      <li><b>Abstand untersuchen:</b> Halte beide Ladungen fest. Stelle nacheinander 5, 10, 15, 20, 25 und 30 cm ein und speichere jeweils einen Messwert.</li>
+      <li><b>Abstand untersuchen:</b><MathText>{String.raw` Halte beide Ladungen fest. Stelle nacheinander 5, 10, 15, 20, 25 und $30\,\mathrm{cm}$ ein und speichere jeweils einen Messwert.`}</MathText></li>
       <li><b>Ladung untersuchen:</b> Halte Abstand und Probeladung fest. Verdopple die Quellladung. Wiederhole den Vergleich anschließend für die Probeladung.</li>
       <li><b>Kraftrichtung untersuchen:</b> Wechsle das Vorzeichen von K₁. Beobachte den Kraftpfeil an K₂ und vergleiche die Kraftbeträge.</li>
     </ol></Task></div>
@@ -87,7 +88,7 @@ export default function CoulombLab() {
         <Slider label="Abstand der Kugelmittelpunkte r" value={r} set={setR} min={5} max={30} unit="cm" />
         <Choices label="Vorzeichen der Quellladung auf K₁" value={sign} set={setSign} options={[{ value: 'positive', label: 'Q positiv' }, { value: 'negative', label: 'Q negativ' }]} />
       </div><div><CoulombScene r={r} force={force} sign={sign} />
-        <div className="ef-readings"><div><small>Aktueller Mittelpunktabstand</small><strong>{r} cm</strong></div><div><small>Aktueller Kraftbetrag am Sensor</small><strong>{fmt(force, 3)} mN</strong></div></div>
+        <div className="ef-readings"><div><small>Aktueller Mittelpunktabstand</small><strong>{r}<MathText>{String.raw` $\mathrm{cm}$`}</MathText></strong></div><div><small>Aktueller Kraftbetrag am Sensor</small><strong>{fmt(force, 3)}<MathText>{String.raw` $\mathrm{mN}$`}</MathText></strong></div></div>
         <p className="ef-model">Die elektrische Kraft auf K₂ zeigt {sign === 'positive' ? 'von K₁ weg: Die Kugeln stoßen sich ab.' : 'zu K₁ hin: Die Kugeln ziehen sich an.'} Der Sensor zeigt den Kraftbetrag. Die Pfeillänge ist für die Darstellung begrenzt; maßgeblich ist der Messwert. Die Kugelgröße bleibt beim Ändern der Ladung gleich.</p>
       </div></div>
     </section>
@@ -110,9 +111,9 @@ export default function CoulombLab() {
     <section className="ef-coulomb-step" data-step="diagram" aria-labelledby="coulomb-diagram-heading">
       <h3 id="coulomb-diagram-heading">4 · Messwerte im Diagramm</h3>
       <p>Zeichne mit deinen Messwerten zuerst ein eigenes Abstandsdiagramm. Blende die Messpunkte anschließend zur Kontrolle ein. Wiederhole dies für die zweite Darstellung.</p>
-      <Choices label="Auswertung des Abstandsversuchs" value={axis} set={setAxis} options={[{ value: 'r', label: 'F gegen r' }, { value: 'inverse', label: 'F gegen 1/r²' }]} />
+      <Choices label="Auswertung des Abstandsversuchs" value={axis} set={setAxis} options={[{ value: 'r', label: 'F gegen r' }, { value: 'inverse', label: String.raw`$F$ gegen $\frac{1}{r^2}$` }]} />
       <RevealChart xMax={axis === 'r' ? 30 : 400} yMax={chartMax} xLabel={axis === 'r' ? 'r in cm' : '1/r² in 1/m²'} yLabel="F in mN" xMathLabel={axis === 'inverse' ? String.raw`\frac{1}{r^2}\text{ in }\frac{1}{\mathrm{m^2}}` : undefined} dots={matchingRows.map(a => ({ x: axis === 'r' ? a.r : 1 / (a.r / 100) ** 2, y: a.f }))} />
-      <p className="ef-model">Zum Einzeichnen verfügbar: {matchingRows.length} Messpunkte für die aktuell gewählten Ladungsbeträge (|Q| = {q1} nC, q = {q2} nC). Beide Vorzeichen von Q liefern denselben Kraftbetrag. Die Tabelle enthält auch Messungen mit anderen Ladungen. Messpunkte werden nicht verbunden; zeichne eine passende Ausgleichskurve bzw. Ausgleichsgerade selbst im Heft.</p>
+      <p className="ef-model">Zum Einzeichnen verfügbar: {matchingRows.length}<MathText>{String.raw` Messpunkte für die aktuell gewählten Ladungsbeträge ($\lvert Q\rvert = ${q1}\,\mathrm{nC}$, $q=${q2}\,\mathrm{nC}$). Beide Vorzeichen von Q liefern denselben Kraftbetrag. Die Tabelle enthält auch Messungen mit anderen Ladungen. Messpunkte werden nicht verbunden; zeichne eine passende Ausgleichskurve bzw. Ausgleichsgerade selbst im Heft.`}</MathText></p>
     </section>
 
     <details className="ef-coulomb-step ef-coulomb-evaluation" data-step="evaluation" aria-labelledby="coulomb-evaluation-heading">

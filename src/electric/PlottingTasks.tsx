@@ -8,7 +8,7 @@ const worksheets = [
     context: 'Eine positive Probeladung wird im selben homogenen Feld verändert. Eine Kraftmessung liefert folgende Werte:',
     xLabel: 'q in nC', yLabel: 'F in µN', xMax: 5, yMax: 12, ySteps: 6,
     values: [[1, 2.1], [2, 3.9], [3, 6.1], [4, 7.8], [5, 10.1]],
-    tasks: ['Zeichne ein F-q-Diagramm und trage die Messwerte als kleine Kreuze ein.', 'Zeichne mit dem Lineal eine passende Ausgleichsgerade durch den Ursprung. Sie muss nicht durch jeden Messpunkt gehen.', 'Bestimme die Steigung mit einem großen Steigungsdreieck. Berechne daraus die Feldstärke in N/C.'],
+    tasks: [String.raw`Zeichne ein $F - q$-Diagramm und trage die Messwerte als kleine Kreuze ein.`, 'Zeichne mit dem Lineal eine passende Ausgleichsgerade durch den Ursprung. Sie muss nicht durch jeden Messpunkt gehen.', String.raw`Bestimme die Steigung mit einem großen Steigungsdreieck. Berechne daraus die Feldstärke in $\frac{\mathrm N}{\mathrm C}$.`],
     solution: String.raw`Die Punkte liegen ungefähr auf einer Ursprungsgeraden. $E=\frac{\Delta F}{\Delta q}\approx\frac{10\,\mathrm{\mu N}}{5\,\mathrm{nC}}=2{,}0\cdot10^3\,\frac{\mathrm{N}}{\mathrm{C}}$. Verwende für das Steigungsdreieck Punkte auf deiner Ausgleichsgeraden.`,
   },
   {
@@ -16,20 +16,20 @@ const worksheets = [
     context: 'Zwei kleine geladene Kugeln tragen unveränderte Ladungen. Gemessen wird die Kraft bei verschiedenen Mittelpunktabständen.',
     xLabel: 'r in cm', yLabel: 'F in mN', xMax: 25, yMax: 1,
     values: [[5, .720], [10, .180], [15, .081], [20, .044], [25, .029]],
-    tasks: ['Zeichne ein F-r-Diagramm. Trage zunächst nur Messkreuze ein.', 'Prüfe mit zwei Wertepaaren: Was passiert bei doppeltem Abstand? Formuliere eine Vermutung.', 'Berechne für alle Abstände 1/r² in 1/m². Zeichne im Heft ein zweites Diagramm F gegen 1/r² und eine passende Ausgleichsgerade.'],
+    tasks: [String.raw`Zeichne ein $F - r$-Diagramm. Trage zunächst nur Messkreuze ein.`, 'Prüfe mit zwei Wertepaaren: Was passiert bei doppeltem Abstand? Formuliere eine Vermutung.', String.raw`Berechne für alle Abstände $\frac{1}{r^{2}}$ in $\frac{1}{\mathrm{m}^2}$. Zeichne im Heft ein zweites Diagramm F gegen $\frac{1}{r^{2}}$ und eine passende Ausgleichsgerade.`],
     solution: String.raw`Bei doppeltem Abstand wird die Kraft ungefähr geviertelt: $F\propto\frac{1}{r^2}$. Die neuen x-Werte sind etwa $400;\ 100;\ 44{,}4;\ 25;\ 16\,\mathrm{m^{-2}}$. Im zweiten Diagramm liegen die Punkte annähernd auf einer Ursprungsgeraden.`,
   },
   {
     id: 'potential', title: '3 · Vom Potential zum Feld',
-    context: 'Zwischen zwei parallelen Elektroden liegen 20 cm. Die Bezugselektrode bei x = 20 cm hat das Potential 0 V. Entlang der Feldrichtung wird gemessen:',
+    context: String.raw`Zwischen zwei parallelen Elektroden liegen $20\,\mathrm{cm}$. Die Bezugselektrode bei $x = 20\,\mathrm{cm}$ hat das Potential $0\,\mathrm{V}$. Entlang der Feldrichtung wird gemessen:`,
     xLabel: 'x in cm', yLabel: 'φ in V', xMax: 20, yMax: 10,
     values: [[0, 10], [4, 8.1], [8, 5.9], [12, 4.1], [16, 2.0], [20, 0]],
-    tasks: ['Zeichne das φ-x-Diagramm mit Messkreuzen und einer Ausgleichsgeraden.', 'Bestimme den Betrag der Steigung. Rechne die Strecke in Meter um und ermittle daraus die Feldstärke.', 'Zeichne neben das Diagramm zwei Platten, drei Äquipotentiallinien und Feldpfeile. In welche Richtung zeigen die Pfeile?'],
+    tasks: [String.raw`Zeichne das $\varphi - x$-Diagramm mit Messkreuzen und einer Ausgleichsgeraden.`, 'Bestimme den Betrag der Steigung. Rechne die Strecke in Meter um und ermittle daraus die Feldstärke.', 'Zeichne neben das Diagramm zwei Platten, drei Äquipotentiallinien und Feldpfeile. In welche Richtung zeigen die Pfeile?'],
     solution: String.raw`Das Potential nimmt annähernd linear ab. $E=\left|\frac{\Delta\varphi}{\Delta x}\right|\approx\frac{10\,\mathrm V}{0{,}20\,\mathrm m}=50\,\frac{\mathrm{V}}{\mathrm{m}}$. Die Feldpfeile zeigen von links nach rechts, zum kleineren Potential. Äquipotentiallinien verlaufen parallel zu den Platten.`,
   },
   {
     id: 'rc', title: '4 · Eine Entladung zeichnen',
-    context: 'Ein auf 10 V geladener Kondensator wird über einen Widerstand entladen. Ein Voltmeter zeichnet die Spannung auf.',
+    context: String.raw`Ein auf $10\,\mathrm{V}$ geladener Kondensator wird über einen Widerstand entladen. Ein Voltmeter zeichnet die Spannung auf.`,
     xLabel: 't in s', yLabel: 'U_C in V', xMax: 5, yMax: 10,
     values: [[0, 10.0], [.5, 6.1], [1, 3.7], [1.5, 2.2], [2, 1.4], [3, .5], [4, .2], [5, .1]],
     tasks: ['Übertrage die Messwerte in ein Spannung-Zeit-Diagramm. Verwende einzelne Messkreuze.', 'Skizziere von Hand eine glatte Ausgleichskurve. Verbinde die Messpunkte nicht als Zickzacklinie.', 'Lies die Zeit ab, bei der noch etwa 37 % der Anfangsspannung vorhanden sind. Was bedeutet diese Zeit?'],
@@ -41,7 +41,7 @@ function PlottingTask({ sheet }: { sheet: typeof worksheets[number] }) {
   const [show, setShow] = useState(false);
   return <article className="ef-plot-task">
     <span className="ef-eyebrow">MESSWERTE → EIGENES DIAGRAMM · AFB I–II</span>
-    <h3>{sheet.title}</h3><p>{sheet.context}</p>
+    <h3>{sheet.title}</h3><p><MathText>{sheet.context}</MathText></p>
     <div className="ef-table-wrap"><table><caption>Simulierte Messwerte mit kleiner Streuung für diese Zeichenaufgabe</caption><tbody>
       <tr><th scope="row">{sheet.xLabel}</th>{sheet.values.map(([x], i) => <td key={i}>{fmt(x, Number.isInteger(x) ? 0 : 1)}</td>)}</tr>
       <tr><th scope="row">{sheet.id === 'rc' ? <><MathText>{'$U_C$'}</MathText> in V</> : sheet.yLabel}</th>{sheet.values.map(([, y], i) => <td key={i}>{fmt(y, sheet.id === 'coulomb' ? 3 : 1)}</td>)}</tr>
