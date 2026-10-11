@@ -1,0 +1,10 @@
+.lesson-cartoon{display:block;flex:none;max-width:100%;height:auto;overflow:visible;pointer-events:none}
+.lesson-cartoon--card{width:138px}
+.lesson-card-top{display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0;min-height:80px;margin:-5px -4px 0 0}
+.lesson-card-top>.lesson-status{min-width:0;max-width:120px;line-height:1.5}
+.course-lesson>header.lesson-heading-with-art{display:grid;grid-template-columns:minmax(0,1fr) 180px;column-gap:24px;align-items:center}
+.lesson-heading-with-art>.kicker,.lesson-heading-with-art>.ef-eyebrow,.lesson-heading-with-art>h1,.lesson-heading-with-art>p{grid-column:1;min-width:0}
+.lesson-heading-with-art>.lesson-cartoon--heading{grid-column:2;grid-row:1/span 3;width:180px;align-self:center}
+@media(max-width:680px){.course-lesson>header.lesson-heading-with-art{grid-template-columns:minmax(0,1fr) 118px;column-gap:10px}.lesson-heading-with-art>.lesson-cartoon--heading{grid-column:2;grid-row:1;width:118px}.lesson-heading-with-art>h1,.lesson-heading-with-art>p{grid-column:1/-1}.lesson-heading-with-art>h1{margin-top:8px}.lesson-cartoon--card{width:132px}}
+@media(max-width:380px){.lesson-cartoon--card{width:115px}.lesson-card-top>.lesson-status{max-width:105px}}
+@media print{.lesson-cartoon--heading{display:none}.course-lesson>header.lesson-heading-with-art{display:block}.lesson-card-top{min-height:0}}
