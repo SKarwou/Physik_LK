@@ -1,0 +1,34 @@
+.mg-course-content { --mg-ink: #183d36; --mg-teal: #0f777c; color: #233e36; }
+.mg-course-content .mg-section { margin: 2.4rem 0; padding-top: 1rem; border-top: 1px solid #cad7ca; }
+.mg-course-content h2 { font-size: clamp(1.4rem, 2.4vw, 2rem); line-height: 1.2; margin: 0 0 1rem; }
+.mg-course-content h3 { font-size: 1.25rem; margin: 0 0 .8rem; }
+.mg-course-content p, .mg-course-content li { line-height: 1.75; }
+.mg-course-content .mg-steps { padding-left: 1.5rem; display: grid; gap: .75rem; }
+.mg-course-content .mg-model { margin: 1.6rem 0; border: 1px solid #b9d1cc; border-radius: 18px; padding: clamp(1rem, 3vw, 1.5rem); background: #f0f7f4; }
+.mg-course-content .mg-control { display: flex; flex-direction: column; gap: .5rem; max-width: 40rem; padding: .65rem 0; font-weight: 650; }
+.mg-course-content .mg-control input { width: 100%; accent-color: #0f777c; min-height: 28px; }
+.mg-course-content .mg-control output { font-variant-numeric: tabular-nums; }
+.mg-course-content .mg-scene { width: 100%; max-height: 390px; margin: .8rem auto; display: block; background: #fffef9; border: 1px solid #d1ddd6; border-radius: 12px; font: 15px system-ui, sans-serif; }
+.mg-course-content .mg-buttons { display: flex; flex-wrap: wrap; gap: .65rem; margin: .75rem 0; }
+.mg-course-content button { border: 1px solid #245f54; border-radius: 9px; color: #fff; background: #245f54; padding: .65rem .9rem; font: inherit; cursor: pointer; }
+.mg-course-content button:disabled { opacity: .5; cursor: default; }
+.mg-course-content button:focus-visible, .mg-course-content summary:focus-visible, .mg-course-content input:focus-visible { outline: 3px solid #ba8c2b; outline-offset: 4px; }
+.mg-course-content .mg-result { font-size: 1.1rem; font-weight: 750; color: #0e625f; }
+.mg-course-content .mg-note { font-size: .9rem; color: #52675e; }
+.mg-course-content .mg-table-scroll { overflow-x: auto; max-width: 100%; margin: 1rem 0; }
+.mg-course-content table { width: 100%; border-collapse: collapse; background: #fffef9; font-size: .94rem; }
+.mg-course-content caption { text-align: left; font-weight: 700; padding: .6rem 0; }
+.mg-course-content th, .mg-course-content td { padding: .7rem .8rem; border: 1px solid #c8d5cb; text-align: left; vertical-align: top; min-width: 90px; }
+.mg-course-content thead th { background: #e4efe7; }
+.mg-course-content .mg-comparison table { min-width: 790px; }
+.mg-course-content .mg-comparison th { min-width: 150px; }
+.mg-course-content .mg-rule { border-left: 5px solid #b88c2b; border-radius: 0 12px 12px 0; background: #fcf4d9; padding: 1rem 1.3rem; margin: 1.5rem 0; }
+.mg-course-content .mg-rule strong { font-size: 1.1rem; }
+.mg-course-content .mg-rule p { margin-bottom: 0; }
+.mg-course-content .mg-formula { background: #edf3ee; padding: 1rem; border-radius: 12px; overflow-x: auto; margin: 1rem 0; }
+.mg-course-content .mg-formula p { font-size: .91rem; margin: .8rem 0 0; }
+.mg-course-content .mg-task { margin: 1.5rem 0; padding: 1.25rem; border: 1px solid #d5d5bf; border-radius: 14px; background: #fffdf6; }
+.mg-course-content details { margin: .8rem 0; border: 1px solid #cad8cc; border-radius: 10px; padding: .85rem 1rem; background: #fffef9; }
+.mg-course-content summary { cursor: pointer; color: #275d50; font-weight: 700; line-height: 1.5; }
+.mg-course-content .mg-next-topic { padding: 1.2rem; background: #e4efe7; border-radius: 12px; }
+@media (max-width: 600px) { .mg-course-content .mg-scene { min-height: 190px; } .mg-course-content th, .mg-course-content td { padding: .55rem; font-size: .85rem; } .mg-course-content .mg-model, .mg-course-content .mg-task { padding: .9rem; } }
