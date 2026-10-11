@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Chart, downloadCsv, fmt } from './LabUI';
+import { Chart, axisCaption, fmt } from './LabUI';
 import { MathText } from './Math';
 
 const worksheets = [
@@ -42,15 +42,15 @@ function PlottingTask({ sheet }: { sheet: typeof worksheets[number] }) {
   return <article className="ef-plot-task">
     <span className="ef-eyebrow">MESSWERTE → EIGENES DIAGRAMM · AFB I–II</span>
     <h3>{sheet.title}</h3><p><MathText>{sheet.context}</MathText></p>
-    <div className="ef-table-wrap"><table><caption>Simulierte Messwerte mit kleiner Streuung für diese Zeichenaufgabe</caption><tbody>
-      <tr><th scope="row">{sheet.xLabel}</th>{sheet.values.map(([x], i) => <td key={i}>{fmt(x, Number.isInteger(x) ? 0 : 1)}</td>)}</tr>
-      <tr><th scope="row">{sheet.id === 'rc' ? <><MathText>{'$U_C$'}</MathText> in V</> : sheet.yLabel}</th>{sheet.values.map(([, y], i) => <td key={i}>{fmt(y, sheet.id === 'coulomb' ? 3 : 1)}</td>)}</tr>
-    </tbody></table></div>
+    <details className="ef-real"><summary>Ausgefüllte Ersatzdaten öffnen</summary><div className="ef-table-wrap"><table><caption>Simulierte Messwerte mit kleiner Streuung für diese Zeichenaufgabe</caption><tbody>
+      <tr><th scope="row"><MathText>{axisCaption(sheet.xLabel)}</MathText></th>{sheet.values.map(([x], i) => <td key={i}>{fmt(x, Number.isInteger(x) ? 0 : 1)}</td>)}</tr>
+      <tr><th scope="row"><MathText>{axisCaption(sheet.yLabel)}</MathText></th>{sheet.values.map(([, y], i) => <td key={i}>{fmt(y, sheet.id === 'coulomb' ? 3 : 1)}</td>)}</tr>
+    </tbody></table></div></details>
     <ol>{sheet.tasks.map(task => <li key={task}><MathText>{task}</MathText></li>)}</ol>
     <p className="ef-plot-instruction">Zeichne zuerst im Heft oder im ausgedruckten Raster. Die Vergleichspunkte bleiben bis zu deiner Kontrolle ausgeblendet.</p>
-    <div className="ef-plot-screen"><Chart {...sheet} dots={show ? sheet.values.map(([x, y]) => ({ x, y })) : []} blank={!show} /></div>
+    {show && <div className="ef-plot-screen"><Chart {...sheet} dots={sheet.values.map(([x, y]) => ({ x, y }))} /></div>}
     <div className="ef-plot-print"><Chart {...sheet} blank /></div>
-    <div className="ef-toolbar"><button type="button" aria-pressed={show} onClick={() => setShow(!show)}>{show ? 'Diagramm ausblenden' : 'Diagramm zeichnen'}</button><button type="button" onClick={() => downloadCsv(`${sheet.id}-zeichenaufgabe.csv`, [[sheet.xLabel, sheet.yLabel], ...sheet.values.map(row => row.map(n => String(n).replace('.', ',')))])}>Messwerte als CSV</button></div>
+    <div className="ef-toolbar"><button type="button" aria-pressed={show} onClick={() => setShow(!show)}>{show ? 'Diagramm ausblenden' : 'Diagramm zeichnen'}</button></div>
     <details className="ef-plot-solution"><summary>Auswertung zur Selbstkontrolle</summary><p><MathText>{sheet.solution}</MathText></p></details>
   </article>;
 }
