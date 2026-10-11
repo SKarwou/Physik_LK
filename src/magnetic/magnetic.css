@@ -36,3 +36,11 @@
 .mg-course-content .mg-svg-math { font: 15px/1.4 system-ui, sans-serif; white-space: nowrap; }
 .mg-course-content .mg-svg-math .ef-math { overflow: visible; padding: 1px 0; }
 .mg-course-content .mg-svg-math .ef-math math { font-size: 1em; }
+
+.mg-course-content .mg-application { background:#e8efe5; border-left:4px solid #547b63; border-radius:0 14px 14px 0; padding:1.3rem; margin:1.5rem 0 2rem; }
+.mg-course-content .mg-application>span { font-size:.8rem; text-transform:uppercase; letter-spacing:.08em; }
+.mg-course-content .mg-current-readings dl { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:.8rem; }
+.mg-course-content .mg-current-readings dl>div { padding:.8rem; background:#fffef9; border:1px solid #d1ddd6; border-radius:8px; }
+.mg-course-content .mg-current-readings dt { font-size:.9rem; }
+.mg-course-content .mg-current-readings dd { margin:.3rem 0 0; font-size:1.2rem; font-weight:700; }
+.mg-course-content .mg-notebook-data { margin:1.2rem 0; }
