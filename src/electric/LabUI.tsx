@@ -39,6 +39,7 @@ export function axisCaption(label: string, _legacyTex?: string): string {
     'I in mA': String.raw`Stromstärke $I$ in $\mathrm{mA}$`,
     '|I| in mA': String.raw`Stromstärkebetrag $|I|$ in $\mathrm{mA}$`,
     't in s': String.raw`Zeit $t$ in $\mathrm s$`,
+    't in ms': String.raw`Zeit $t$ in $\mathrm{ms}$`,
     'U_C in V': String.raw`Kondensatorspannung $U_C$ in $\mathrm V$`,
     'Q in µC': String.raw`Plattenladung $Q$ in $\mathrm{\mu C}$`,
     'x in cm': String.raw`Ort $x$ in $\mathrm{cm}$`,

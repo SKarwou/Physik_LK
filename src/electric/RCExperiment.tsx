@@ -1,3 +1,4 @@
+import {PlotGrid} from '../components/PlotGrid';
 import { MathText } from './Math';
 import { NotebookData } from './NotebookData';
 import { useEffect, useState } from 'react';
@@ -117,8 +118,7 @@ export function RCIntegrationLab() {
     <div className="ef-table-wrap"><table><caption><MathText>{String.raw`Ideale Randwerte · $\Delta t = ${n(area.width)}\,\mathrm s$`}</MathText></caption><thead><tr><th><MathText>{String.raw`Zeit $t$ in $\mathrm s$`}</MathText></th><th><MathText>{String.raw`Stromstärkebetrag $|I|$ in $\mathrm{mA}$`}</MathText></th></tr></thead><tbody>{Array.from({ length: Number(intervals) + 1 }, (_, i) => <tr key={i}><td>{n(i * area.width)}</td><td>{n(Math.abs(rcState(i * area.width, p).current) * 1000)}</td></tr>)}</tbody></table></div>
     <div className="ef-toolbar"><button aria-expanded={show} onClick={() => setShow(!show)}>{show ? 'Flächenvergleich ausblenden' : 'Flächenvergleich einblenden'}</button></div>
     <svg className="ef-chart rc-area-chart" viewBox="0 0 720 330" role="img" aria-label={show ? 'Flächennäherung mit Stromwerten und Zeitabschnitten' : 'Leeres Raster für die eigene Flächennäherung'}>
-      <g stroke="#d5dfd0">{Array.from({ length: 21 }, (_, i) => <line key={'x' + i} x1={80 + i * 28} x2={80 + i * 28} y1="40" y2={bottom} />)}{Array.from({ length: 11 }, (_, i) => <line key={'y' + i} x1="80" x2="640" y1={40 + i * 21} y2={40 + i * 21} />)}</g>
-      <Arrow x={80} y={bottom} dx={580} dy={0} color="#405b47" /><Arrow x={80} y={bottom} dx={0} dy={-224} color="#405b47" />
+      <PlotGrid left={80} top={40} width={560} height={210} gridSize={28}/>
       <foreignObject x="80" y="0" width="590" height="36"><div style={{fontSize:16}}><MathText>{String.raw`Stromstärkebetrag $|I|$ in $\mathrm{mA}$`}</MathText></div></foreignObject><foreignObject x="390" y="289" width="280" height="40"><div style={{fontSize:16,textAlign:"right"}}><MathText>{String.raw`Zeit $t$ in $\mathrm s$`}</MathText></div></foreignObject>
       {[0, 5, 10, 15, 20].map(t => <text key={t} x={80 + t * 28} y="277" textAnchor="middle">{t}</text>)}
       {[0, .005, .01, .015, .02].map(v => <text key={v} x="68" y={bottom - v / .02 * 210 + 5} textAnchor="end">{n(v)}</text>)}
