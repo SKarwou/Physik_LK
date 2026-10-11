@@ -1,8 +1,10 @@
+import type { ReactNode } from 'react';
+import MagneticSteps from './Derivations';
 
 import { MathText } from '../electric/Math';
-type DataSet = { title: string; context: string; columns: string[]; rows: string[][]; task: string; solution: string };
+type DataSet = { title: string; context: string; columns: string[]; rows: string[][]; task: string; solution: ReactNode };
 function NotebookData({ data }: { data: DataSet }) {
- return <section className="mg-notebook-data"><p><strong>✎ Messwerterfassung im Heft:</strong> <MathText>{data.task}</MathText></p><details><summary>Ersatzmesswerte öffnen · {data.title}</summary><p className="mg-note"><strong>Didaktischer Beispieldatensatz:</strong> <MathText>{data.context}</MathText> Diese vorbereiteten Werte sind keine im Unterricht erhobenen Messdaten. Wenn der Versuch möglich ist, verwende deine eigenen Werte.</p><div className="mg-table-scroll"><table><caption>{data.title} · ausgefüllte Ersatzdaten</caption><thead><tr>{data.columns.map(c=><th key={c} scope="col"><MathText>{c}</MathText></th>)}</tr></thead><tbody>{data.rows.map((r,i)=><tr key={i}>{r.map((v,j)=><td key={j}><MathText>{v}</MathText></td>)}</tr>)}</tbody></table></div></details><details><summary>Nach der Heftauswertung · Lösung vergleichen</summary><p><MathText>{data.solution}</MathText></p></details></section>;
+ return <section className="mg-notebook-data"><p><strong>✎ Messwerterfassung im Heft:</strong> <MathText>{data.task}</MathText></p><details><summary>Ersatzmesswerte öffnen · {data.title}</summary><p className="mg-note"><strong>Didaktischer Beispieldatensatz:</strong> <MathText>{data.context}</MathText> Diese vorbereiteten Werte sind keine im Unterricht erhobenen Messdaten. Wenn der Versuch möglich ist, verwende deine eigenen Werte.</p><div className="mg-table-scroll"><table><caption>{data.title} · ausgefüllte Ersatzdaten</caption><thead><tr>{data.columns.map(c=><th key={c} scope="col"><MathText>{c}</MathText></th>)}</tr></thead><tbody>{data.rows.map((r,i)=><tr key={i}>{r.map((v,j)=><td key={j}><MathText>{v}</MathText></td>)}</tr>)}</tbody></table></div></details><details><summary>Nach der Heftauswertung · Lösung vergleichen</summary>{typeof data.solution === 'string' ? <p><MathText>{data.solution}</MathText></p> : data.solution}</details></section>;
 }
 const groups: Record<string, DataSet[]> = {
 kompass:[{title:'Feldrichtung am Stabmagneten',context:String.raw`Idealisierte Kompassrichtungen eines Stabmagneten mit Nordpol links und Südpol rechts; das Erdmagnetfeld wird hier vernachlässigt. Der Winkel der Nordspitze wird von rechts gegen den Uhrzeigersinn gemessen.`,
@@ -25,7 +27,7 @@ spule:[{title:'Stromstärke und Spulenfeld',context:String.raw`Idealmodell einer
  columns:[String.raw`Windungszahl $N$ in $1$`,String.raw`Spulenlänge $\ell$ in $\mathrm m$`,String.raw`Stromstärke $I$ in $\mathrm A$`,String.raw`Flussdichte in der Mitte $B$ in $\mathrm{mT}$`],
  rows:[['600','0,30','0,0','0,000'],['600','0,30','0,2','0,503'],['600','0,30','0,4','1,005'],['600','0,30','0,6','1,508'],['600','0,30','0,8','2,011']],
  task:String.raw`Führe die Messreihe im Heft. Zeichne die magnetische Flussdichte $B$ in $\mathrm{mT}$ gegen die Stromstärke $I$ in $\mathrm A$. Berechne aus der Steigung und der Windungsdichte die Feldkonstante $\mu_0$.`,
- solution:String.raw`Die Steigung beträgt etwa $2{,}513\,\frac{\mathrm{mT}}{\mathrm A}$. Mit $\frac{\Delta B}{\Delta I}=\mu_0\frac N\ell$ erhältst du $\mu_0\approx1{,}257\cdot10^{-6}\,\frac{\mathrm N}{\mathrm A^2}$.`},
+ solution:<MagneticSteps id="coilSlope"/>},
  {title:'Ortsmessung auf der Spulenachse',context:String.raw`Berechnete Werte einer endlichen Luftspule: $N=600$, $\ell=0{,}30\,\mathrm m$, Radius $a=0{,}020\,\mathrm m$, $I=0{,}60\,\mathrm A$. Die Mitte liegt bei $x=0$.`,
  columns:[String.raw`Axiale Position $x$ in $\mathrm{cm}$`,String.raw`Magnetische Flussdichte $B$ in $\mathrm{mT}$`],
  rows:[['−20','0,053'],['−15','0,752'],['−10','1,452'],['0','1,495'],['10','1,452'],['15','0,752'],['20','0,053']],
@@ -45,7 +47,7 @@ kreisbahn:[{title:'Elektronenbahn bei konstantem Magnetfeld',context:String.raw`
  columns:[String.raw`Beschleunigungsspannung $U$ in $\mathrm V$`,String.raw`Magnetische Flussdichte $B$ in $\mathrm{mT}$`,String.raw`Bahnradius $r$ in $\mathrm{cm}$`],
  rows:[['100','1,00','3,37'],['150','1,00','4,13'],['200','1,00','4,77'],['300','1,00','5,84'],['400','1,00','6,74']],
  task:String.raw`Ergänze in deiner Hefttabelle „Radiusquadrat $r^2$ in $\mathrm{cm^2}$“. Zeichne $r^2$ gegen $U$, bestimme die Steigung und berechne $\frac e{m_{\mathrm e}}$. Schätze den Einfluss eines Radius-Ablesefehlers.`,
- solution:String.raw`Die Steigung beträgt etwa $0{,}114\,\frac{\mathrm{cm^2}}{\mathrm V}=1{,}14\cdot10^{-5}\,\frac{\mathrm{m^2}}{\mathrm V}$. Aus $r^2=\frac{2m_{\mathrm e}}{eB^2}U$ folgt $\frac e{m_{\mathrm e}}\approx1{,}75\cdot10^{11}\,\frac{\mathrm C}{\mathrm{kg}}$. Relative Radiusfehler gehen wegen des Quadrats ungefähr doppelt ein.`}],
+ solution:<MagneticSteps id="radiusSlope"/>}],
 wien:[{title:'Gerader Durchflug im Geschwindigkeitsfilter',context:String.raw`Idealisierte Werte bei Plattenabstand $d=0{,}020\,\mathrm m$. Für jede Zeile wurde das Filterfeld auf geraden Durchflug eingestellt.`,
  columns:[String.raw`Plattenspannung $U_{\mathrm P}$ in $\mathrm V$`,String.raw`Plattenabstand $d$ in $\mathrm m$`,String.raw`Filterflussdichte $B_{\mathrm F}$ in $\mathrm T$`],
  rows:[['100','0,020','0,025'],['200','0,020','0,050'],['300','0,020','0,075']],
