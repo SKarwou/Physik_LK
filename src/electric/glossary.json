@@ -17,7 +17,7 @@
           {
             "symbol": "P",
             "meaning": "Elektrische Leistung: übertragene Energie pro Zeit.",
-            "unit": "Watt (W), gleich Joule pro Sekunde (J/s)"
+            "unit": "Watt (W), gleich Joule pro Sekunde $\\left(\\frac{\\mathrm J}{\\mathrm s}\\right)$"
           },
           {
             "symbol": "U",
@@ -50,7 +50,7 @@
             "tex": "\\Delta E_{\\mathrm{el}}=U\\cdot I\\cdot\\Delta t=P\\cdot\\Delta t"
           },
           {
-            "text": "Die Produktformel gilt bei konstanter Spannung und Stromstärke. ΔE_el bezeichnet hier den übertragenen Energiebetrag."
+            "text": "Die Produktformel gilt bei konstanter Spannung und Stromstärke. $\\Delta E_{\\mathrm{el}}$ bezeichnet hier den übertragenen Energiebetrag."
           }
         ],
         "quantities": [
@@ -77,7 +77,7 @@
           {
             "symbol": "P",
             "meaning": "Elektrische Leistung: übertragene Energie pro Zeit.",
-            "unit": "Watt (W), gleich Joule pro Sekunde (J/s)"
+            "unit": "Watt (W), gleich Joule pro Sekunde $\\left(\\frac{\\mathrm J}{\\mathrm s}\\right)$"
           }
         ]
       },
@@ -245,7 +245,7 @@
           },
           {
             "symbol": "n",
-            "meaning": "Ganzzahliges Vielfaches der Elementarladung; bei Q = n · e ist n vorzeichenbehaftet.",
+            "meaning": "Ganzzahliges Vielfaches der Elementarladung; bei $Q = n \\cdot e$ ist n vorzeichenbehaftet.",
             "unit": "ohne Einheit"
           },
           {
@@ -258,7 +258,7 @@
       {
         "id": 2,
         "term": "Elementarladung",
-        "explanation": "Kleinster frei auftretender Ladungsbetrag. Ein Proton trägt die Ladung +e, ein Elektron die Ladung −e.",
+        "explanation": "Kleinster frei auftretender Ladungsbetrag. Ein Proton trägt die Ladung $+e$, ein Elektron die Ladung $-e$.",
         "details": [
           {
             "tex": "e=1{,}602\\cdot10^{-19}\\,\\mathrm C"
@@ -317,7 +317,7 @@
           },
           {
             "symbol": "\\vec F_{21}",
-            "meaning": "Kraft von Körper 2 auf Körper 1; Gegenkraft zu F₁₂.",
+            "meaning": "Kraft von Körper 2 auf Körper 1; Gegenkraft zu $F_{12}$.",
             "unit": "Newton (N)"
           }
         ]
@@ -407,8 +407,8 @@
           },
           {
             "symbol": "\\varepsilon_0",
-            "meaning": "Permittivität des Vakuums, auch elektrische Feldkonstante; etwa 8,854 · 10⁻¹² F/m.",
-            "unit": "Farad pro Meter (F/m)"
+            "meaning": "Permittivität des Vakuums, auch elektrische Feldkonstante; etwa $8{,}854 \\cdot 10^{-12}\\,\\frac{\\mathrm F}{\\mathrm m}$.",
+            "unit": "Farad pro Meter $\\left(\\frac{\\mathrm F}{\\mathrm m}\\right)$"
           },
           {
             "symbol": "\\pi",
@@ -440,7 +440,7 @@
           {
             "symbol": "E,\\ \\vec E",
             "meaning": "Elektrische Feldstärke; E ist der Betrag, der Pfeil kennzeichnet zusätzlich die Richtung. Hier bedeutet E ohne Energieindex Feldstärke.",
-            "unit": "Newton pro Coulomb (N/C), gleich Volt pro Meter (V/m)"
+            "unit": "Newton pro Coulomb $\\left(\\frac{\\mathrm N}{\\mathrm C}\\right)$, gleich Volt pro Meter $\\left(\\frac{\\mathrm V}{\\mathrm m}\\right)$"
           },
           {
             "symbol": "\\vec r",
@@ -462,7 +462,7 @@
           {
             "symbol": "E,\\ \\vec E",
             "meaning": "Elektrische Feldstärke; E ist der Betrag, der Pfeil kennzeichnet zusätzlich die Richtung. Hier bedeutet E ohne Energieindex Feldstärke.",
-            "unit": "Newton pro Coulomb (N/C), gleich Volt pro Meter (V/m)"
+            "unit": "Newton pro Coulomb $\\left(\\frac{\\mathrm N}{\\mathrm C}\\right)$, gleich Volt pro Meter $\\left(\\frac{\\mathrm V}{\\mathrm m}\\right)$"
           }
         ]
       },
@@ -482,7 +482,7 @@
           {
             "symbol": "E,\\ \\vec E",
             "meaning": "Elektrische Feldstärke; E ist der Betrag, der Pfeil kennzeichnet zusätzlich die Richtung. Hier bedeutet E ohne Energieindex Feldstärke.",
-            "unit": "Newton pro Coulomb (N/C), gleich Volt pro Meter (V/m)"
+            "unit": "Newton pro Coulomb $\\left(\\frac{\\mathrm N}{\\mathrm C}\\right)$, gleich Volt pro Meter $\\left(\\frac{\\mathrm V}{\\mathrm m}\\right)$"
           }
         ]
       },
@@ -502,7 +502,7 @@
           {
             "symbol": "E,\\ \\vec E",
             "meaning": "Elektrische Feldstärke; E ist der Betrag, der Pfeil kennzeichnet zusätzlich die Richtung. Hier bedeutet E ohne Energieindex Feldstärke.",
-            "unit": "Newton pro Coulomb (N/C), gleich Volt pro Meter (V/m)"
+            "unit": "Newton pro Coulomb $\\left(\\frac{\\mathrm N}{\\mathrm C}\\right)$, gleich Volt pro Meter $\\left(\\frac{\\mathrm V}{\\mathrm m}\\right)$"
           },
           {
             "symbol": "Q",
@@ -516,8 +516,8 @@
           },
           {
             "symbol": "\\varepsilon_0",
-            "meaning": "Permittivität des Vakuums, auch elektrische Feldkonstante; etwa 8,854 · 10⁻¹² F/m.",
-            "unit": "Farad pro Meter (F/m)"
+            "meaning": "Permittivität des Vakuums, auch elektrische Feldkonstante; etwa $8{,}854 \\cdot 10^{-12}\\,\\frac{\\mathrm F}{\\mathrm m}$.",
+            "unit": "Farad pro Meter $\\left(\\frac{\\mathrm F}{\\mathrm m}\\right)$"
           },
           {
             "symbol": "\\pi",
@@ -606,17 +606,17 @@
           {
             "symbol": "\\vec E_{\\mathrm{ges}}",
             "meaning": "Resultierendes Feld: Vektorsumme aller einzelnen Feldbeiträge.",
-            "unit": "Newton pro Coulomb (N/C)"
+            "unit": "Newton pro Coulomb $\\left(\\frac{\\mathrm N}{\\mathrm C}\\right)$"
           },
           {
             "symbol": "\\vec E_1",
             "meaning": "Feldbeitrag der ersten Quelle am betrachteten Ort.",
-            "unit": "Newton pro Coulomb (N/C)"
+            "unit": "Newton pro Coulomb $\\left(\\frac{\\mathrm N}{\\mathrm C}\\right)$"
           },
           {
             "symbol": "\\vec E_2",
             "meaning": "Feldbeitrag der zweiten Quelle am selben Ort.",
-            "unit": "Newton pro Coulomb (N/C)"
+            "unit": "Newton pro Coulomb $\\left(\\frac{\\mathrm N}{\\mathrm C}\\right)$"
           }
         ]
       }
@@ -662,18 +662,18 @@
             "tex": "[E]=\\frac{\\mathrm N}{\\mathrm C}=\\frac{\\mathrm V}{\\mathrm m}"
           },
           {
-            "text": "Für q < 0 wirken Kraft und Feld in entgegengesetzte Richtungen."
+            "text": "Für $q < 0$ wirken Kraft und Feld in entgegengesetzte Richtungen."
           }
         ],
         "quantities": [
           {
             "symbol": "E,\\ \\vec E",
             "meaning": "Elektrische Feldstärke; E ist der Betrag, der Pfeil kennzeichnet zusätzlich die Richtung. Hier bedeutet E ohne Energieindex Feldstärke.",
-            "unit": "Newton pro Coulomb (N/C), gleich Volt pro Meter (V/m)"
+            "unit": "Newton pro Coulomb $\\left(\\frac{\\mathrm N}{\\mathrm C}\\right)$, gleich Volt pro Meter $\\left(\\frac{\\mathrm V}{\\mathrm m}\\right)$"
           },
           {
             "symbol": "\\vec F_{\\mathrm{el}}",
-            "meaning": "Elektrische Kraft als Vektor: Betrag und Richtung. F_el ohne Pfeil ist ihr Betrag.",
+            "meaning": "Elektrische Kraft als Vektor: Betrag und Richtung. $F_{\\mathrm{el}}$ ohne Pfeil ist ihr Betrag.",
             "unit": "Newton (N)"
           },
           {
@@ -695,24 +695,24 @@
             "tex": "F_{\\mathrm{el}}\\propto q\\quad(q>0)"
           },
           {
-            "text": "Waagerechtes Feld, Gleichgewicht; α zur Vertikalen. Die Steigung im F-q-Diagramm ist E."
+            "text": "Waagerechtes Feld, Gleichgewicht; $\\alpha$ zur Vertikalen. Die Steigung im $F - q$-Diagramm ist E."
           }
         ],
         "quantities": [
           {
             "symbol": "\\vec F_{\\mathrm{el}}",
-            "meaning": "Elektrische Kraft als Vektor: Betrag und Richtung. F_el ohne Pfeil ist ihr Betrag.",
+            "meaning": "Elektrische Kraft als Vektor: Betrag und Richtung. $F_{\\mathrm{el}}$ ohne Pfeil ist ihr Betrag.",
             "unit": "Newton (N)"
           },
           {
             "symbol": "m",
             "meaning": "Masse des betrachteten Probe- oder bewegten Körpers.",
-            "unit": "Kilogramm (kg)"
+            "unit": "Kilogramm $\\left(\\mathrm{kg}\\right)$"
           },
           {
             "symbol": "g,\\ \\vec g",
-            "meaning": "Gravitationsfeldstärke bzw. Fallbeschleunigung; Pfeil für die Richtung. Erdnah etwa 9,81 m/s².",
-            "unit": "Meter pro Sekunde zum Quadrat (m/s²)"
+            "meaning": "Gravitationsfeldstärke bzw. Fallbeschleunigung; Pfeil für die Richtung. Erdnah etwa $9{,}81\\,\\frac{\\mathrm m}{\\mathrm s^2}$.",
+            "unit": "Meter pro Sekunde zum Quadrat $\\left(\\frac{\\mathrm m}{\\mathrm s^2}\\right)$"
           },
           {
             "symbol": "\\alpha",
@@ -742,7 +742,7 @@
           {
             "symbol": "\\vec E_{\\mathrm{innen}}",
             "meaning": "Resultierende elektrische Feldstärke im Inneren des Leiters im elektrostatischen Gleichgewicht.",
-            "unit": "Newton pro Coulomb (N/C)"
+            "unit": "Newton pro Coulomb $\\left(\\frac{\\mathrm N}{\\mathrm C}\\right)$"
           }
         ]
       },
@@ -787,7 +787,7 @@
           {
             "symbol": "E,\\ \\vec E",
             "meaning": "Elektrische Feldstärke; E ist der Betrag, der Pfeil kennzeichnet zusätzlich die Richtung. Hier bedeutet E ohne Energieindex Feldstärke.",
-            "unit": "Newton pro Coulomb (N/C), gleich Volt pro Meter (V/m)"
+            "unit": "Newton pro Coulomb $\\left(\\frac{\\mathrm N}{\\mathrm C}\\right)$, gleich Volt pro Meter $\\left(\\frac{\\mathrm V}{\\mathrm m}\\right)$"
           }
         ]
       }
@@ -827,16 +827,16 @@
           {
             "symbol": "\\varphi",
             "meaning": "Elektrisches Potential: potentielle Energie pro Ladung gegenüber einem festgelegten Bezugspunkt.",
-            "unit": "Volt (V), gleich Joule pro Coulomb (J/C)"
+            "unit": "Volt (V), gleich Joule pro Coulomb $\\left(\\frac{\\mathrm J}{\\mathrm C}\\right)$"
           },
           {
             "symbol": "\\Delta E_{\\mathrm{pot}}",
-            "meaning": "Änderung der potentiellen Energie: E_pot,B − E_pot,A. Ein negativer Wert bedeutet Abnahme.",
+            "meaning": "Änderung der potentiellen Energie: $E_{\\mathrm{pot},B}-E_{\\mathrm{pot},A}$. Ein negativer Wert bedeutet Abnahme.",
             "unit": "Joule (J)"
           },
           {
             "symbol": "\\Delta\\varphi",
-            "meaning": "Potentialänderung φ_B − φ_A bei Bewegung von A nach B.",
+            "meaning": "Potentialänderung $\\varphi _{B} - \\varphi _{A}$ bei Bewegung von A nach B.",
             "unit": "Volt (V)"
           }
         ]
@@ -860,7 +860,7 @@
           {
             "symbol": "\\varphi",
             "meaning": "Elektrisches Potential: potentielle Energie pro Ladung gegenüber einem festgelegten Bezugspunkt.",
-            "unit": "Volt (V), gleich Joule pro Coulomb (J/C)"
+            "unit": "Volt (V), gleich Joule pro Coulomb $\\left(\\frac{\\mathrm J}{\\mathrm C}\\right)$"
           },
           {
             "symbol": "E_{\\mathrm{pot}}",
@@ -884,8 +884,8 @@
           },
           {
             "symbol": "\\varepsilon_0",
-            "meaning": "Permittivität des Vakuums, auch elektrische Feldkonstante; etwa 8,854 · 10⁻¹² F/m.",
-            "unit": "Farad pro Meter (F/m)"
+            "meaning": "Permittivität des Vakuums, auch elektrische Feldkonstante; etwa $8{,}854 \\cdot 10^{-12}\\,\\frac{\\mathrm F}{\\mathrm m}$.",
+            "unit": "Farad pro Meter $\\left(\\frac{\\mathrm F}{\\mathrm m}\\right)$"
           },
           {
             "symbol": "\\pi",
@@ -906,13 +906,13 @@
             "tex": "1\\,\\mathrm V=1\\,\\frac{\\mathrm J}{\\mathrm C}"
           },
           {
-            "text": "Hier gilt durchgehend diese Vorzeichenkonvention für U_AB."
+            "text": "Hier gilt durchgehend diese Vorzeichenkonvention für $U_{\\mathrm{AB}}$."
           }
         ],
         "quantities": [
           {
             "symbol": "U_{AB}",
-            "meaning": "Spannung φ_A − φ_B; Vertauschen von A und B kehrt das Vorzeichen um.",
+            "meaning": "Spannung $\\varphi _{A} - \\varphi _{B}$; Vertauschen von A und B kehrt das Vorzeichen um.",
             "unit": "Volt (V)"
           },
           {
@@ -946,11 +946,11 @@
           {
             "symbol": "\\varphi",
             "meaning": "Elektrisches Potential: potentielle Energie pro Ladung gegenüber einem festgelegten Bezugspunkt.",
-            "unit": "Volt (V), gleich Joule pro Coulomb (J/C)"
+            "unit": "Volt (V), gleich Joule pro Coulomb $\\left(\\frac{\\mathrm J}{\\mathrm C}\\right)$"
           },
           {
             "symbol": "U_{AB}",
-            "meaning": "Spannung φ_A − φ_B; Vertauschen von A und B kehrt das Vorzeichen um.",
+            "meaning": "Spannung $\\varphi _{A} - \\varphi _{B}$; Vertauschen von A und B kehrt das Vorzeichen um.",
             "unit": "Volt (V)"
           },
           {
@@ -972,13 +972,13 @@
             "tex": "\\Delta E_{\\mathrm{kin}}=q\\cdot U_{AB}\\quad\\text{(nur elektrische Kraft)}"
           },
           {
-            "text": "Für eine positive Ladung bei U_AB > 0 gilt: Die potentielle Energie nimmt ab, die kinetische Energie nimmt zu. Bei geführter Bewegung kann Energie stattdessen an eine äußere Vorrichtung übertragen werden."
+            "text": "Für eine positive Ladung bei $U_{\\mathrm{AB}} > 0$ gilt: Die potentielle Energie nimmt ab, die kinetische Energie nimmt zu. Bei geführter Bewegung kann Energie stattdessen an eine äußere Vorrichtung übertragen werden."
           }
         ],
         "quantities": [
           {
             "symbol": "\\Delta E_{\\mathrm{pot}}",
-            "meaning": "Änderung der potentiellen Energie: E_pot,B − E_pot,A. Ein negativer Wert bedeutet Abnahme.",
+            "meaning": "Änderung der potentiellen Energie: $E_{\\mathrm{pot},B}-E_{\\mathrm{pot},A}$. Ein negativer Wert bedeutet Abnahme.",
             "unit": "Joule (J)"
           },
           {
@@ -993,7 +993,7 @@
           },
           {
             "symbol": "U_{AB}",
-            "meaning": "Spannung φ_A − φ_B; Vertauschen von A und B kehrt das Vorzeichen um.",
+            "meaning": "Spannung $\\varphi _{A} - \\varphi _{B}$; Vertauschen von A und B kehrt das Vorzeichen um.",
             "unit": "Volt (V)"
           }
         ]
@@ -1017,11 +1017,11 @@
           {
             "symbol": "E,\\ \\vec E",
             "meaning": "Elektrische Feldstärke; E ist der Betrag, der Pfeil kennzeichnet zusätzlich die Richtung. Hier bedeutet E ohne Energieindex Feldstärke.",
-            "unit": "Newton pro Coulomb (N/C), gleich Volt pro Meter (V/m)"
+            "unit": "Newton pro Coulomb $\\left(\\frac{\\mathrm N}{\\mathrm C}\\right)$, gleich Volt pro Meter $\\left(\\frac{\\mathrm V}{\\mathrm m}\\right)$"
           },
           {
             "symbol": "U_{AB}",
-            "meaning": "Spannung φ_A − φ_B; Vertauschen von A und B kehrt das Vorzeichen um.",
+            "meaning": "Spannung $\\varphi _{A} - \\varphi _{B}$; Vertauschen von A und B kehrt das Vorzeichen um.",
             "unit": "Volt (V)"
           },
           {
@@ -1031,7 +1031,7 @@
           },
           {
             "symbol": "\\Delta\\varphi",
-            "meaning": "Potentialänderung φ_B − φ_A bei Bewegung von A nach B.",
+            "meaning": "Potentialänderung $\\varphi _{B} - \\varphi _{A}$ bei Bewegung von A nach B.",
             "unit": "Volt (V)"
           },
           {
@@ -1042,7 +1042,7 @@
         ]
       }
     ],
-    "note": "Feldstärke E und Energie E_pot sind verschiedene Größen. Die Indizes kennzeichnen hier die Energien."
+    "note": "Feldstärke E und Energie $E_{\\mathrm{pot}}$ sind verschiedene Größen. Die Indizes kennzeichnen hier die Energien."
   },
   {
     "id": 5,
@@ -1051,7 +1051,7 @@
       {
         "id": 29,
         "term": "Kondensator",
-        "explanation": "Bauteil aus zwei gegeneinander isolierten Leitern. Bei der Ladungstrennung tragen sie die Ladungen +Q und −Q; zwischen ihnen entsteht eine Spannung.",
+        "explanation": "Bauteil aus zwei gegeneinander isolierten Leitern. Bei der Ladungstrennung tragen sie die Ladungen $+Q$ und $-Q$; zwischen ihnen entsteht eine Spannung.",
         "details": [
           {
             "tex": "Q=C\\cdot U"
@@ -1063,7 +1063,7 @@
         "quantities": [
           {
             "symbol": "Q",
-            "meaning": "Positiver Betrag der Ladung auf einer Kondensatorplatte; die andere trägt −Q.",
+            "meaning": "Positiver Betrag der Ladung auf einer Kondensatorplatte; die andere trägt $-Q$.",
             "unit": "Coulomb (C)"
           },
           {
@@ -1097,7 +1097,7 @@
           {
             "symbol": "E,\\ \\vec E",
             "meaning": "Elektrische Feldstärke; E ist der Betrag, der Pfeil kennzeichnet zusätzlich die Richtung. Hier bedeutet E ohne Energieindex Feldstärke.",
-            "unit": "Newton pro Coulomb (N/C), gleich Volt pro Meter (V/m)"
+            "unit": "Newton pro Coulomb $\\left(\\frac{\\mathrm N}{\\mathrm C}\\right)$, gleich Volt pro Meter $\\left(\\frac{\\mathrm V}{\\mathrm m}\\right)$"
           },
           {
             "symbol": "U",
@@ -1116,8 +1116,8 @@
           },
           {
             "symbol": "\\varepsilon_0",
-            "meaning": "Permittivität des Vakuums, auch elektrische Feldkonstante; etwa 8,854 · 10⁻¹² F/m.",
-            "unit": "Farad pro Meter (F/m)"
+            "meaning": "Permittivität des Vakuums, auch elektrische Feldkonstante; etwa $8{,}854 \\cdot 10^{-12}\\,\\frac{\\mathrm F}{\\mathrm m}$.",
+            "unit": "Farad pro Meter $\\left(\\frac{\\mathrm F}{\\mathrm m}\\right)$"
           },
           {
             "symbol": "\\varepsilon_r",
@@ -1127,7 +1127,7 @@
           {
             "symbol": "A",
             "meaning": "Überlappende Fläche einer Kondensatorplatte.",
-            "unit": "Quadratmeter (m²)"
+            "unit": "Quadratmeter $\\left(\\mathrm{m}^2\\right)$"
           }
         ]
       },
@@ -1154,7 +1154,7 @@
           },
           {
             "symbol": "Q",
-            "meaning": "Positiver Betrag der Ladung auf einer Kondensatorplatte; die andere trägt −Q.",
+            "meaning": "Positiver Betrag der Ladung auf einer Kondensatorplatte; die andere trägt $-Q$.",
             "unit": "Coulomb (C)"
           },
           {
@@ -1165,7 +1165,7 @@
           {
             "symbol": "A",
             "meaning": "Überlappende Fläche einer Kondensatorplatte.",
-            "unit": "Quadratmeter (m²)"
+            "unit": "Quadratmeter $\\left(\\mathrm{m}^2\\right)$"
           },
           {
             "symbol": "d",
@@ -1183,14 +1183,14 @@
             "tex": "\\varepsilon_0\\approx8{,}854\\cdot10^{-12}\\,\\frac{\\mathrm F}{\\mathrm m}"
           },
           {
-            "text": "Formelzeichen ε₀. Gerundeter Wert."
+            "text": "Formelzeichen $\\varepsilon _{0}$. Gerundeter Wert."
           }
         ],
         "quantities": [
           {
             "symbol": "\\varepsilon_0",
-            "meaning": "Permittivität des Vakuums, auch elektrische Feldkonstante; etwa 8,854 · 10⁻¹² F/m.",
-            "unit": "Farad pro Meter (F/m)"
+            "meaning": "Permittivität des Vakuums, auch elektrische Feldkonstante; etwa $8{,}854 \\cdot 10^{-12}\\,\\frac{\\mathrm F}{\\mathrm m}$.",
+            "unit": "Farad pro Meter $\\left(\\frac{\\mathrm F}{\\mathrm m}\\right)$"
           }
         ]
       },
@@ -1203,7 +1203,7 @@
             "tex": "\\varepsilon_r=\\frac{C}{C_{\\mathrm{Vakuum}}}"
           },
           {
-            "text": "Im Vakuum εᵣ = 1, in Luft näherungsweise 1. Für übliche Dielektrika in der Elektrostatik größer als 1."
+            "text": "Im Vakuum $\\varepsilon _{r} = 1$, in Luft näherungsweise 1. Für übliche Dielektrika in der Elektrostatik größer als 1."
           }
         ],
         "quantities": [
@@ -1249,13 +1249,13 @@
           },
           {
             "symbol": "Q",
-            "meaning": "Positiver Betrag der Ladung auf einer Kondensatorplatte; die andere trägt −Q.",
+            "meaning": "Positiver Betrag der Ladung auf einer Kondensatorplatte; die andere trägt $-Q$.",
             "unit": "Coulomb (C)"
           },
           {
             "symbol": "E,\\ \\vec E",
             "meaning": "Elektrische Feldstärke; E ist der Betrag, der Pfeil kennzeichnet zusätzlich die Richtung. Hier bedeutet E ohne Energieindex Feldstärke.",
-            "unit": "Newton pro Coulomb (N/C), gleich Volt pro Meter (V/m)"
+            "unit": "Newton pro Coulomb $\\left(\\frac{\\mathrm N}{\\mathrm C}\\right)$, gleich Volt pro Meter $\\left(\\frac{\\mathrm V}{\\mathrm m}\\right)$"
           }
         ]
       },
@@ -1292,7 +1292,7 @@
           },
           {
             "symbol": "Q",
-            "meaning": "Positiver Betrag der Ladung auf einer Kondensatorplatte; die andere trägt −Q.",
+            "meaning": "Positiver Betrag der Ladung auf einer Kondensatorplatte; die andere trägt $-Q$.",
             "unit": "Coulomb (C)"
           }
         ]
@@ -1319,7 +1319,7 @@
             "text": "Einheit Ampere (A). Die zweite Formel gilt bei konstanter Kapazität und zur Ladung passender Stromrichtung."
           },
           {
-            "text": "dQ/dt bezeichnet die momentane Änderungsrate der Ladung; dU_C/dt die Steigung des Spannungs-Zeit-Graphen. Das d ist hier das Zeichen einer Ableitung, kein Plattenabstand."
+            "text": "$\\frac{\\mathrm dQ}{\\mathrm dt}$ bezeichnet die momentane Änderungsrate der Ladung; $\\frac{\\mathrm dU_C}{\\mathrm dt}$ die Steigung des Spannungs-Zeit-Graphen. Das d ist hier das Zeichen einer Ableitung, kein Plattenabstand."
           }
         ],
         "quantities": [
@@ -1330,7 +1330,7 @@
           },
           {
             "symbol": "Q",
-            "meaning": "Positiver Betrag der Ladung auf einer Kondensatorplatte; die andere trägt −Q.",
+            "meaning": "Positiver Betrag der Ladung auf einer Kondensatorplatte; die andere trägt $-Q$.",
             "unit": "Coulomb (C)"
           },
           {
@@ -1345,7 +1345,7 @@
           },
           {
             "symbol": "U_C",
-            "meaning": "Spannung am Kondensator; U_C(t) ist ihr Wert zum Zeitpunkt t.",
+            "meaning": "Spannung am Kondensator; $U_{C}\\,\\left(t\\right)$ ist ihr Wert zum Zeitpunkt t.",
             "unit": "Volt (V)"
           }
         ]
@@ -1413,7 +1413,7 @@
           },
           {
             "symbol": "U_C",
-            "meaning": "Spannung am Kondensator; U_C(t) ist ihr Wert zum Zeitpunkt t.",
+            "meaning": "Spannung am Kondensator; $U_{C}\\,\\left(t\\right)$ ist ihr Wert zum Zeitpunkt t.",
             "unit": "Volt (V)"
           },
           {
@@ -1426,7 +1426,7 @@
       {
         "id": 39,
         "term": "Aufladevorgang",
-        "explanation": "Ein zunächst ungeladener Kondensator wird über R an die Spannung U₀ gelegt. U_C steigt von 0 auf U₀; der Ladestrom fällt von U₀/R auf 0.",
+        "explanation": "Ein zunächst ungeladener Kondensator wird über R an die Spannung $U_{0}$ gelegt. $U_{C}$ steigt von 0 auf $U_{0}$; der Ladestrom fällt von $\\frac{U_{0}}{R}$ auf 0.",
         "details": [
           {
             "tex": "U_C(t)=U_0\\cdot\\left(1-\\mathrm e^{-\\frac{t}{\\tau}}\\right)"
@@ -1441,7 +1441,7 @@
         "quantities": [
           {
             "symbol": "U_C",
-            "meaning": "Spannung am Kondensator; U_C(t) ist ihr Wert zum Zeitpunkt t.",
+            "meaning": "Spannung am Kondensator; $U_{C}\\,\\left(t\\right)$ ist ihr Wert zum Zeitpunkt t.",
             "unit": "Volt (V)"
           },
           {
@@ -1479,7 +1479,7 @@
       {
         "id": 40,
         "term": "Entladevorgang",
-        "explanation": "Ein auf U₀ geladener Kondensator wird bei abgetrennter Quelle über R entladen. Spannung und Strombetrag fallen exponentiell gegen null.",
+        "explanation": "Ein auf $U_{0}$ geladener Kondensator wird bei abgetrennter Quelle über R entladen. Spannung und Strombetrag fallen exponentiell gegen null.",
         "details": [
           {
             "tex": "U_C(t)=U_0\\cdot\\mathrm e^{-\\frac{t}{\\tau}}"
@@ -1494,7 +1494,7 @@
         "quantities": [
           {
             "symbol": "U_C",
-            "meaning": "Spannung am Kondensator; U_C(t) ist ihr Wert zum Zeitpunkt t.",
+            "meaning": "Spannung am Kondensator; $U_{C}\\,\\left(t\\right)$ ist ihr Wert zum Zeitpunkt t.",
             "unit": "Volt (V)"
           },
           {
@@ -1541,7 +1541,7 @@
             "tex": "[\\tau]=\\mathrm s"
           },
           {
-            "text": "Größeres R oder C verlangsamt den Vorgang. Nach 5τ ist er praktisch abgeschlossen (> 99 % geladen)."
+            "text": "Größeres R oder C verlangsamt den Vorgang. Nach $5\\,\\tau$ ist er praktisch abgeschlossen (> 99 % geladen)."
           }
         ],
         "quantities": [
@@ -1571,13 +1571,13 @@
             "tex": "f(t)=f(0)\\cdot\\mathrm e^{-\\frac{t}{\\tau}}"
           },
           {
-            "text": "e ≈ 2,718 ist hier die Eulersche Zahl, nicht die Elementarladung."
+            "text": "$e \\approx 2{,}718$ ist hier die Eulersche Zahl, nicht die Elementarladung."
           }
         ],
         "quantities": [
           {
             "symbol": "f(t)",
-            "meaning": "Zeitabhängige Größe, z. B. Spannung oder Stromstärke; f(0) ist ihr Anfangswert.",
+            "meaning": "Zeitabhängige Größe, z. B. Spannung oder Stromstärke; $f\\,\\left(0\\right)$ ist ihr Anfangswert.",
             "unit": "abhängig von der betrachteten Größe, z. B. V oder A"
           },
           {
@@ -1600,7 +1600,7 @@
       {
         "id": 43,
         "term": "U t Diagramm und I t Diagramm",
-        "explanation": "Zeitdiagramme von Spannung und Strom. Die Steigung des U_C-t-Graphen ist proportional zum Strom; die vorzeichenbehaftete Fläche unter dem I-t-Graphen ist die Ladungsänderung.",
+        "explanation": "Zeitdiagramme von Spannung und Strom. Die Steigung des $U_{C} - t$-Graphen ist proportional zum Strom; die vorzeichenbehaftete Fläche unter dem $I - t$-Graphen ist die Ladungsänderung.",
         "details": [
           {
             "tex": "I=C\\cdot\\frac{\\mathrm dU_C}{\\mathrm dt}"
@@ -1609,10 +1609,10 @@
             "tex": "\\Delta Q=\\int_{t_1}^{t_2}I(t)\\,\\mathrm dt"
           },
           {
-            "text": "Laden: U_C steigt immer flacher. Entladen: U_C fällt immer flacher; I ist bei obiger Zählrichtung negativ."
+            "text": "Laden: $U_{C}$ steigt immer flacher. Entladen: $U_{C}$ fällt immer flacher; I ist bei obiger Zählrichtung negativ."
           },
           {
-            "text": "Das Integral summiert die vorzeichenbehaftete Fläche unter dem Strom-Zeit-Graphen zwischen t₁ und t₂. dU_C/dt ist die momentane Steigung des Spannungsgraphen."
+            "text": "Das Integral summiert die vorzeichenbehaftete Fläche unter dem Strom-Zeit-Graphen zwischen $t_{1}$ und $t_{2}$. $\\frac{\\mathrm dU_C}{\\mathrm dt}$ ist die momentane Steigung des Spannungsgraphen."
           }
         ],
         "quantities": [
@@ -1628,7 +1628,7 @@
           },
           {
             "symbol": "U_C",
-            "meaning": "Spannung am Kondensator; U_C(t) ist ihr Wert zum Zeitpunkt t.",
+            "meaning": "Spannung am Kondensator; $U_{C}\\,\\left(t\\right)$ ist ihr Wert zum Zeitpunkt t.",
             "unit": "Volt (V)"
           },
           {
@@ -1654,7 +1654,7 @@
         ]
       }
     ],
-    "note": "U₀ bezeichnet beim Laden die konstante Quellenspannung, beim Entladen die Anfangsspannung des Kondensators."
+    "note": "$U_{0}$ bezeichnet beim Laden die konstante Quellenspannung, beim Entladen die Anfangsspannung des Kondensators."
   },
   {
     "id": 7,
@@ -1681,12 +1681,12 @@
           {
             "symbol": "m",
             "meaning": "Masse des betrachteten Probe- oder bewegten Körpers.",
-            "unit": "Kilogramm (kg)"
+            "unit": "Kilogramm $\\left(\\mathrm{kg}\\right)$"
           },
           {
             "symbol": "g,\\ \\vec g",
-            "meaning": "Gravitationsfeldstärke bzw. Fallbeschleunigung; Pfeil für die Richtung. Erdnah etwa 9,81 m/s².",
-            "unit": "Meter pro Sekunde zum Quadrat (m/s²)"
+            "meaning": "Gravitationsfeldstärke bzw. Fallbeschleunigung; Pfeil für die Richtung. Erdnah etwa $9{,}81\\,\\frac{\\mathrm m}{\\mathrm s^2}$.",
+            "unit": "Meter pro Sekunde zum Quadrat $\\left(\\frac{\\mathrm m}{\\mathrm s^2}\\right)$"
           }
         ]
       },
@@ -1702,14 +1702,14 @@
             "tex": "[g]=\\frac{\\mathrm N}{\\mathrm{kg}}=\\frac{\\mathrm m}{\\mathrm{s^2}}"
           },
           {
-            "text": "Nahe der Erdoberfläche beträgt g ungefähr 9,81 m/s²."
+            "text": "Nahe der Erdoberfläche beträgt g ungefähr $9{,}81\\,\\frac{\\mathrm m}{\\mathrm s^2}$."
           }
         ],
         "quantities": [
           {
             "symbol": "g,\\ \\vec g",
-            "meaning": "Gravitationsfeldstärke bzw. Fallbeschleunigung; Pfeil für die Richtung. Erdnah etwa 9,81 m/s².",
-            "unit": "Meter pro Sekunde zum Quadrat (m/s²)"
+            "meaning": "Gravitationsfeldstärke bzw. Fallbeschleunigung; Pfeil für die Richtung. Erdnah etwa $9{,}81\\,\\frac{\\mathrm m}{\\mathrm s^2}$.",
+            "unit": "Meter pro Sekunde zum Quadrat $\\left(\\frac{\\mathrm m}{\\mathrm s^2}\\right)$"
           },
           {
             "symbol": "F_G,\\ \\vec F_G",
@@ -1719,7 +1719,7 @@
           {
             "symbol": "m",
             "meaning": "Masse des betrachteten Probe- oder bewegten Körpers.",
-            "unit": "Kilogramm (kg)"
+            "unit": "Kilogramm $\\left(\\mathrm{kg}\\right)$"
           }
         ]
       },
@@ -1732,7 +1732,7 @@
             "tex": "F_G=G\\cdot\\frac{m_1\\cdot m_2}{r^2}"
           },
           {
-            "text": "G: Gravitationskonstante. Wie die Coulombkraft nimmt die Kraft mit 1/r² ab."
+            "text": "G: Gravitationskonstante. Wie die Coulombkraft nimmt die Kraft mit $\\frac{1}{r^{2}}$ ab."
           }
         ],
         "quantities": [
@@ -1743,18 +1743,18 @@
           },
           {
             "symbol": "G",
-            "meaning": "Gravitationskonstante; ungefähr 6,674 · 10⁻¹¹ N · m²/kg².",
+            "meaning": "Gravitationskonstante; ungefähr $\\frac{6{,}674 \\cdot 10^{-11}\\,\\mathrm{N} \\cdot \\mathrm{m}^2}{\\mathrm{kg}^{2}}$.",
             "unit": "Newton mal Quadratmeter pro Kilogramm zum Quadrat ($\\frac{\\mathrm N\\cdot\\mathrm{m^2}}{\\mathrm{kg^2}}$)"
           },
           {
             "symbol": "m_1",
             "meaning": "Masse des ersten Körpers.",
-            "unit": "Kilogramm (kg)"
+            "unit": "Kilogramm $\\left(\\mathrm{kg}\\right)$"
           },
           {
             "symbol": "m_2",
             "meaning": "Masse des zweiten Körpers.",
-            "unit": "Kilogramm (kg)"
+            "unit": "Kilogramm $\\left(\\mathrm{kg}\\right)$"
           },
           {
             "symbol": "r",
@@ -1781,7 +1781,7 @@
         "quantities": [
           {
             "symbol": "\\vec F_{\\mathrm{el}}",
-            "meaning": "Elektrische Kraft als Vektor: Betrag und Richtung. F_el ohne Pfeil ist ihr Betrag.",
+            "meaning": "Elektrische Kraft als Vektor: Betrag und Richtung. $F_{\\mathrm{el}}$ ohne Pfeil ist ihr Betrag.",
             "unit": "Newton (N)"
           },
           {
@@ -1792,7 +1792,7 @@
           {
             "symbol": "E,\\ \\vec E",
             "meaning": "Elektrische Feldstärke; E ist der Betrag, der Pfeil kennzeichnet zusätzlich die Richtung. Hier bedeutet E ohne Energieindex Feldstärke.",
-            "unit": "Newton pro Coulomb (N/C), gleich Volt pro Meter (V/m)"
+            "unit": "Newton pro Coulomb $\\left(\\frac{\\mathrm N}{\\mathrm C}\\right)$, gleich Volt pro Meter $\\left(\\frac{\\mathrm V}{\\mathrm m}\\right)$"
           },
           {
             "symbol": "F_G,\\ \\vec F_G",
@@ -1802,12 +1802,12 @@
           {
             "symbol": "m",
             "meaning": "Masse des betrachteten Probe- oder bewegten Körpers.",
-            "unit": "Kilogramm (kg)"
+            "unit": "Kilogramm $\\left(\\mathrm{kg}\\right)$"
           },
           {
             "symbol": "g,\\ \\vec g",
-            "meaning": "Gravitationsfeldstärke bzw. Fallbeschleunigung; Pfeil für die Richtung. Erdnah etwa 9,81 m/s².",
-            "unit": "Meter pro Sekunde zum Quadrat (m/s²)"
+            "meaning": "Gravitationsfeldstärke bzw. Fallbeschleunigung; Pfeil für die Richtung. Erdnah etwa $9{,}81\\,\\frac{\\mathrm m}{\\mathrm s^2}$.",
+            "unit": "Meter pro Sekunde zum Quadrat $\\left(\\frac{\\mathrm m}{\\mathrm s^2}\\right)$"
           }
         ]
       },
@@ -1823,19 +1823,19 @@
             "tex": "\\vec g=\\text{konstant}"
           },
           {
-            "text": "Elektrische Beschleunigung hängt von q/m ab; die Fallbeschleunigung ist unabhängig von der Probemasse."
+            "text": "Elektrische Beschleunigung hängt von $\\frac{q}{m}$ ab; die Fallbeschleunigung ist unabhängig von der Probemasse."
           }
         ],
         "quantities": [
           {
             "symbol": "E,\\ \\vec E",
             "meaning": "Elektrische Feldstärke; E ist der Betrag, der Pfeil kennzeichnet zusätzlich die Richtung. Hier bedeutet E ohne Energieindex Feldstärke.",
-            "unit": "Newton pro Coulomb (N/C), gleich Volt pro Meter (V/m)"
+            "unit": "Newton pro Coulomb $\\left(\\frac{\\mathrm N}{\\mathrm C}\\right)$, gleich Volt pro Meter $\\left(\\frac{\\mathrm V}{\\mathrm m}\\right)$"
           },
           {
             "symbol": "g,\\ \\vec g",
-            "meaning": "Gravitationsfeldstärke bzw. Fallbeschleunigung; Pfeil für die Richtung. Erdnah etwa 9,81 m/s².",
-            "unit": "Meter pro Sekunde zum Quadrat (m/s²)"
+            "meaning": "Gravitationsfeldstärke bzw. Fallbeschleunigung; Pfeil für die Richtung. Erdnah etwa $9{,}81\\,\\frac{\\mathrm m}{\\mathrm s^2}$.",
+            "unit": "Meter pro Sekunde zum Quadrat $\\left(\\frac{\\mathrm m}{\\mathrm s^2}\\right)$"
           },
           {
             "symbol": "q",
@@ -1845,7 +1845,7 @@
           {
             "symbol": "m",
             "meaning": "Masse des betrachteten Probe- oder bewegten Körpers.",
-            "unit": "Kilogramm (kg)"
+            "unit": "Kilogramm $\\left(\\mathrm{kg}\\right)$"
           }
         ]
       },
@@ -1868,7 +1868,7 @@
           {
             "symbol": "E,\\ \\vec E",
             "meaning": "Elektrische Feldstärke; E ist der Betrag, der Pfeil kennzeichnet zusätzlich die Richtung. Hier bedeutet E ohne Energieindex Feldstärke.",
-            "unit": "Newton pro Coulomb (N/C), gleich Volt pro Meter (V/m)"
+            "unit": "Newton pro Coulomb $\\left(\\frac{\\mathrm N}{\\mathrm C}\\right)$, gleich Volt pro Meter $\\left(\\frac{\\mathrm V}{\\mathrm m}\\right)$"
           },
           {
             "symbol": "Q",
@@ -1882,8 +1882,8 @@
           },
           {
             "symbol": "\\varepsilon_0",
-            "meaning": "Permittivität des Vakuums, auch elektrische Feldkonstante; etwa 8,854 · 10⁻¹² F/m.",
-            "unit": "Farad pro Meter (F/m)"
+            "meaning": "Permittivität des Vakuums, auch elektrische Feldkonstante; etwa $8{,}854 \\cdot 10^{-12}\\,\\frac{\\mathrm F}{\\mathrm m}$.",
+            "unit": "Farad pro Meter $\\left(\\frac{\\mathrm F}{\\mathrm m}\\right)$"
           },
           {
             "symbol": "\\pi",
@@ -1892,18 +1892,18 @@
           },
           {
             "symbol": "g,\\ \\vec g",
-            "meaning": "Gravitationsfeldstärke bzw. Fallbeschleunigung; Pfeil für die Richtung. Erdnah etwa 9,81 m/s².",
-            "unit": "Meter pro Sekunde zum Quadrat (m/s²)"
+            "meaning": "Gravitationsfeldstärke bzw. Fallbeschleunigung; Pfeil für die Richtung. Erdnah etwa $9{,}81\\,\\frac{\\mathrm m}{\\mathrm s^2}$.",
+            "unit": "Meter pro Sekunde zum Quadrat $\\left(\\frac{\\mathrm m}{\\mathrm s^2}\\right)$"
           },
           {
             "symbol": "G",
-            "meaning": "Gravitationskonstante; ungefähr 6,674 · 10⁻¹¹ N · m²/kg².",
+            "meaning": "Gravitationskonstante; ungefähr $\\frac{6{,}674 \\cdot 10^{-11}\\,\\mathrm{N} \\cdot \\mathrm{m}^2}{\\mathrm{kg}^{2}}$.",
             "unit": "Newton mal Quadratmeter pro Kilogramm zum Quadrat ($\\frac{\\mathrm N\\cdot\\mathrm{m^2}}{\\mathrm{kg^2}}$)"
           },
           {
             "symbol": "M",
             "meaning": "Masse der Quelle des Gravitationsfeldes.",
-            "unit": "Kilogramm (kg)"
+            "unit": "Kilogramm $\\left(\\mathrm{kg}\\right)$"
           }
         ]
       }
@@ -1926,19 +1926,19 @@
             "tex": "\\vec a=\\frac{q}{m}\\cdot\\vec E"
           },
           {
-            "text": "Die elektrische Beschleunigung hängt vom Verhältnis q/m ab."
+            "text": "Die elektrische Beschleunigung hängt vom Verhältnis $\\frac{q}{m}$ ab."
           }
         ],
         "quantities": [
           {
             "symbol": "m",
             "meaning": "Masse des betrachteten Probe- oder bewegten Körpers.",
-            "unit": "Kilogramm (kg)"
+            "unit": "Kilogramm $\\left(\\mathrm{kg}\\right)$"
           },
           {
             "symbol": "a,\\ \\vec a",
             "meaning": "Beschleunigung des Teilchens; Pfeil kennzeichnet die Richtung.",
-            "unit": "Meter pro Sekunde zum Quadrat (m/s²)"
+            "unit": "Meter pro Sekunde zum Quadrat $\\left(\\frac{\\mathrm m}{\\mathrm s^2}\\right)$"
           },
           {
             "symbol": "\\vec F_{\\mathrm{res}}",
@@ -1953,7 +1953,7 @@
           {
             "symbol": "E,\\ \\vec E",
             "meaning": "Elektrische Feldstärke; E ist der Betrag, der Pfeil kennzeichnet zusätzlich die Richtung. Hier bedeutet E ohne Energieindex Feldstärke.",
-            "unit": "Newton pro Coulomb (N/C), gleich Volt pro Meter (V/m)"
+            "unit": "Newton pro Coulomb $\\left(\\frac{\\mathrm N}{\\mathrm C}\\right)$, gleich Volt pro Meter $\\left(\\frac{\\mathrm V}{\\mathrm m}\\right)$"
           }
         ]
       },
@@ -1972,14 +1972,14 @@
             "tex": "s(t)=s_0+v_0\\cdot t+\\frac{1}{2}\\cdot a\\cdot t^2"
           },
           {
-            "text": "Die s-Achse zeigt in Feldrichtung; q und v₀ werden mit Vorzeichen eingesetzt."
+            "text": "Die s-Achse zeigt in Feldrichtung; q und $v_{0}$ werden mit Vorzeichen eingesetzt."
           }
         ],
         "quantities": [
           {
             "symbol": "a,\\ \\vec a",
             "meaning": "Beschleunigung des Teilchens; Pfeil kennzeichnet die Richtung.",
-            "unit": "Meter pro Sekunde zum Quadrat (m/s²)"
+            "unit": "Meter pro Sekunde zum Quadrat $\\left(\\frac{\\mathrm m}{\\mathrm s^2}\\right)$"
           },
           {
             "symbol": "q",
@@ -1989,22 +1989,22 @@
           {
             "symbol": "E,\\ \\vec E",
             "meaning": "Elektrische Feldstärke; E ist der Betrag, der Pfeil kennzeichnet zusätzlich die Richtung. Hier bedeutet E ohne Energieindex Feldstärke.",
-            "unit": "Newton pro Coulomb (N/C), gleich Volt pro Meter (V/m)"
+            "unit": "Newton pro Coulomb $\\left(\\frac{\\mathrm N}{\\mathrm C}\\right)$, gleich Volt pro Meter $\\left(\\frac{\\mathrm V}{\\mathrm m}\\right)$"
           },
           {
             "symbol": "m",
             "meaning": "Masse des betrachteten Probe- oder bewegten Körpers.",
-            "unit": "Kilogramm (kg)"
+            "unit": "Kilogramm $\\left(\\mathrm{kg}\\right)$"
           },
           {
             "symbol": "v",
             "meaning": "Geschwindigkeit entlang der gewählten Achse; in der Energieformel Geschwindigkeitsbetrag.",
-            "unit": "Meter pro Sekunde (m/s)"
+            "unit": "Meter pro Sekunde $\\left(\\frac{\\mathrm m}{\\mathrm s}\\right)$"
           },
           {
             "symbol": "v_0",
-            "meaning": "Anfangsgeschwindigkeit bei t = 0; beim senkrechten Eintritt in x-Richtung.",
-            "unit": "Meter pro Sekunde (m/s)"
+            "meaning": "Anfangsgeschwindigkeit bei $t = 0$; beim senkrechten Eintritt in x-Richtung.",
+            "unit": "Meter pro Sekunde $\\left(\\frac{\\mathrm m}{\\mathrm s}\\right)$"
           },
           {
             "symbol": "t",
@@ -2018,7 +2018,7 @@
           },
           {
             "symbol": "s_0",
-            "meaning": "Anfangsort auf der Bewegungsachse bei t = 0.",
+            "meaning": "Anfangsort auf der Bewegungsachse bei $t = 0$.",
             "unit": "Meter (m)"
           }
         ]
@@ -2038,7 +2038,7 @@
             "tex": "v_x=v_0,\\qquad v_y=\\frac{q\\cdot E}{m}\\cdot t"
           },
           {
-            "text": "Start im Ursprung; x quer zum Feld, y in Feldrichtung; anfänglich v_y = 0."
+            "text": "Start im Ursprung; x quer zum Feld, y in Feldrichtung; anfänglich $v_{y} = 0$."
           }
         ],
         "quantities": [
@@ -2054,8 +2054,8 @@
           },
           {
             "symbol": "v_0",
-            "meaning": "Anfangsgeschwindigkeit bei t = 0; beim senkrechten Eintritt in x-Richtung.",
-            "unit": "Meter pro Sekunde (m/s)"
+            "meaning": "Anfangsgeschwindigkeit bei $t = 0$; beim senkrechten Eintritt in x-Richtung.",
+            "unit": "Meter pro Sekunde $\\left(\\frac{\\mathrm m}{\\mathrm s}\\right)$"
           },
           {
             "symbol": "t",
@@ -2070,22 +2070,22 @@
           {
             "symbol": "E,\\ \\vec E",
             "meaning": "Elektrische Feldstärke; E ist der Betrag, der Pfeil kennzeichnet zusätzlich die Richtung. Hier bedeutet E ohne Energieindex Feldstärke.",
-            "unit": "Newton pro Coulomb (N/C), gleich Volt pro Meter (V/m)"
+            "unit": "Newton pro Coulomb $\\left(\\frac{\\mathrm N}{\\mathrm C}\\right)$, gleich Volt pro Meter $\\left(\\frac{\\mathrm V}{\\mathrm m}\\right)$"
           },
           {
             "symbol": "m",
             "meaning": "Masse des betrachteten Probe- oder bewegten Körpers.",
-            "unit": "Kilogramm (kg)"
+            "unit": "Kilogramm $\\left(\\mathrm{kg}\\right)$"
           },
           {
             "symbol": "v_x",
             "meaning": "Geschwindigkeitskomponente in x-Richtung.",
-            "unit": "Meter pro Sekunde (m/s)"
+            "unit": "Meter pro Sekunde $\\left(\\frac{\\mathrm m}{\\mathrm s}\\right)$"
           },
           {
             "symbol": "v_y",
             "meaning": "Geschwindigkeitskomponente in y-Richtung.",
-            "unit": "Meter pro Sekunde (m/s)"
+            "unit": "Meter pro Sekunde $\\left(\\frac{\\mathrm m}{\\mathrm s}\\right)$"
           }
         ]
       },
@@ -2123,17 +2123,17 @@
           {
             "symbol": "E,\\ \\vec E",
             "meaning": "Elektrische Feldstärke; E ist der Betrag, der Pfeil kennzeichnet zusätzlich die Richtung. Hier bedeutet E ohne Energieindex Feldstärke.",
-            "unit": "Newton pro Coulomb (N/C), gleich Volt pro Meter (V/m)"
+            "unit": "Newton pro Coulomb $\\left(\\frac{\\mathrm N}{\\mathrm C}\\right)$, gleich Volt pro Meter $\\left(\\frac{\\mathrm V}{\\mathrm m}\\right)$"
           },
           {
             "symbol": "m",
             "meaning": "Masse des betrachteten Probe- oder bewegten Körpers.",
-            "unit": "Kilogramm (kg)"
+            "unit": "Kilogramm $\\left(\\mathrm{kg}\\right)$"
           },
           {
             "symbol": "v_0",
-            "meaning": "Anfangsgeschwindigkeit bei t = 0; beim senkrechten Eintritt in x-Richtung.",
-            "unit": "Meter pro Sekunde (m/s)"
+            "meaning": "Anfangsgeschwindigkeit bei $t = 0$; beim senkrechten Eintritt in x-Richtung.",
+            "unit": "Meter pro Sekunde $\\left(\\frac{\\mathrm m}{\\mathrm s}\\right)$"
           },
           {
             "symbol": "L",
@@ -2166,22 +2166,22 @@
           {
             "symbol": "m",
             "meaning": "Masse des betrachteten Probe- oder bewegten Körpers.",
-            "unit": "Kilogramm (kg)"
+            "unit": "Kilogramm $\\left(\\mathrm{kg}\\right)$"
           },
           {
             "symbol": "v",
             "meaning": "Geschwindigkeit entlang der gewählten Achse; in der Energieformel Geschwindigkeitsbetrag.",
-            "unit": "Meter pro Sekunde (m/s)"
+            "unit": "Meter pro Sekunde $\\left(\\frac{\\mathrm m}{\\mathrm s}\\right)$"
           },
           {
             "symbol": "v_x",
             "meaning": "Geschwindigkeitskomponente in x-Richtung.",
-            "unit": "Meter pro Sekunde (m/s)"
+            "unit": "Meter pro Sekunde $\\left(\\frac{\\mathrm m}{\\mathrm s}\\right)$"
           },
           {
             "symbol": "v_y",
             "meaning": "Geschwindigkeitskomponente in y-Richtung.",
-            "unit": "Meter pro Sekunde (m/s)"
+            "unit": "Meter pro Sekunde $\\left(\\frac{\\mathrm m}{\\mathrm s}\\right)$"
           }
         ]
       },
@@ -2197,7 +2197,7 @@
             "tex": "\\Delta E_{\\mathrm{kin}}=q\\cdot U_{AB}"
           },
           {
-            "text": "Nimmt die potentielle Energie ab, steigt die kinetische Energie um denselben Betrag. Δ bezeichnet jeweils Endwert minus Anfangswert."
+            "text": "Nimmt die potentielle Energie ab, steigt die kinetische Energie um denselben Betrag. $\\Delta$ bezeichnet jeweils Endwert minus Anfangswert."
           }
         ],
         "quantities": [
@@ -2223,7 +2223,7 @@
           },
           {
             "symbol": "U_{AB}",
-            "meaning": "Spannung φ_A − φ_B; Vertauschen von A und B kehrt das Vorzeichen um.",
+            "meaning": "Spannung $\\varphi _{A} - \\varphi _{B}$; Vertauschen von A und B kehrt das Vorzeichen um.",
             "unit": "Volt (V)"
           }
         ]
@@ -2231,7 +2231,7 @@
       {
         "id": 56,
         "term": "Beschleunigungsspannung",
-        "explanation": "Spannungsbetrag U_B, den ein Teilchen in beschleunigender Richtung durchläuft. Aus der Ruhe gewinnt es die kinetische Energie |q|U_B.",
+        "explanation": "Spannungsbetrag $U_{B}$, den ein Teilchen in beschleunigender Richtung durchläuft. Aus der Ruhe gewinnt es die kinetische Energie $\\lvert q\\rvert U_B$.",
         "details": [
           {
             "tex": "\\frac{1}{2}\\cdot m\\cdot v^2=|q|\\cdot U_B"
@@ -2247,12 +2247,12 @@
           {
             "symbol": "m",
             "meaning": "Masse des betrachteten Probe- oder bewegten Körpers.",
-            "unit": "Kilogramm (kg)"
+            "unit": "Kilogramm $\\left(\\mathrm{kg}\\right)$"
           },
           {
             "symbol": "v",
             "meaning": "Geschwindigkeit entlang der gewählten Achse; in der Energieformel Geschwindigkeitsbetrag.",
-            "unit": "Meter pro Sekunde (m/s)"
+            "unit": "Meter pro Sekunde $\\left(\\frac{\\mathrm m}{\\mathrm s}\\right)$"
           },
           {
             "symbol": "q",
@@ -2269,7 +2269,7 @@
       {
         "id": 57,
         "term": "Elektronenvolt",
-        "explanation": "Energieeinheit für Teilchen. Ein Elektron gewinnt bei einer beschleunigenden Spannung von 1 V die Energie 1 eV.",
+        "explanation": "Energieeinheit für Teilchen. Ein Elektron gewinnt bei einer beschleunigenden Spannung von $1\\,\\mathrm{V}$ die Energie $1\\,\\mathrm{eV}$.",
         "details": [
           {
             "tex": "1\\,\\mathrm{eV}=1{,}602\\cdot10^{-19}\\,\\mathrm J"
@@ -2281,8 +2281,8 @@
         "quantities": [
           {
             "symbol": "\\mathrm{eV}",
-            "meaning": "Elektronenvolt: Energieeinheit; 1 eV ist die Energieänderung bei Elementarladung und 1 V Beschleunigungsspannung.",
-            "unit": "Energieeinheit; 1 eV ≈ 1,602 · 10⁻¹⁹ J"
+            "meaning": "Elektronenvolt: Energieeinheit; $1\\,\\mathrm{eV}$ ist die Energieänderung bei Elementarladung und $1\\,\\mathrm{V}$ Beschleunigungsspannung.",
+            "unit": "Energieeinheit; $1\\,\\mathrm{eV} \\approx 1{,}602 \\cdot 10^{-19}\\,\\mathrm{J}$"
           },
           {
             "symbol": "e",
