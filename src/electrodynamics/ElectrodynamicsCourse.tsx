@@ -82,7 +82,7 @@ export const electrodynamicsLessons: CourseLesson[] = [
 ];
 
 export default function ElectrodynamicsCourse() {
- return <CoursePage slug="elektrodynamik" title="Elektromagnetisches Feld" intro="Induktion, Generatoren und das Zusammenspiel elektrischer und magnetischer Felder. Dieser Lernbereich heißt im Bildungsplan Elektrodynamik. Wähle ein Kapitel, arbeite Schritt für Schritt und sammle mit jedem Abschlussquiz ein Wort für deinen Merksatz." lessons={electrodynamicsLessons} sources={[
+ return <CoursePage slug="elektrodynamik" title="Elektromagnetische Induktion" intro="Induktion, Generatoren und das Zusammenspiel elektrischer und magnetischer Felder. Dieser Lernbereich heißt im Bildungsplan Elektrodynamik. Wähle ein Kapitel, arbeite Schritt für Schritt und sammle mit jedem Abschlussquiz ein Wort für deinen Merksatz." lessons={electrodynamicsLessons} sources={[
  {label:'Bildungsplan Baden-Württemberg · Physik Leistungsfach 11/12 · Elektrodynamik (Fassung 2022)', url:'https://www.bildungsplaene-bw.de/,Lde/BP2016BW_ALLG_GYM_PH.V2_IK_11-12-LF_02_03'},
  {label:'OpenStax · Faraday’s Law (fachliche Referenz)',url:'https://openstax.org/books/university-physics-volume-2/pages/13-1-faradays-law'},
  {label:'OpenStax · Eddy Currents',url:'https://openstax.org/books/university-physics-volume-2/pages/13-5-eddy-currents'},
