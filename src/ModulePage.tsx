@@ -1,3 +1,5 @@
+import MagneticCourse from "./magnetic/MagneticCourse";
+import ElectrodynamicsCourse from "./electrodynamics/ElectrodynamicsCourse";
 import Link from "./Link";
 import { chapters } from "./chapters";
 import PhysicsLab from "./components/PhysicsLab";
@@ -5,6 +7,8 @@ import SolutionVault from "./components/SolutionVault";
 import ElectricFieldChapter from "./electric/ElectricFieldChapter";
 
 export default function ModulePage({ slug }: { slug: string }) {
+  if (slug === "magnetisches-feld") return <MagneticCourse />;
+  if (slug === "elektrodynamik" || slug === "elektromagnetisches-feld") return <ElectrodynamicsCourse />;
   const chapter = chapters.find((item) => item.slug === slug);
   if (!chapter) return <main className="empty-state"><h1>Kapitel nicht gefunden</h1><Link href="/">Zur Übersicht</Link></main>;
   if (slug === "elektrisches-feld") return <ElectricFieldChapter chapter={chapter} />;
