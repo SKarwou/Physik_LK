@@ -1,3 +1,4 @@
+import FormulaSteps from '../components/FormulaSteps';
 import ExperimentGuide from './ExperimentGuide';
 import { useEffect, useState } from 'react';
 import { MathFormula, MathText } from './Math';
@@ -26,7 +27,12 @@ export function PlateLab() {
     <p>Bei festem U und d bleiben Kraft und Feldstärke an jedem Ort zwischen den idealen Platten gleich. Verdopple q: F verdoppelt sich, E bleibt gleich. Verdopple U: E und F verdoppeln sich. Der Kraftpfeil wächst mit F; bei Randnähe wird er aus Platzgründen gekürzt. Maßgeblich bleibt der angezeigte Kraftbetrag.</p>
     <div className="ef-toolbar"><button onClick={() => { if (run) { setRun(false); } else { setX(5); setRun(true); } }}>{run ? 'Animation pausieren' : 'Energieübertragung zeigen'}</button><button onClick={() => { setRun(false); setU(200); setD(10); setQ(2); setX(20); setY(50); }}>Zurücksetzen</button></div>
     <p><MathText>{String.raw`Bei $x=${fmt(x, 0)}\,\%$ von d: Spannungsabfall $U_{0x}=${fmt(u * x / 100)}\,\mathrm V$; übertragener Energiebetrag $\Delta E_{\mathrm{el},0x}=${fmt(energyTransferred, 3)}\,\mathrm{\mu J}$.`}</MathText> Die potentielle Energie der Ladung nimmt um diesen Betrag ab. Die Animation verschiebt die Ladung geführt; sie zeigt keine freie Flugbahn und keine reale Zeit.</p>
-    <Formula tex={["\\Delta E_{\\mathrm{el}}=F\\cdot d=q\\cdot E\\cdot d", "\\Delta E_{\\mathrm{el}}=q\\cdot\\frac{U}{d}\\cdot d=q\\cdot U"]} note={String.raw`Vollständiger Weg von + nach −; konstantes Feld und $q > 0$: $\Delta E_{\mathrm{el}}$ ist hier der übertragene positive Energiebetrag. Die Änderung der potentiellen Energie ist negativ: $\Delta E_{\mathrm{pot}}=-q\cdot U$.`} />
+    <FormulaSteps title="Von der Feldkraft zur übertragenen Energie" intro={String.raw`Für den vollständigen Weg von der positiven zur negativen Platte betrachten wir $q>0$ und ein konstantes Feld. $\Delta E_{\mathrm{el}}$ bezeichnet hier den übertragenen positiven Energiebetrag.`} steps={[
+      {tex:String.raw`\Delta E_{\mathrm{el}}=F\cdot d`,comment:'Die Kraft verrichtet entlang des Plattenabstands Arbeit: konstante Kraft mal Weg in Kraftrichtung.'},
+      {tex:String.raw`\Delta E_{\mathrm{el}}=q\cdot E\cdot d`,comment:'Ersetze den Kraftbetrag durch Ladung mal Feldstärke.'},
+      {tex:String.raw`\Delta E_{\mathrm{el}}=q\cdot\frac Ud\cdot d`,comment:'Setze den Zusammenhang zwischen Feldstärke, Plattenspannung und Plattenabstand ein.'},
+      {tex:String.raw`\Delta E_{\mathrm{el}}=q\cdot U`,comment:'Kürze den Plattenabstand im Zähler und Nenner. Der Energiebetrag ist Ladung mal Spannungsabfall.'},
+    ]} conclusion={String.raw`Die potenzielle Energie der Ladung nimmt dabei ab: $\Delta E_{\mathrm{pot}}=-qU$. Bei der geführten Bewegung nimmt eine äußere Vorrichtung die übertragene Energie auf.`} />
 
     <RealExperiment title="Kraft auf eine geladene Probekugel"><p><b>Material:</b> große Kondensatorplatten, kleine isoliert befestigte geladene Probekugel, empfindlicher Kraftsensor, Spannungsquelle und Ladungsmessgerät. Die Kugel ist mechanisch mit dem Sensor verbunden; ein ungeladener Kraftsensor allein misst die gesuchte Coulomb-Kraft nicht.</p><p><b>Ablauf:</b><MathText>{String.raw` Sensor nullen, Kugelladung bestimmen, q und d konstant halten und U schrittweise variieren. Danach bei festem Feld die Kugelladung verändern. $F - U$- und $F - q$-Diagramm erstellen. Sensor und Halterung möglichst außerhalb des Feldes; Störung des Feldes, Ladungsverlust und Empfindlichkeit diskutieren. Hochspannung nur als Lehrkraftversuch nach Geräteanleitung.`}</MathText></p></RealExperiment>
   </div>;
