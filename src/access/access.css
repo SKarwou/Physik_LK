@@ -1,0 +1,14 @@
+.course-access-card{position:relative;max-width:820px;margin:40px auto 80px;padding:42px;background:#fffefa;border:1px solid #c8d3bf;border-radius:20px;color:#233f30}
+.course-access-card h1{margin:12px 0 20px;font:500 clamp(32px,4vw,48px)/1.12 Georgia,serif;overflow-wrap:anywhere}
+.course-access-card>p{max-width:650px;line-height:1.8;color:#596d55}
+.course-access-art{display:flex;align-items:center;gap:22px;margin-bottom:24px;color:#355640}
+.course-access-art>span{font:italic 64px Georgia,serif}.course-access-art svg{width:76px;height:76px;transform:rotate(-7deg)}
+.course-access-card form{max-width:570px;margin-top:28px}.course-access-card label{display:block;font-weight:600;margin-bottom:10px}
+.course-password-row{display:flex;gap:8px;margin-bottom:16px}.course-password-row input{min-width:0;flex:1;width:100%;border:1px solid #849b7a;border-radius:8px;padding:12px 14px;font-size:18px;background:white;color:#20382a}
+.course-password-toggle,.course-access-bar button{cursor:pointer;border:1px solid #b7c6ac;background:#f2f5e9;color:#345039;border-radius:8px;padding:10px 15px;font:inherit}
+.course-access-card .button{border:0;cursor:pointer}.course-access-card button:disabled{opacity:.65;cursor:wait}.course-access-card :focus-visible,.course-access-bar button:focus-visible{outline:3px solid #aa7e33;outline-offset:4px}
+.course-access-error{color:#9a302f;line-height:1.65}.course-access-note{font-size:14px;color:#64755d;line-height:1.7}
+.course-free-links{border-top:1px solid #d7dfce;margin-top:28px;padding-top:20px;display:flex;flex-wrap:wrap;gap:12px 22px;font-size:14px;line-height:1.6}.course-free-links>span{width:100%;color:#64755d}.course-free-links a{text-decoration:underline;text-underline-offset:4px}
+.course-access-bar{background:#e9f0df;padding:10px 5%;display:flex;align-items:center;justify-content:space-between;gap:15px;color:#345039;font-size:14px;line-height:1.5}.course-access-bar button{background:#fffefa;font-size:13px}
+@media(max-width:600px){.course-access-card{margin:20px 5% 50px;padding:26px 20px}.course-access-card h1{font-size:34px}.course-access-bar{flex-wrap:wrap}.course-password-row{flex-wrap:wrap}.course-password-row input{flex-basis:65%;width:65%}.course-access-art{margin-bottom:16px}}
+@media print{.course-access-bar{display:none}}
