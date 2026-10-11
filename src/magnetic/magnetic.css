@@ -32,3 +32,7 @@
 .mg-course-content summary { cursor: pointer; color: #275d50; font-weight: 700; line-height: 1.5; }
 .mg-course-content .mg-next-topic { padding: 1.2rem; background: #e4efe7; border-radius: 12px; }
 @media (max-width: 600px) { .mg-course-content .mg-scene { min-height: 190px; } .mg-course-content th, .mg-course-content td { padding: .55rem; font-size: .85rem; } .mg-course-content .mg-model, .mg-course-content .mg-task { padding: .9rem; } }
+
+.mg-course-content .mg-svg-math { font: 15px/1.4 system-ui, sans-serif; white-space: nowrap; }
+.mg-course-content .mg-svg-math .ef-math { overflow: visible; padding: 1px 0; }
+.mg-course-content .mg-svg-math .ef-math math { font-size: 1em; }
