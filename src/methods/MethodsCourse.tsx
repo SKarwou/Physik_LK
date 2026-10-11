@@ -1,0 +1,19 @@
+import CoursePage from '../learning/CoursePage';
+import {MathText,MathFormula} from '../electric/Math';
+import {methodData,type MethodLessonData} from './lessonData';
+import {methodQuestions} from './questions';
+import {MethodSketch,MethodModel} from './Models';
+import './methods.css';
+function Lesson({lesson:l}:{lesson:MethodLessonData}){return <div className='method-content'>
+<aside className='method-application'><span>WOZU BRAUCHE ICH DAS?</span><h2>{l.hook}</h2><p>{l.application}</p></aside>
+<section className='method-experiment'><span className='kicker'>BEOBACHTEN · IM HEFT DOKUMENTIEREN</span><h2>{l.experiment}</h2><p><b>Material: </b>{l.materials}</p><MethodSketch kind={l.id}/><h3>Durchführung</h3><ol>{l.steps.map((s,i)=><li key={i}><MathText>{s}</MathText></li>)}</ol><aside className='heft-step'><b>✎ Zuerst ins Heft</b><p><MathText>{l.task}</MathText></p><p>Eigene Messwerte, Diagramme und Auswertung gehören ins Heft. Nutze die Ersatzdaten nur, wenn der Aufbau nicht verfügbar ist oder du deine Methode daran üben möchtest.</p></aside><details><summary>Versuch nicht möglich? Ausgefüllte Ersatzdaten anzeigen</summary><p><MathText>{l.dataNote}</MathText></p><div className='method-table-wrap'><table><caption>Beispieldaten für deine Auswertung im Heft</caption><thead><tr>{l.columns.map(c=><th key={c} scope='col'><MathText>{c}</MathText></th>)}</tr></thead><tbody>{l.rows.map((row,i)=><tr key={i}>{row.map((c,j)=><td key={j}><MathText>{c}</MathText></td>)}</tr>)}</tbody></table></div></details><details><summary>Erst nach deiner Auswertung: Lösung und Interpretation</summary><p><MathText>{l.evaluation}</MathText></p></details></section>
+<section><h2>Erklärung · Schritt für Schritt</h2>{l.theory.map((p,i)=><p key={i}><MathText>{p}</MathText></p>)}<div className='method-formulas'>{l.formulas.map(f=><MathFormula key={f} tex={f} display/>)}</div><aside className='method-memory'><b>💡 Merksatz</b><p><MathText>{l.memory}</MathText></p></aside></section>{l.model&&<MethodModel kind={l.model}/>}<section><h2>Üben und anwenden · im Heft</h2>{l.exercises.map(e=><article className='method-exercise' key={e.title}><h3>{e.title}</h3><p><MathText>{e.task}</MathText></p><details><summary>Nach deinem Versuch: Lösung vergleichen</summary><p><MathText>{e.solution}</MathText></p></details></article>)}</section></div>}
+export const methodLessons=methodData.map(l=>({id:l.id,title:l.title,lead:l.lead,word:l.word,content:<Lesson lesson={l}/>,questions:methodQuestions[l.id]}));
+export default function MethodsCourse(){return <CoursePage slug='denk-arbeitsweisen' title='Denk- und Arbeitsweisen der Physik' intro='Dein Grundlagenkurs für die Kursstufe: Größen verstehen, sicher rechnen, Versuche planen und aus Daten begründete Aussagen gewinnen. Acht Kapitel trainieren die Werkzeuge, die du in allen Themen wieder brauchst. Beginne hier oder kehre gezielt zu einer Methode zurück.' lessons={methodLessons} sources={[
+{label:'Bildungsplan Baden-Württemberg · Denk- und Arbeitsweisen der Physik',url:'https://www.bildungsplaene-bw.de/,Lde/LS/BP2016BW/ALLG/GYM/PH.V2/IK/11-12-LF/01'},
+{label:'BIPM · Internationales Einheitensystem (SI)',url:'https://www.bipm.org/en/publications/si-brochure/'},
+{label:'OpenStax · Dimensionsanalyse',url:'https://openstax.org/books/university-physics-volume-1/pages/1-4-dimensional-analysis'},
+{label:'OpenStax · Physikalische Probleme lösen',url:'https://openstax.org/books/university-physics-volume-1/pages/1-7-solving-problems-in-physics'},
+{label:'OpenStax · Geschwindigkeit und Diagrammsteigung',url:'https://openstax.org/books/university-physics-volume-1/pages/3-2-instantaneous-velocity-and-speed'},
+{label:'NIST · Messunsicherheit und ihre Bedeutung',url:'https://www.nist.gov/glossary-term/39291'},
+{label:'NIST · Unsicherheitsbeiträge aus Geräteangaben und anderem Wissen',url:'https://pml.nist.gov/cuu/Uncertainty/typeb.html'}]}/>}
