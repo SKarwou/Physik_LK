@@ -1,3 +1,7 @@
+import QuantumCourse from './quantum/QuantumCourse';
+import AdvancedCourse from './advanced/AdvancedCourse';
+import OpticsCourse from './optics/OpticsCourse';
+import MethodsCourse from './methods/MethodsCourse';
 import OscillationsCourse from './oscillations/OscillationsCourse';
 import WavesCourse from './waves/WavesCourse';
 import MagneticCourse from "./magnetic/MagneticCourse";
@@ -9,6 +13,10 @@ import SolutionVault from "./components/SolutionVault";
 import ElectricFieldChapter from "./electric/ElectricFieldChapter";
 
 export default function ModulePage({ slug }: { slug: string }) {
+  if (slug === "quantenphysik-materie") return <QuantumCourse />;
+  if (slug === "vertiefung") return <AdvancedCourse />;
+  if (slug === "wellenoptik") return <OpticsCourse />;
+  if (slug === "denk-arbeitsweisen") return <MethodsCourse />;
   if (slug === "schwingungen") return <OscillationsCourse />;
   if (slug === "wellen") return <WavesCourse />;
   if (slug === "magnetisches-feld") return <MagneticCourse />;

@@ -1,0 +1,44 @@
+.adv-content { --adv-ink:#173c32; --adv-line:#cbd8c7; color:#273e33; }
+.adv-content p,.adv-content li { line-height:1.8; }
+.adv-content h2 { font-family:Georgia,serif; color:var(--adv-ink); font-size:clamp(1.45rem,2.5vw,1.9rem); margin:1.8rem 0 .9rem; }
+.adv-content h3 { font-size:1.15rem; color:var(--adv-ink); margin:1.4rem 0 .5rem; }
+.adv-motivation,.adv-memory,.adv-notebook { padding:1.1rem 1.3rem; border-radius:14px; margin:1.3rem 0; }
+.adv-motivation { background:#f2eada; border-left:4px solid #b6884e; }
+.adv-memory { background:#ebf2e0; border:1px solid #c3d4b7; }
+.adv-notebook { background:#f4f4ec; border-left:3px solid #779677; }
+.adv-motivation b,.adv-memory b,.adv-notebook b { color:var(--adv-ink); }
+.adv-motivation p,.adv-memory p,.adv-notebook p { margin:.4rem 0; }
+.adv-experiment { border:1px solid var(--adv-line); border-radius:19px; padding:clamp(1rem,3vw,2rem); background:#fffefa; margin:1.7rem 0; }
+.adv-tag { font-size:.75rem; text-transform:uppercase; letter-spacing:.08em; color:#617b68; font-weight:750; }
+.adv-experiment > h2 { margin:.7rem 0; }
+.adv-content ol { padding-left:1.4rem; }
+.adv-content li { margin:.65rem 0; padding-left:.15rem; }
+.adv-content details { border:1px solid var(--adv-line); border-radius:10px; margin:.7rem 0; padding:.8rem 1rem; background:#fffefa; }
+.adv-content summary { font-weight:700; color:var(--adv-ink); cursor:pointer; line-height:1.6; }
+.adv-content summary:focus-visible,.adv-slider input:focus-visible { outline:3px solid #a97840; outline-offset:4px; }
+.adv-content details[open] > summary { margin-bottom:.8rem; }
+.adv-table-wrap { overflow-x:auto; margin:1rem 0; }
+.adv-table-wrap table { width:100%; border-collapse:collapse; font-size:.91rem; }
+.adv-table-wrap caption { text-align:left; padding:.4rem .6rem; color:#627569; font-size:.84rem; }
+.adv-table-wrap th,.adv-table-wrap td { padding:.7rem .85rem; text-align:left; border-bottom:1px solid var(--adv-line); }
+.adv-table-wrap th { min-width:145px; background:#eff3e8; }
+.adv-table-wrap td { white-space:nowrap; }
+.adv-table-wrap tbody tr:nth-child(even) { background:#f8f9f3; }
+.adv-sketch { margin:1.3rem 0; }
+.adv-sketch svg,.adv-model svg { display:block; width:100%; height:auto; border-radius:13px; background:#f5f7ef; }
+.adv-sketch figcaption { padding:.5rem .25rem; color:#63796a; font-size:.84rem; line-height:1.6; }
+.adv-svg-label { display:flex; align-items:center; justify-content:center; height:100%; width:100%; text-align:center; font:13px/1.3 system-ui,sans-serif; color:#254d3c; }
+.adv-sketch text,.adv-model svg text { font:12px system-ui,sans-serif; fill:#4b6d58; }
+.adv-formulas { background:#f5f5ed; border-radius:12px; padding:.7rem 1rem; overflow-x:auto; margin:1rem 0; }
+.adv-exercise { border-top:1px solid var(--adv-line); padding:1rem 0; }
+.adv-model { margin:1.8rem 0; padding:clamp(1rem,3vw,1.6rem); background:#edf3e3; border:1px solid #bfd0b4; border-radius:18px; }
+.adv-model > h3 { margin:.3rem 0 .7rem; font-family:Georgia,serif; font-size:1.45rem; }
+.adv-model svg { background:#fffefa; margin:1.1rem 0; }
+.adv-controls { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem 1.5rem; margin:1rem 0; }
+.adv-slider { display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:.4rem .8rem; font-size:.87rem; line-height:1.7; }
+.adv-slider output { font-weight:750; font-variant-numeric:tabular-nums; }
+.adv-slider input { width:100%; grid-column:1/-1; accent-color:#315d48; min-height:25px; }
+.adv-readouts { display:grid; grid-template-columns:repeat(auto-fit,minmax(165px,1fr)); gap:.7rem; }
+.adv-readout { background:#fffefa; padding:.8rem; border-radius:10px; font-size:.85rem; line-height:1.7; }
+.adv-readout strong { display:block; color:var(--adv-ink); font-size:1.13rem; font-variant-numeric:tabular-nums; margin-top:.2rem; }
+@media(max-width:620px){.adv-controls {grid-template-columns:1fr}.adv-experiment {padding:1rem}.adv-readouts {grid-template-columns:repeat(2,minmax(0,1fr))}.adv-readout {padding:.6rem;font-size:.76rem}.adv-content details {padding:.7rem .8rem}}
