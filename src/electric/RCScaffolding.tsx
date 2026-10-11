@@ -76,20 +76,15 @@ export function PrerequisiteRescue() {
   </div>;
 }
 export function FirstMeasurementGuide() {
-  return <div className="rc-guided-protocol" id="rc-measurement-guide">
-    <h4>Bedienhilfe · So nimmst du einen einzelnen Messwert auf</h4>
-    <p>Das Experiment steht gleich darunter. Arbeite zuerst mit der direkten Zeiteingabe. Du brauchst den Vorgang dafür nicht in Echtzeit ablaufen zu lassen.</p>
-    <ol>
-      <li><b>Versuch festlegen.</b><MathText>{String.raw` Klicke „Grundversuch · $1\,\mathrm{M\Omega}$, $10\,\mathrm{\mu F}$, $20\,\mathrm{V}$“. Die drei Bauteilwerte sind damit eingestellt.`}</MathText></li>
-      <li><b>Anfangszustand festlegen.</b><MathText>{String.raw` Klicke „Aufladen vorbereiten · leer“. Die Uhr steht auf $0\,\mathrm{s}$ und der Kondensator hat noch keine Spannung.`}</MathText></li>
-      <li><b>Ersten Wert aufnehmen.</b><MathText>{String.raw` Lies bei $0\,\mathrm{s}$ die Kondensatorspannung und den vorzeichenbehafteten Strom ab. Klicke „Messwert aufnehmen“. Dieser Klick überträgt die Werte in die Tabelle.`}</MathText></li>
-      <li><b>Nächsten Zeitpunkt untersuchen.</b> Schreibe 5 in das Feld „Messzeit t in s“. Lies die neuen Anzeigen ab und klicke erneut „Messwert aufnehmen“. Nur die Zeiteingabe allein speichert noch keinen Tabellenwert.</li>
-      <li><b>Im Heft protokollieren.</b> <T>{tex`Übertrage je eine Tabellenzeile mit t, $U_C$ und I. Für eine ganze Reihe wiederholst du Schritt 4 mit den im Auftrag genannten Zeiten.`}</T></li>
-      <li><b>Vor einem neuen Versuch sichern.</b> Klicke „Messreihe merken“. Vorbereitungsbuttons und geänderte Bauteilwerte starten eine neue aktuelle Tabelle; gemerkte Reihen findest du in „Tabelle und Diagramm anzeigen für“ wieder.</li>
-      <li><b>Erst selbst zeichnen.</b> Übertrage die Messpunkte in dein Heft. Wähle erst danach die Diagrammgröße und klicke „Diagramm zeichnen“, um zu vergleichen.</li>
-    </ol>
-    <p><b>Wichtig beim Entladen:</b> „Entladen vorbereiten · geladen“ beginnt einen neuen Versuch mit der vollen Anfangsspannung. „E · Entladen“ schaltet dagegen den gerade vorhandenen Ladungszustand um. Diesen Unterschied brauchst du bei Aufgabe 18.</p>
-  </div>;
+  return <div className="rc-guided-protocol" id="rc-measurement-guide"><h4>Bedienhilfe · Ablesen auf dem Bildschirm, auswerten im Heft</h4><ol>
+    <li><MathText>{String.raw`Wähle den Grundversuch: $R=1\,\mathrm{M\Omega}$, $C=10\,\mathrm{\mu F}$ und $U_0=20\,\mathrm V$. Notiere die Einstellungen über deiner Hefttabelle.`}</MathText></li>
+    <li>Wähle „Aufladen vorbereiten · leer“ oder „Entladen vorbereiten · geladen“. Zeichne die passende Schalterstellung ins Heft.</li>
+    <li><MathText>{String.raw`Beschrifte die Heftspalten: Zeit $t$ in $\mathrm s$, Kondensatorspannung $U_C$ in $\mathrm V$, Stromstärke $I$ in $\mathrm{mA}$. Trage den Anfangswert bei $t=0$ ein.`}</MathText></li>
+    <li>Stelle nacheinander die im Auftrag genannten Zeiten ein. Lies die Anzeigen ab und schreibe die Werte direkt ins Heft; die Website speichert keine Messreihe.</li>
+    <li>Beginne bei neuen Bauteilwerten oder neuer Vorbereitung eine neue Reihe im Heft. Notiere immer den Anfangszustand.</li>
+    <li>Falls du nicht selbst ablesen kannst, öffne die ausgefüllten Ersatzdaten. Kennzeichne sie im Heft als berechnete Modellwerte.</li>
+    <li>Zeichne und interpretiere zuerst selbst. Öffne erst danach das Vergleichsdiagramm und die getrennte Lösung.</li>
+    </ol><p><b>Wichtig beim Umschalten:</b> „Entladen vorbereiten · geladen“ startet mit der vollen Anfangsspannung. „E · Entladen“ übernimmt dagegen die gerade vorhandene Kondensatorspannung. Notiere diesen neuen Anfangswert für die zweite Phase.</p></div>;
 }
 export function ExponentialPrimer() {
   return <div className="rc-foundation" id="rc-exponential-help">

@@ -1,11 +1,11 @@
 import { MathText } from './Math';
+import { NotebookData } from './NotebookData';
 import { useId, useState } from 'react';
-import { Arrow, RevealChart, Choices, Formula, Slider, Task, downloadCsv, fmt } from './LabUI';
+import { Arrow, RevealChart, Choices, Formula, Slider, Task, fmt } from './LabUI';
 import { MathFormula } from './Math';
 import { coulomb } from './physics';
 import setupImage from './assets/coulomb-aufbau.png';
 
-type Measurement = { q1: number; q2: number; r: number; f: number; sign: string };
 
 function CoulombScene({ r, force, sign }: { r: number; force: number; sign: string }) {
   const gradientId = useId();
@@ -53,11 +53,9 @@ function CoulombScene({ r, force, sign }: { r: number; force: number; sign: stri
 export default function CoulombLab() {
   const [q1, setQ1] = useState(20), [q2, setQ2] = useState(10), [r, setR] = useState(10);
   const [sign, setSign] = useState('positive'), [axis, setAxis] = useState('r');
-  const [rows, setRows] = useState<Measurement[]>([]);
   const force = coulomb(q1 * 1e-9, q2 * 1e-9, r / 100) * 1000;
-  const matchingRows = rows.filter(a => a.q1 === q1 && a.q2 === q2);
-  const maxForce = coulomb(q1 * 1e-9, q2 * 1e-9, .05) * 1000;
-  const chartMax = Math.ceil(maxForce / .1) * .1;
+  const exampleRows = [5,10,15,20,25,30].map(r => ({r,f:8.99e9*20e-9*10e-9/(r/100)**2*1000}));
+  const chartMax = 0.8;
 
   return <div className="ef-lab ef-coulomb-lab">
     <section className="ef-coulomb-step" data-step="setup" aria-labelledby="coulomb-setup-heading">
@@ -74,7 +72,7 @@ export default function CoulombLab() {
     </section>
 
     <div data-step="task"><Task><p><b>Wie hängen Kraft, Abstand und Ladung zusammen?</b> Formuliere vor jeder Messreihe eine Vermutung.</p><ol>
-      <li><b>Abstand untersuchen:</b><MathText>{String.raw` Halte beide Ladungen fest. Stelle nacheinander 5, 10, 15, 20, 25 und $30\,\mathrm{cm}$ ein und speichere jeweils einen Messwert.`}</MathText></li>
+      <li><b>Abstand untersuchen:</b><MathText>{String.raw` Halte beide Ladungen fest. Stelle nacheinander 5, 10, 15, 20, 25 und $30\,\mathrm{cm}$ ein und notiere die Kraftwerte direkt im Heft.`}</MathText></li>
       <li><b>Ladung untersuchen:</b> Halte Abstand und Probeladung fest. Verdopple die Quellladung. Wiederhole den Vergleich anschließend für die Probeladung.</li>
       <li><b>Kraftrichtung untersuchen:</b> Wechsle das Vorzeichen von K₁. Beobachte den Kraftpfeil an K₂ und vergleiche die Kraftbeträge.</li>
     </ol></Task></div>
@@ -94,26 +92,15 @@ export default function CoulombLab() {
     </section>
 
     <section className="ef-coulomb-step" data-step="measurements" aria-labelledby="coulomb-measurements-heading">
-      <h3 id="coulomb-measurements-heading">3 · Messwerte aufzeichnen</h3>
-      <p>Passt die Einstellung? Übernimm den angezeigten Messwert in dein Protokoll. Veränderte Regler überschreiben keine gespeicherten Werte.</p>
-      <div className="ef-toolbar">
-        <button disabled={rows.length >= 20} onClick={() => setRows(s => [...s, { q1, q2, r, f: force, sign }])}>Messwert aufnehmen ({rows.length}/20)</button>
-        <button disabled={!rows.length} onClick={() => downloadCsv('coulomb-messwerte.csv', [['Q in nC', 'q in nC', 'r in cm', 'F in mN', 'Vorzeichen Q'], ...rows.map(a => [a.q1, a.q2, a.r, a.f, a.sign === 'positive' ? '+' : '−'])])}>CSV herunterladen</button>
-        <button disabled={!rows.length} onClick={() => setRows([])}>Messwerte löschen</button>
-      </div>
-      <div className="ef-table-wrap"><table>
-        <caption>Messprotokoll · berechnete Modellmesswerte der Simulation</caption>
-        <thead><tr><th><MathFormula tex="\frac{Q}{\mathrm{nC}}" /></th><th><MathFormula tex="\frac{q}{\mathrm{nC}}" /></th><th><MathFormula tex="\frac{r}{\mathrm{cm}}" /></th><th><MathFormula tex="\frac{|F|}{\mathrm{mN}}" /></th></tr></thead>
-        <tbody>{rows.length ? rows.map((a, i) => <tr key={i}><td>{a.sign === 'negative' ? '−' : '+'}{a.q1}</td><td>{a.q2}</td><td>{a.r}</td><td>{fmt(a.f, 3)}</td></tr>) : <tr><td colSpan={4} className="ef-empty-measurements">Noch keine Messwerte. Stelle den Versuch oben ein und klicke auf „Messwert aufnehmen“.</td></tr>}</tbody>
-      </table></div>
+      <h3 id="coulomb-measurements-heading">3 · Messwerte im Heft auswerten</h3>
+      <NotebookData description={String.raw`Gerundete ideale Modellwerte für $Q=20\,\mathrm{nC}$ und $q=10\,\mathrm{nC}$ in Luft. Die Abstände beziehen sich auf die Kugelmittelpunkte. Diese Werte ersetzen bei Bedarf die eigene Kraftmessung.`} headers={[String.raw`Mittelpunktabstand $r$ in $\mathrm{cm}$`,String.raw`Kraftbetrag $F$ in $\mathrm{mN}$`]} rows={[[5,.7192],[10,.1798],[15,.07991],[20,.04495],[25,.02877],[30,.01998]]} tasks={['Übertrage deine eigenen Werte oder die Ersatzdaten ins Heft. Zeichne zunächst Kraft gegen Abstand.', String.raw`Berechne anschließend den Kehrwert des Abstandsquadrats $1/r^2$ in $\mathrm{m}^{-2}$ und zeichne ein zweites Diagramm.`, 'Prüfe anhand zweier Wertepaare die Folgen eines doppelten Abstands. Nenne zwei Gründe für Abweichungen beim realen Versuch.']} solution={String.raw`Doppelter Abstand ergibt ein Viertel der Kraft. Die Auftragung gegen $1/r^2$ ergibt eine Ursprungsgerade mit der Steigung $k|Qq|=1{,}798\cdot10^{-6}\,\mathrm{N\,m^2}$. Influenz, ungenau bekannte Kugelzentren und Ladungsverlust begrenzen den realen Versuch.`} />
     </section>
-
     <section className="ef-coulomb-step" data-step="diagram" aria-labelledby="coulomb-diagram-heading">
       <h3 id="coulomb-diagram-heading">4 · Messwerte im Diagramm</h3>
       <p>Zeichne mit deinen Messwerten zuerst ein eigenes Abstandsdiagramm. Blende die Messpunkte anschließend zur Kontrolle ein. Wiederhole dies für die zweite Darstellung.</p>
       <Choices label="Auswertung des Abstandsversuchs" value={axis} set={setAxis} options={[{ value: 'r', label: 'F gegen r' }, { value: 'inverse', label: String.raw`$F$ gegen $\frac{1}{r^2}$` }]} />
-      <RevealChart xMax={axis === 'r' ? 30 : 400} yMax={chartMax} xLabel={axis === 'r' ? 'r in cm' : '1/r² in 1/m²'} yLabel="F in mN" xMathLabel={axis === 'inverse' ? String.raw`\frac{1}{r^2}\text{ in }\frac{1}{\mathrm{m^2}}` : undefined} dots={matchingRows.map(a => ({ x: axis === 'r' ? a.r : 1 / (a.r / 100) ** 2, y: a.f }))} />
-      <p className="ef-model">Zum Einzeichnen verfügbar: {matchingRows.length}<MathText>{String.raw` Messpunkte für die aktuell gewählten Ladungsbeträge ($\lvert Q\rvert = ${q1}\,\mathrm{nC}$, $q=${q2}\,\mathrm{nC}$). Beide Vorzeichen von Q liefern denselben Kraftbetrag. Die Tabelle enthält auch Messungen mit anderen Ladungen. Messpunkte werden nicht verbunden; zeichne eine passende Ausgleichskurve bzw. Ausgleichsgerade selbst im Heft.`}</MathText></p>
+      <RevealChart xMax={axis === 'r' ? 30 : 400} yMax={chartMax} xLabel={axis === 'r' ? 'r in cm' : '1/r² in 1/m²'} yLabel="F in mN" xMathLabel={axis === 'inverse' ? String.raw`\frac{1}{r^2}\text{ in }\frac{1}{\mathrm{m^2}}` : undefined} dots={exampleRows.map(a => ({ x: axis === 'r' ? a.r : 1 / (a.r / 100) ** 2, y: a.f }))} />
+      <p className="ef-model">Das Vergleichsdiagramm zeigt die festen Ersatzdaten für 20 nC und 10 nC. Es verändert sich nicht mit den Reglern; die Reglerwerte liest du für deine eigene Reihe im Heft ab.</p>
     </section>
 
     <details className="ef-coulomb-step ef-coulomb-evaluation" data-step="evaluation" aria-labelledby="coulomb-evaluation-heading">

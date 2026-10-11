@@ -1,3 +1,5 @@
+import OscillationsCourse from './oscillations/OscillationsCourse';
+import WavesCourse from './waves/WavesCourse';
 import MagneticCourse from "./magnetic/MagneticCourse";
 import ElectrodynamicsCourse from "./electrodynamics/ElectrodynamicsCourse";
 import Link from "./Link";
@@ -7,6 +9,8 @@ import SolutionVault from "./components/SolutionVault";
 import ElectricFieldChapter from "./electric/ElectricFieldChapter";
 
 export default function ModulePage({ slug }: { slug: string }) {
+  if (slug === "schwingungen") return <OscillationsCourse />;
+  if (slug === "wellen") return <WavesCourse />;
   if (slug === "magnetisches-feld") return <MagneticCourse />;
   if (slug === "elektrodynamik" || slug === "elektromagnetisches-feld") return <ElectrodynamicsCourse />;
   const chapter = chapters.find((item) => item.slug === slug);

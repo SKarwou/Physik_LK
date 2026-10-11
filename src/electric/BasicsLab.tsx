@@ -1,8 +1,9 @@
 import { MathText } from './Math';
+import { NotebookData } from './NotebookData';
 import ExperimentGuide from './ExperimentGuide';
 import { useState } from 'react';
 import ConductionModel from './ConductionModel';
-import { Arrow, Check, Choices, Formula, RevealChart, Slider, Task, ZoomScene, downloadCsv, fmt } from './LabUI';
+import { Arrow, Check, Choices, Formula, RevealChart, Slider, Task, ZoomScene, fmt } from './LabUI';
 import { MathFormula } from './Math';
 
 type CircuitKind = 'single' | 'series' | 'parallel';
@@ -17,15 +18,13 @@ export function CircuitLab() {
   const [u, setU] = useState(6), [r1, setR1] = useState(100), [r2, setR2] = useState(100);
   const [mode, setMode] = useState<CircuitKind>('single'), [closed, setClosed] = useState(false);
   const [meter, setMeter] = useState('ampere'), [placement, setPlacement] = useState('series');
-  const [rows, setRows] = useState<{ u: number; r1: number; r2: number; mode: CircuitKind; i: number }[]>([]);
   const correct = meter === 'ampere' ? placement === 'series' : placement === 'parallel';
   const values = circuitValues(u, r1, r2, mode);
   const current = closed && correct ? values.current : 0;
   const reading = !correct ? '—' : meter === 'ampere' ? `${fmt(current * 1000, 1)} mA` : `${fmt(closed ? u : 0, 1)} V`;
-  const matches = rows.filter(row => row.mode === mode && row.r1 === r1 && (mode === 'single' || row.r2 === r2));
   return <div className="ef-lab ef-circuit-lab">
     <ExperimentGuide kind="circuit" />
-    <Task><ol><li>Schließe den Schalter. Miss die Stromstärke mit dem Amperemeter in Reihe.</li><li><MathText>{String.raw`Stelle bei festem Widerstand 2, 4, 6, 8 und $10\,\mathrm{V}$ ein. Nimm Messwerte auf und zeichne selbst ein Stromstärke-Spannung-Diagramm.`}</MathText></li><li>Miss anschließend die Spannung am gesamten Verbraucherbereich. Wo musst du das Voltmeter anschließen?</li><li>Vergleiche einen Widerstand mit zwei gleichen Widerständen in Reihe und parallel.</li></ol></Task>
+    <Task><ol><li>Schließe den Schalter. Miss die Stromstärke mit dem Amperemeter in Reihe.</li><li><MathText>{String.raw`Stelle bei festem Widerstand 2, 4, 6, 8 und $10\,\mathrm{V}$ ein. Notiere die abgelesenen Werte im Heft und zeichne dort ein Stromstärke-Spannung-Diagramm.`}</MathText></li><li>Miss anschließend die Spannung am gesamten Verbraucherbereich. Wo musst du das Voltmeter anschließen?</li><li>Vergleiche einen Widerstand mit zwei gleichen Widerständen in Reihe und parallel.</li></ol></Task>
     <div className="ef-lab-grid"><div>
       <Choices label="Verbraucher im Stromkreis" value={mode} set={setMode} options={[{ value: 'single', label: 'Ein Widerstand' }, { value: 'series', label: 'Reihenschaltung' }, { value: 'parallel', label: 'Parallelschaltung' }]} />
       <Slider label="Spannung der Quelle" value={u} set={setU} min={0} max={12} unit="V" />
@@ -54,10 +53,8 @@ export function CircuitLab() {
     <div className="ef-readings"><div><small>Anzeige des Messgeräts</small><strong data-reading="meter">{reading}</strong></div><div><small>Schalter</small><strong>{closed ? 'geschlossen' : 'offen'}</strong></div></div>
     <p className="ef-model">Idealmodell: konstante ohmsche Widerstände, ideale Quelle und Messgeräte. Das Voltmeter misst über den gesamten Verbraucherbereich. Bei offenem Schalter liegt dort in dieser Schaltung keine Spannung an; an der Quelle bleibt die eingestellte Spannung bestehen. Die festen goldenen Pfeile zeigen die technische Stromrichtung im äußeren Stromkreis von + nach −. Sie stellen keine Teilchenbahnen dar. Die Elektronendrift verläuft entgegengesetzt. Ladung wird im Widerstand nicht verbraucht; elektrische Energie wird übertragen.</p>
     <ConductionModel conducting={current > 0} />
-    <div className="ef-toolbar"><button type="button" disabled={!closed || !correct || meter !== 'ampere' || rows.length >= 20} onClick={() => setRows(previous => [...previous, { u, r1, r2, mode, i: current * 1000 }])}>Strommesswert aufnehmen ({rows.length}/20)</button><button type="button" disabled={!rows.length} onClick={() => downloadCsv('grundlagen-stromkreis.csv', [['U in V', 'I in mA', 'R1 in Ohm', 'R2 in Ohm', 'Schaltung'], ...rows.map(row => [row.u, row.i, row.r1, row.mode === 'single' ? '—' : row.r2, row.mode])])}>Messwerte als CSV</button><button type="button" disabled={!rows.length} onClick={() => setRows([])}>Messreihe löschen</button></div>
-    <div className="ef-table-wrap"><table><caption>Deine Strommessung · ideale Modellwerte</caption><thead><tr><th>U in V</th><th><MathText>{String.raw`I in $\mathrm{mA}$`}</MathText></th><th><MathText>{String.raw`$R_{1}$ in Ω`}</MathText></th><th><MathText>{String.raw`$R_{2}$ in Ω`}</MathText></th><th>Schaltung</th></tr></thead><tbody>{rows.length ? rows.map((row, i) => <tr key={i}><td>{row.u}</td><td>{fmt(row.i, 1)}</td><td>{row.r1}</td><td>{row.mode === 'single' ? '—' : row.r2}</td><td>{row.mode === 'single' ? 'Ein Widerstand' : row.mode === 'series' ? 'Reihe' : 'Parallel'}</td></tr>) : <tr><td colSpan={5}>Noch keine Messwerte. Schließe den Schalter und miss mit dem Amperemeter in Reihe.</td></tr>}</tbody></table></div>
-    <RevealChart xMax={12} yMax={12 / values.resistance * 1000} xLabel="U in V" yLabel="I in mA" dots={matches.map(row => ({ x: row.u, y: row.i }))} />
-    <p className="ef-model">Zum Einzeichnen: {matches.length} Messpunkte für die aktuell gewählte Schaltung und die aktuellen Widerstände. Die anderen Messungen bleiben in der Tabelle.</p>
+    <NotebookData description={String.raw`Ideale Modellwerte für einen einzelnen ohmschen Widerstand $R=100\,\Omega$. Bei einer realen Messung können kleine Abweichungen auftreten.`} headers={[String.raw`Spannung $U$ in $\mathrm V$`, String.raw`Stromstärke $I$ in $\mathrm{mA}$`]} rows={[[2,20],[4,40],[6,60],[8,80],[10,100]]} tasks={['Stelle dieselben Spannungen in der Simulation ein und lies die Stromstärke ab. Notiere alle Werte direkt im Heft.', 'Zeichne Stromstärke gegen Spannung. Bestimme den Widerstand aus der Steigung; beachte die Umrechnung von Milliampere in Ampere.', 'Wiederhole mit zwei gleichen Widerständen in Reihe und parallel. Begründe die Unterschiede.']} solution={String.raw`Die Gerade hat die Steigung $\frac{I}{U}=0{,}010\,\mathrm{A/V}$. Ihr Kehrwert ist $R=100\,\Omega$. Zwei solche Widerstände ergeben in Reihe $200\,\Omega$, parallel $50\,\Omega$.`} />
+    <RevealChart xMax={12} yMax={120} xLabel="U in V" yLabel="I in mA" dots={[2,4,6,8,10].map(u => ({x:u,y:u*10}))} />
     <details className="ef-real"><summary>Auswertung und Formeln einblenden</summary><div><Formula tex={[String.raw`R=\frac{U}{I}\quad\Rightarrow\quad I=\frac{U}{R}`, String.raw`R_{\mathrm{Reihe}}=R_1+R_2`, String.raw`\frac{1}{R_{\mathrm{parallel}}}=\frac{1}{R_1}+\frac{1}{R_2}`]} /><p>Bei konstantem Widerstand ist die Stromstärke proportional zur Spannung. Zwei gleiche Widerstände in Reihe halbieren den Gesamtstrom bei gleicher Quellenspannung. Parallel verdoppeln sie ihn gegenüber einem einzelnen Widerstand. In der Reihenschaltung ist die Stromstärke überall gleich; in der Parallelschaltung liegt an beiden Zweigen dieselbe Spannung an.</p></div></details>
   </div>;
 }

@@ -1,11 +1,10 @@
 import { MathText } from './Math';
+import { NotebookData } from './NotebookData';
 import { useEffect, useState } from 'react';
-import { Arrow, Choices, Formula, RevealChart, Slider, ZoomScene, downloadCsv } from './LabUI';
+import { Arrow, Choices, Formula, RevealChart, Slider, ZoomScene } from './LabUI';
 import { MathFormula } from './Math';
 import { rcArea, rcNumber as n, rcState, type RCMode, type RCParameters } from './RCModel';
 
-type Measurement = { time: number; voltage: number; current: number; charge: number };
-type Series = { name: string; parameters: RCParameters; rows: Measurement[] };
 const modeName = (mode: RCMode) => mode === 'charge' ? 'Aufladen' : mode === 'discharge' ? 'Entladen' : 'Offen';
 
 function RCCircuit({ parameters: p, time }: { parameters: RCParameters; time: number }) {
@@ -32,8 +31,7 @@ export default function RCExperiment() {
   const [r, setR] = useState(1000), [c, setC] = useState(10), [u, setU] = useState(20);
   const [mode, setMode] = useState<RCMode>('charge'), [initial, setInitial] = useState(0);
   const [time, setTime] = useState(0), [running, setRunning] = useState(false), [speed, setSpeed] = useState('model');
-  const [rows, setRows] = useState<Measurement[]>([]), [saved, setSaved] = useState<Series[]>([]);
-  const [graph, setGraph] = useState('voltage'), [active, setActive] = useState('live'), [notice, setNotice] = useState('');
+  const [graph, setGraph] = useState('voltage'), [notice, setNotice] = useState('');
   const [analysis, setAnalysis] = useState(false);
   const p: RCParameters = { resistance: r * 1000, capacitance: c * 1e-6, sourceVoltage: u, initialVoltage: initial, mode };
   const values = rcState(time, p), end = 5 * values.tau, rate = speed === 'real' ? 1 : end / 12;
@@ -48,28 +46,24 @@ export default function RCExperiment() {
   }, [running, mode, end, rate]);
   useEffect(() => { if (time >= end) setRunning(false); }, [time, end]);
   function reset(nextMode: RCMode, voltage: number, message: string) {
-    setRunning(false); setMode(nextMode); setInitial(voltage); setTime(0); setRows([]); setActive('live'); setNotice(message);
+    setRunning(false); setMode(nextMode); setInitial(voltage); setTime(0); setNotice(message);
   }
   function switchTo(next: RCMode) {
     if (next === mode) return;
-    reset(next, values.voltage, 'Umgeschaltet: Die Kondensatorspannung bleibt stetig. Die Zeit der neuen Phase beginnt bei null; die aktuelle Messreihe wurde geleert.');
+    reset(next, values.voltage, 'Umgeschaltet: Die Kondensatorspannung bleibt stetig. Die Zeit der neuen Phase beginnt bei null; notiere den neuen Anfangswert im Heft.');
   }
   function change(component: 'r' | 'c' | 'u', value: number) {
     if (component === 'r') setR(value); if (component === 'c') setC(value); if (component === 'u') setU(value);
-    reset(mode, mode === 'discharge' ? (component === 'u' ? value : u) : 0, 'Neue Bauteilwerte: neuer Standardversuch, neue Messreihe. Gemerkte Messreihen bleiben erhalten.');
+    reset(mode, mode === 'discharge' ? (component === 'u' ? value : u) : 0, 'Neue Bauteilwerte: neuer Standardversuch. Beginne im Heft eine eigene Reihe mit diesen Einstellungen.');
   }
   function preset(resistance: number, capacitance: number, voltage: number) {
     setR(resistance); setC(capacitance); setU(voltage);
     reset('charge', 0, 'Versuch vorbereitet: leerer Kondensator, Aufladen, Zeit null.');
   }
-  function capture() {
-    const measurement = { time, voltage: values.voltage, current: values.current, charge: values.charge };
-    setRows(old => [...old.filter(row => Math.abs(row.time - time) > end * 1e-8), measurement].sort((a, b) => a.time - b.time));
-    setActive('live');
-    setNotice('Messwert aufgenommen. Übertrage Zeit, Spannung und Stromstärke ins Heft.');
-  }
-  const series = active === 'live' ? { name: 'Aktueller Versuch', parameters: p, rows } : saved[Number(active)];
-  const source = series || { name: 'Aktueller Versuch', parameters: p, rows };
+  const source = { parameters: p, rows: [0,.5,1,1.5,2,2.5,3,4,5].map(factor => {
+    const time = factor * values.tau, state = rcState(time,p);
+    return { time, voltage:state.voltage, current:state.current, charge:state.charge };
+  }) };
   const tau = source.parameters.resistance * source.parameters.capacitance;
   const iMax = Math.max(source.parameters.sourceVoltage, source.parameters.initialVoltage) / source.parameters.resistance * 1000;
   const yLabel = graph === 'voltage' ? 'U_C in V' : graph === 'charge' ? 'Q in µC' : graph === 'magnitude' ? '|I| in mA' : 'I in mA';
@@ -77,35 +71,31 @@ export default function RCExperiment() {
   const dots = source.rows.map(row => ({ x: row.time, y: graph === 'voltage' ? row.voltage : graph === 'charge' ? row.charge * 1e6 : graph === 'magnitude' ? Math.abs(row.current) * 1000 : row.current * 1000 }));
   return <div className="ef-lab rc-experiment" id="rc-experiment">
     <header><span className="ef-eyebrow">VIRTUELLES EXPERIMENT · FÜR ALLE SECHS LERNBLÖCKE</span><h4>Ein Kondensator lädt sich auf – und entlädt sich wieder.</h4></header>
-    <p>Aufbau: Gleichspannungsquelle, Umschalter S, Widerstand R und Kondensator C. Das Amperemeter A liegt <b>in Reihe</b>; das Voltmeter V liegt <b>parallel</b> zum Kondensator. Der graue Pfeil legt die positive technische Stromrichtung fest. Der orange Pfeil zeigt Richtung und relative Stärke des tatsächlichen Stroms.</p><p><b>Hast du die Bedienhilfe gelesen?</b> Nimm zunächst die Werte mit der direkten Zeiteingabe auf. Die sieben Schritte stehen in der <a href="#rc-measurement-guide">Bedienhilfe in Lernblock 1</a>; für den nächsten Arbeitsauftrag nutzt du die Rücksprunglinks am Ende des Experiments.</p>
+    <p>Aufbau: Gleichspannungsquelle, Umschalter S, Widerstand R und Kondensator C. Das Amperemeter A liegt <b>in Reihe</b>; das Voltmeter V liegt <b>parallel</b> zum Kondensator. Der graue Pfeil legt die positive technische Stromrichtung fest. Der orange Pfeil zeigt Richtung und relative Stärke des tatsächlichen Stroms.</p><p><b>Hast du die Bedienhilfe gelesen?</b> Lies zunächst die Werte mithilfe der direkten Zeiteingabe ab und notiere sie im Heft. Die Schritte stehen in der <a href="#rc-measurement-guide">Bedienhilfe in Lernblock 1</a>; für den nächsten Arbeitsauftrag nutzt du die Rücksprunglinks am Ende des Experiments.</p>
     <RCCircuit parameters={p} time={time} />
-    <aside className="ef-task"><b>Forschungsauftrag vor dem Start</b><p>Sage voraus: Wie verändern sich Kondensatorspannung und Stromstärke nach dem Umschalten? Notiere eine Vermutung, nimm eigene Messwerte auf und zeichne sie zunächst selbst. Die Auswertung im Lerntext folgt danach.</p></aside>
+    <aside className="ef-task"><b>Forschungsauftrag vor dem Start</b><p>Sage voraus: Wie verändern sich Kondensatorspannung und Stromstärke nach dem Umschalten? Notiere eine Vermutung, notiere abgelesene Werte im Heft und zeichne sie dort zunächst selbst. Die Auswertung im Lerntext folgt danach.</p></aside>
     <h4>1 · Bauteile einstellen und den Anfangszustand wählen</h4>
     <div className="ef-toolbar rc-presets"><button onClick={() => preset(1000, 10, 20)}><MathText>{String.raw`Grundversuch · $1\,\mathrm{M\Omega}$, $10\,\mathrm{\mu F}$, $20\,\mathrm{V}$`}</MathText></button><button onClick={() => preset(10, 4, 10)}><MathText>{String.raw`Vergleich · $10\,\mathrm{k\Omega}$, $4\,\mathrm{\mu F}$, $10\,\mathrm{V}$`}</MathText></button><button onClick={() => preset(100, 47, 12)}><MathText>{String.raw`Übung · $100\,\mathrm{k\Omega}$, $47\,\mathrm{\mu F}$, $12\,\mathrm{V}$`}</MathText></button></div>
     <div className="rc-controls"><Slider label="Widerstand R" value={r} set={v => change('r', v)} min={.1} max={1000} step={.1} unit="kΩ" /><Slider label="Kapazität C" value={c} set={v => change('c', v)} min={1} max={1000} unit="µF" /><Slider label="Quellenspannung U₀" value={u} set={v => change('u', v)} min={2} max={24} unit="V" /></div>
-    <p className="ef-model">Veränderte Bauteilwerte beginnen einen neuen Standardversuch. Sichere Vergleichsmessungen vorher mit „Messreihe merken“.</p>
-    <div className="ef-toolbar"><button onClick={() => reset('charge', 0, String.raw`Aufladen vorbereitet: $U_C(0) = 0$. Nimm den Anfangswert auf.`)}>Aufladen vorbereiten · leer</button><button onClick={() => reset('discharge', u, String.raw`Entladen vorbereitet: $U_C(0) = U_0$. Nimm den Anfangswert auf.`)}>Entladen vorbereiten · geladen</button></div>
+    <p className="ef-model">Veränderte Bauteilwerte beginnen einen neuen Standardversuch. Notiere Vergleichswerte vorher im Heft.</p>
+    <div className="ef-toolbar"><button onClick={() => reset('charge', 0, String.raw`Aufladen vorbereitet: $U_C(0) = 0$. Notiere den Anfangswert im Heft.`)}>Aufladen vorbereiten · leer</button><button onClick={() => reset('discharge', u, String.raw`Entladen vorbereitet: $U_C(0) = U_0$. Notiere den Anfangswert im Heft.`)}>Entladen vorbereiten · geladen</button></div>
     <Choices label="Schalterstellung · Umschalten erhält die momentane Kondensatorspannung" value={mode} set={switchTo} options={[{ value: 'charge', label: 'A · Aufladen' }, { value: 'discharge', label: 'E · Entladen' }, { value: 'hold', label: 'Offen · Halten' }]} />
     <h4>2 · Zeit verändern und beobachten</h4>
     <div className="ef-toolbar"><button disabled={mode === 'hold' || time >= end} aria-pressed={running} onClick={() => setRunning(!running)}>{running ? 'Zeit anhalten' : 'Zeit laufen lassen'}</button><button onClick={() => { setRunning(false); setTime(0); }}>Zum Phasenbeginn</button><label>Abspieltempo <select value={speed} onChange={e => setSpeed(e.target.value)}><option value="model">5 Zeitkonstanten in 12 s ansehen</option><option value="real">Echte Sekunden</option></select></label></div>
     <p className="ef-model">Die Messuhr zeigt immer die physikalische Zeit. Das Abspieltempo verändert nur die Wiedergabegeschwindigkeit. Du kannst die Zeit auch direkt eingeben und dabei ohne Zeitdruck messen.</p>
-    <label className="rc-time">Messzeit <MathFormula tex="t" /> in s <input type="number" aria-label="RC-Messzeit in Sekunden" min={0} max={end} step="any" value={Number(time.toPrecision(6))} onChange={e => { const next = Number(e.target.value); if (Number.isFinite(next)) { setRunning(false); setTime(Math.min(end, Math.max(0, next))); } }} /></label>
+    <label className="rc-time">Modellzeit <MathFormula tex="t" /> in s <input type="number" aria-label="RC-Modellzeit in Sekunden" min={0} max={end} step="any" value={Number(time.toPrecision(6))} onChange={e => { const next = Number(e.target.value); if (Number.isFinite(next)) { setRunning(false); setTime(Math.min(end, Math.max(0, next))); } }} /></label>
     <input className="rc-time-range" type="range" aria-label="RC-Zeit verschieben" value={time} min={0} max={end} step={end / 1000} onChange={e => { setRunning(false); setTime(Number(e.target.value)); }} />
     <div className="ef-readings"><div><small>Messzeit t</small><strong>{n(time)} s</strong></div><div><small>Kondensatorspannung</small><strong>{n(values.voltage)} V</strong></div><div><small>Stromstärke mit Vorzeichen</small><strong>{n(values.current * 1000)}<MathText>{String.raw` $\mathrm{mA}$`}</MathText></strong></div><div><small>Stromstärkebetrag</small><strong>{n(Math.abs(values.current) * 1000)}<MathText>{String.raw` $\mathrm{mA}$`}</MathText></strong></div></div>
     <p>Plus und Minus auf den Platten zeigen Ladungsüberschuss bzw. Elektronenmangel, keine wandernden positiven Atomrümpfe. <b>Durch den isolierenden Zwischenraum fließen keine Elektronen.</b> Die Zeichen werden schematisch gezählt; die Spannung ist maßgeblich, auch wenn kleine Restladungen im Bild nicht sichtbar sind. Hier laufen keine Elektronen im Kreis.</p>
-    <details className="rc-solution"><summary>Zusätzliche Größen für die spätere Auswertung</summary><label><input type="checkbox" checked={analysis} onChange={e => setAnalysis(e.target.checked)} /> Ladung und Zeitkonstante auch in Tabelle und Diagrammauswahl anzeigen</label><div className="ef-readings"><div><small>Ladung Q der oberen Platte</small><strong>{n(values.charge * 1e6)}<MathText>{String.raw` $\mathrm{\mu C}$`}</MathText></strong></div><div><small><MathText>{String.raw`Widerstandsspannung $U_{R}$`}</MathText></small><strong>{n(values.resistorVoltage)} V</strong></div><div><small><MathText>{String.raw`Zeitkonstante $\tau$`}</MathText></small><strong>{n(values.tau)} s</strong></div></div><p><MathText>{String.raw`Diese Größen werden aus den Bauteilwerten und der idealen RC-Gleichung berechnet. Ein reales Voltmeter misst die Kondensatorspannung; Q bestimmen wir daraus mithilfe der bekannten Kapazität.`}</MathText></p></details>
-    <h4>3 · Eigene Messwerte aufnehmen</h4>
-    <div className="ef-toolbar"><button onClick={capture}>Messwert aufnehmen</button><button disabled={rows.length < 2 || active !== 'live'} onClick={() => { setSaved(old => [...old, { name: 'Reihe ' + (old.length + 1) + ' · ' + modeName(mode) + ' · ' + n(r) + ' kΩ · ' + n(c) + ' µF · ' + n(u) + ' V', parameters: { ...p }, rows: rows.map(row => ({ ...row })) }]); setNotice('Messreihe für den Vergleich gemerkt. Sie bleibt erhalten, während du neue Einstellungen untersuchst.'); }}>Messreihe merken</button><button disabled={!rows.length} onClick={() => { setRows([]); setActive('live'); setNotice('Aktuelle Tabelle geleert.'); }}>Aktuelle Tabelle leeren</button></div>
-    <p className="rc-status" role="status"><MathText>{notice || String.raw`Noch keine Messwerte aufgenommen. Beginne bei $t = 0$.`}</MathText></p>
-    <p className="ef-model">Zeiteingabe → Anzeigen ablesen → „Messwert aufnehmen“ → Zeile ins Heft übertragen. Wiederhole das für jeden geforderten Zeitpunkt. Wähle die nächste Vorbereitung erst, wenn die Reihe gemerkt ist.</p>
-    <label className="rc-series-choice">Tabelle und Diagramm anzeigen für <select aria-label="RC-Messreihe auswählen" value={active} onChange={e => setActive(e.target.value)}><option value="live">Aktueller Versuch</option>{saved.map((item, i) => <option key={i} value={i}>{item.name}</option>)}</select></label>
-    <div className="ef-table-wrap"><table><caption>{source.name} · {modeName(source.parameters.mode)} · <MathText>{String.raw`$R = ${n(source.parameters.resistance / 1000)}\,\mathrm{k\Omega}$ · $C = ${n(source.parameters.capacitance * 1e6)}\,\mathrm{\mu F}$ · $U_0 = ${n(source.parameters.sourceVoltage)}\,\mathrm V$ · Anfangsspannung $U_i = ${n(source.parameters.initialVoltage)}\,\mathrm V$.`}</MathText> Ideale Modellwerte, ohne Streuung.</caption><thead><tr><th>t in s</th><th><MathFormula tex="U_C" /> in V</th><th><MathText>{String.raw`I in $\mathrm{mA}$`}</MathText></th><th><MathFormula tex="|I|" /><MathText>{String.raw` in $\mathrm{mA}$`}</MathText></th>{analysis && <th><MathText>{String.raw`Q in $\mathrm{\mu C}$`}</MathText></th>}</tr></thead><tbody>{source.rows.length ? source.rows.map(row => <tr key={row.time}><td>{n(row.time)}</td><td>{n(row.voltage)}</td><td>{n(row.current * 1000)}</td><td>{n(Math.abs(row.current) * 1000)}</td>{analysis && <td>{n(row.charge * 1e6)}</td>}</tr>) : <tr><td colSpan={analysis ? 5 : 4}>Nimm zuerst Messwerte auf. Hier gibt es keine fertige Messreihe.</td></tr>}</tbody></table></div>
-    <div className="ef-toolbar"><button disabled={!source.rows.length} onClick={() => downloadCsv('RC_Messreihe.csv', [['Vorgang', modeName(source.parameters.mode)], ['R in Ohm', source.parameters.resistance], ['C in F', source.parameters.capacitance], ['U0 in V', source.parameters.sourceVoltage], ['U_C(0) in V', source.parameters.initialVoltage], ['t in s', 'U_C in V', 'I in A', '|I| in A', 'Q in C'], ...source.rows.map(row => [row.time, row.voltage, row.current, Math.abs(row.current), row.charge])])}>Diese Messreihe als CSV</button></div>
-    <p className="ef-model">Gemerkte Reihen gelten für diese geöffnete Seite. Sichere sie als CSV oder im Heft, bevor du die Seite schließt.</p>
+    <details className="rc-solution"><summary>Zusätzliche Größen für die spätere Auswertung</summary><label><input type="checkbox" checked={analysis} onChange={e => setAnalysis(e.target.checked)} /> Ladung auch in der Diagrammauswahl anzeigen</label><div className="ef-readings"><div><small>Ladung Q der oberen Platte</small><strong>{n(values.charge * 1e6)}<MathText>{String.raw` $\mathrm{\mu C}$`}</MathText></strong></div><div><small><MathText>{String.raw`Widerstandsspannung $U_{R}$`}</MathText></small><strong>{n(values.resistorVoltage)} V</strong></div><div><small><MathText>{String.raw`Zeitkonstante $\tau$`}</MathText></small><strong>{n(values.tau)} s</strong></div></div><p><MathText>{String.raw`Diese Größen werden aus den Bauteilwerten und der idealen RC-Gleichung berechnet. Ein reales Voltmeter misst die Kondensatorspannung; Q bestimmen wir daraus mithilfe der bekannten Kapazität.`}</MathText></p></details>
+    <h4>3 · Im Heft protokollieren und auswerten</h4>
+    <p className="rc-status" role="status"><MathText>{notice || String.raw`Beginne bei $t=0$ und notiere die Anzeigen direkt im Heft.`}</MathText></p>
+    <p>Lege für jede Einstellung eine eigene Heftseite mit Schaltskizze, Bauteilwerten und Anfangsspannung an. Wähle die im Lernauftrag genannten Zeiten, lies Spannung und Stromstärke ab und notiere sie direkt auf Papier. Gehe erst danach zur Vergleichslösung.</p>
+    <NotebookData description={String.raw`Berechnete Ersatzwerte für die gerade gewählten Einstellungen: $R=${n(r)}\,\mathrm{k\Omega}$, $C=${n(c)}\,\mathrm{\mu F}$, $U_0=${n(u)}\,\mathrm V$, Anfangsspannung $U_i=${n(initial)}\,\mathrm V$. Vorgang: ${modeName(mode)}. Die Tabelle ist vollständig ausgefüllt; sie dient als Alternative zur eigenen Heftmessung.`} headers={[String.raw`Zeit $t$ in $\mathrm s$`,String.raw`Kondensatorspannung $U_C$ in $\mathrm V$`,String.raw`Stromstärke $I$ in $\mathrm{mA}$`,String.raw`Plattenladung $Q$ in $\mathrm{\mu C}$`]} rows={source.rows.map(row => [row.time,row.voltage,row.current*1000,row.charge*1e6])} tasks={['Zeichne Spannung und Stromstärke getrennt gegen die Zeit in dein Heft. Verwende die gleiche Zeitskala.', 'Beschreibe Anfangswert, Richtung der Änderung und Grenzwert. Vergleiche gleiche Zeitabschnitte: Ist die Differenz oder der verbleibende Anteil ungefähr konstant?', String.raw`Prüfe die Zeitkonstante $\tau=RC$. Begründe das Vorzeichen des Stroms mit dem festen Bezugspfeil.`]} solution={String.raw`Für die aktuellen Bauteile ist $\tau=${n(values.tau)}\,\mathrm s$. Allgemein gilt $U_C(t)=U_0+(U_i-U_0)\mathrm e^{-t/\tau}$ beim Laden, $U_C(t)=U_i\mathrm e^{-t/\tau}$ beim Entladen. Mit $I=(U_0-U_C)/R$ beim Laden bzw. $I=-U_C/R$ beim Entladen ergeben sich Betrag und Vorzeichen. Bei offenem Schalter bleiben im Idealmodell Spannung und Ladung konstant; der Strom ist null.`} />
     <h4>4 · Erst selbst zeichnen, dann vergleichen</h4>
     <Choices label="Diagrammgröße" value={graph} set={setGraph} options={[{ value: 'voltage', label: String.raw`Kondensatorspannung $U_C$` }, { value: 'current', label: 'Stromstärke I mit Vorzeichen' }, { value: 'magnitude', label: 'Stromstärkebetrag |I|' }, ...(analysis ? [{ value: 'charge', label: 'Ladung Q' }] : [])]} />
     <RevealChart xMax={5 * tau} yMax={maximum} yMin={graph === 'current' ? -iMax : 0} ySteps={graph === 'current' ? 8 : 5} xLabel="t in s" yLabel={yLabel} dots={dots} />
-    <p className="ef-model"><MathText>{String.raw`Die Punkte stammen ausschließlich aus deiner ausgewählten Messreihe. Es gibt keine Verbindungslinien. Das Vorzeichen im $I - t$-Diagramm bezieht sich auf den festen grauen Pfeil in der Schaltung.`}</MathText></p>
+    <p className="ef-model"><MathText>{String.raw`Das Vergleichsdiagramm zeigt die ausgefüllten Ersatzdaten für die aktuellen Einstellungen. Es gibt keine Verbindungslinien. Das Vorzeichen im $I - t$-Diagramm bezieht sich auf den festen grauen Pfeil in der Schaltung.`}</MathText></p>
     <details className="rc-solution"><summary>Was das Modell annimmt</summary><p><MathText>{String.raw`R und C sind konstant, die Quelle liefert eine konstante Spannung, Messgeräte belasten den Stromkreis nicht, Leitungen besitzen keinen zusätzlichen Widerstand und der Kondensator hat keine Leckströme. Aufladen beginnt im Standardversuch bei null, Entladen bei $U_{0}$. Beim direkten Umschalten wird dagegen die tatsächlich erreichte Kondensatorspannung übernommen. Ein ideal abgetrennter Kondensator behält seine Ladung.`}</MathText></p></details>
     <nav className="rc-experiment-return" aria-label="Vom Experiment zurück zum Lernauftrag"><span>Zurück zu deinem Lernblock:</span>{[1, 2, 3, 4, 5, 6].map(i => <a key={i} href={'#rc-block-' + i}>{i}</a>)}</nav>
   </div>;
@@ -124,12 +114,12 @@ export function RCIntegrationLab() {
     <Choices label="Anzahl gleich breiter Zeitabschnitte" value={intervals} set={pickIntervals} options={['4', '8', '16', '32'].map(value => ({ value, label: value }))} />
     <Choices label="Näherungsverfahren" value={method} set={pickMethod} options={[{ value: 'left', label: 'Linke Rechtecke' }, { value: 'right', label: 'Rechte Rechtecke' }, { value: 'trapezoid', label: 'Trapeze' }]} />
     <p>Übertrage die Randwerte der Tabelle. Rechne die Flächen zuerst im Heft aus. Mit linken Rechtecken wird bei fallendem Strom überschätzt, mit rechten unterschätzt; Trapeze mitteln beide Höhen.</p>
-    <div className="ef-table-wrap"><table><caption><MathText>{String.raw`Ideale Randwerte · $\Delta t = ${n(area.width)}\,\mathrm s$`}</MathText></caption><thead><tr><th>t in s</th><th><MathFormula tex="|I|" /><MathText>{String.raw` in $\mathrm{mA}$`}</MathText></th></tr></thead><tbody>{Array.from({ length: Number(intervals) + 1 }, (_, i) => <tr key={i}><td>{n(i * area.width)}</td><td>{n(Math.abs(rcState(i * area.width, p).current) * 1000)}</td></tr>)}</tbody></table></div>
+    <div className="ef-table-wrap"><table><caption><MathText>{String.raw`Ideale Randwerte · $\Delta t = ${n(area.width)}\,\mathrm s$`}</MathText></caption><thead><tr><th><MathText>{String.raw`Zeit $t$ in $\mathrm s$`}</MathText></th><th><MathText>{String.raw`Stromstärkebetrag $|I|$ in $\mathrm{mA}$`}</MathText></th></tr></thead><tbody>{Array.from({ length: Number(intervals) + 1 }, (_, i) => <tr key={i}><td>{n(i * area.width)}</td><td>{n(Math.abs(rcState(i * area.width, p).current) * 1000)}</td></tr>)}</tbody></table></div>
     <div className="ef-toolbar"><button aria-expanded={show} onClick={() => setShow(!show)}>{show ? 'Flächenvergleich ausblenden' : 'Flächenvergleich einblenden'}</button></div>
     <svg className="ef-chart rc-area-chart" viewBox="0 0 720 330" role="img" aria-label={show ? 'Flächennäherung mit Stromwerten und Zeitabschnitten' : 'Leeres Raster für die eigene Flächennäherung'}>
       <g stroke="#d5dfd0">{Array.from({ length: 21 }, (_, i) => <line key={'x' + i} x1={80 + i * 28} x2={80 + i * 28} y1="40" y2={bottom} />)}{Array.from({ length: 11 }, (_, i) => <line key={'y' + i} x1="80" x2="640" y1={40 + i * 21} y2={40 + i * 21} />)}</g>
       <Arrow x={80} y={bottom} dx={580} dy={0} color="#405b47" /><Arrow x={80} y={bottom} dx={0} dy={-224} color="#405b47" />
-      <text x="80" y="18">|I| in mA</text><text x="665" y="312" textAnchor="end">t in s</text>
+      <foreignObject x="80" y="0" width="590" height="36"><div style={{fontSize:16}}><MathText>{String.raw`Stromstärkebetrag $|I|$ in $\mathrm{mA}$`}</MathText></div></foreignObject><foreignObject x="390" y="289" width="280" height="40"><div style={{fontSize:16,textAlign:"right"}}><MathText>{String.raw`Zeit $t$ in $\mathrm s$`}</MathText></div></foreignObject>
       {[0, 5, 10, 15, 20].map(t => <text key={t} x={80 + t * 28} y="277" textAnchor="middle">{t}</text>)}
       {[0, .005, .01, .015, .02].map(v => <text key={v} x="68" y={bottom - v / .02 * 210 + 5} textAnchor="end">{n(v)}</text>)}
       {show && area.bars.map((b, i) => {
