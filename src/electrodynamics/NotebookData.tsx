@@ -1,8 +1,10 @@
+import type { ReactNode } from 'react';
+import ElectrodynamicsSteps from './Derivations';
 
 import { MathText } from '../electric/Math';
-type DataSet = { title: string; context: string; columns: string[]; rows: string[][]; task: string; solution: string };
+type DataSet = { title: string; context: string; columns: string[]; rows: string[][]; task: string; solution: ReactNode };
 function NotebookData({ data }: { data: DataSet }) {
- return <section className="ed-notebook-data"><p><strong>✎ Messwerterfassung im Heft:</strong> <MathText>{data.task}</MathText></p><details><summary>Ersatzmesswerte öffnen · {data.title}</summary><p className="ed-small"><strong>Didaktischer Beispieldatensatz:</strong> <MathText>{data.context}</MathText> Diese ausgefüllten Ersatzdaten wurden für die Auswertung vorbereitet; sie sind keine im Unterricht aufgenommenen Messwerte. Nutze bei durchgeführtem Versuch deine eigenen Daten.</p><div className="ed-table-wrap"><table><caption>{data.title} · ausgefüllte Ersatzdaten</caption><thead><tr>{data.columns.map(c=><th key={c} scope="col"><MathText>{c}</MathText></th>)}</tr></thead><tbody>{data.rows.map((r,i)=><tr key={i}>{r.map((v,j)=><td key={j}><MathText>{v}</MathText></td>)}</tr>)}</tbody></table></div></details><details><summary>Nach deiner Heftauswertung · Lösung vergleichen</summary><p><MathText>{data.solution}</MathText></p></details></section>;
+ return <section className="ed-notebook-data"><p><strong>✎ Messwerterfassung im Heft:</strong> <MathText>{data.task}</MathText></p><details><summary>Ersatzmesswerte öffnen · {data.title}</summary><p className="ed-small"><strong>Didaktischer Beispieldatensatz:</strong> <MathText>{data.context}</MathText> Diese ausgefüllten Ersatzdaten wurden für die Auswertung vorbereitet; sie sind keine im Unterricht aufgenommenen Messwerte. Nutze bei durchgeführtem Versuch deine eigenen Daten.</p><div className="ed-table-wrap"><table><caption>{data.title} · ausgefüllte Ersatzdaten</caption><thead><tr>{data.columns.map(c=><th key={c} scope="col"><MathText>{c}</MathText></th>)}</tr></thead><tbody>{data.rows.map((r,i)=><tr key={i}>{r.map((v,j)=><td key={j}><MathText>{v}</MathText></td>)}</tr>)}</tbody></table></div></details><details><summary>Nach deiner Heftauswertung · Lösung vergleichen</summary>{typeof data.solution === 'string' ? <p><MathText>{data.solution}</MathText></p> : data.solution}</details></section>;
 }
 const groups: Record<string, DataSet[]> = {
 bewegungsinduktion:[{title:'Bewegter Leiterstab',context:String.raw`Modellwerte bei homogener Flussdichte $B=0{,}30\,\mathrm T$. Das obere Stabende ist der positive Messanschluss; das Feld zeigt ins Blatt. Die Bewegung erfolgt quer zum Stab und zum Feld.`,
@@ -34,7 +36,7 @@ transformator:[{title:'Spannungsübersetzung im Leerlauf',context:String.raw`Pla
  columns:[String.raw`Eingangsleistung $P_1$ in $\mathrm W$`,String.raw`Sekundärspannung $U_2$ in $\mathrm V$`,String.raw`Sekundärstromstärke $I_2$ in $\mathrm A$`],
  rows:[['8,0','5,0','1,2']],
  task:String.raw`Berechne im Heft $P_2$, den Wirkungsgrad $\eta$ und die Verlustleistung. Zeichne einen Energiefluss mit allen drei Leistungen und erkläre, wo die Verlustenergie bleibt.`,
- solution:String.raw`$P_2=U_2I_2=6{,}0\,\mathrm W$, $\eta=\frac{P_2}{P_1}=0{,}75=75\,\%$, $P_{\mathrm V}=P_1-P_2=2{,}0\,\mathrm W$. Die Verlustleistung erwärmt insbesondere Wicklungen und Kern.`}],
+ solution:<ElectrodynamicsSteps id="transformerLoss"/>}],
 selbstinduktion:[{title:'Ein- und Ausschalten im RL-Kreis',context:String.raw`Gerundete Modellwerte bei $U_0=6{,}0\,\mathrm V$, $R=20\,\Omega$, $L=2{,}0\,\mathrm H$. Der Ausschaltversuch beginnt bei stationärem Strom und erhält einen geschlossenen RL-Kreis.`,
  columns:[String.raw`Zeit seit dem Schalten $t$ in $\mathrm s$`,String.raw`Einschaltstromstärke $I_{\mathrm{ein}}$ in $\mathrm A$`,String.raw`Ausschaltstromstärke $I_{\mathrm{aus}}$ in $\mathrm A$`,String.raw`Induktionsspannung beim Einschalten $U_{\mathrm{ind,ein}}$ in $\mathrm V$`,String.raw`Induktionsspannung beim Ausschalten $U_{\mathrm{ind,aus}}$ in $\mathrm V$`],
  rows:[['0,00','0,000','0,300','−6,000','6,000'],['0,10','0,190','0,110','−2,207','2,207'],['0,20','0,259','0,041','−0,812','0,812'],['0,30','0,285','0,015','−0,299','0,299'],['0,50','0,298','0,002','−0,040','0,040']],

@@ -1,0 +1,5 @@
+.topic-card>.topic-card-intro{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;min-width:0;margin:-8px -3px -2px}
+.topic-pictogram{display:block;width:clamp(110px,13vw,148px);max-width:100%;height:auto;flex:0 1 auto;overflow:hidden;pointer-events:none}
+.topic-card-intro>.physics-status{flex:none;max-width:100%;white-space:normal;line-height:1.5;text-align:center}
+@media(max-width:640px){.topic-pictogram{width:140px}.topic-card>.topic-card-intro{gap:14px;flex-wrap:wrap}}
+@media print{.topic-pictogram{width:96px}}

@@ -1,0 +1,32 @@
+.formula-steps {
+  margin: 1.5rem 0;
+  border: 1px solid #cbd4c3;
+  border-radius: 14px;
+  background: #f8faf3;
+  color: #234334;
+  overflow: hidden;
+  min-width: 0;
+}
+.formula-steps > header { padding: 1.2rem 1.4rem .35rem; }
+.formula-steps .formula-steps-eyebrow { font-size: .72rem; letter-spacing: .1em; color: #617759; font-weight: 700; }
+.formula-steps > header h3 { margin: .4rem 0 .6rem; }
+.formula-steps > .formula-steps-intro,
+.formula-steps > .formula-steps-conclusion { margin: .5rem 1.4rem 1.2rem; line-height: 1.65; }
+.formula-steps > .formula-steps-list { margin: 0; padding: 0; list-style: none; }
+.formula-steps > .formula-steps-list > li { display: grid; grid-template-columns: 2rem minmax(0, 1fr); gap: .85rem; margin: 0; padding: 1rem 1.4rem; border-top: 1px solid #dce2d6; }
+.formula-steps .formula-step-number { display: grid; place-items: center; width: 1.8rem; height: 1.8rem; margin-top: .2rem; border-radius: 50%; background: #e9dfbb; color: #42543d; font: 700 .85rem/1 sans-serif; }
+.formula-steps .formula-step-content { min-width: 0; }
+.formula-steps .formula-step-equation { max-width: 100%; overflow-x: auto; padding: .15rem 0 .4rem; }
+.formula-steps .formula-step-equation .ef-math-display { margin: 0; padding: 0; background: transparent; border: 0; text-align: left; }
+.formula-steps .formula-step-equation math[display="block"] { margin: .25rem 0; text-align: left; }
+.formula-steps .formula-step-comment { margin: .3rem 0 0; font-size: .96rem; line-height: 1.65; color: #52654e; }
+.formula-steps > .formula-steps-conclusion { border-top: 1px solid #dce2d6; padding-top: 1rem; }
+@media (max-width: 600px) {
+  .formula-steps > header { padding: 1rem .9rem .3rem; }
+  .formula-steps > .formula-steps-list > li { padding: .9rem; grid-template-columns: 1.6rem minmax(0, 1fr); gap: .55rem; }
+  .formula-steps .formula-step-number { width: 1.5rem; height: 1.5rem; font-size: .75rem; }
+  .formula-steps .formula-step-equation { font-size: .91rem; }
+  .formula-steps > .formula-steps-intro,
+  .formula-steps > .formula-steps-conclusion { margin-left: .9rem; margin-right: .9rem; }
+}
+@media print { .formula-steps { background: white; } .formula-steps-list > li { break-inside: avoid; } }

@@ -1,3 +1,4 @@
+import FormulaSteps, { type FormulaStep } from '../components/FormulaSteps';
 import { useId, useState, type ReactNode } from 'react';
 import { MathFormula, MathText } from './Math';
 import TeacherExamples from './TeacherExamples';
@@ -17,8 +18,8 @@ export function ZoomScene({ children }: { children: ReactNode }) {
   return <div className="ef-zoom-scene"><div className={`ef-scene-scroll${zoom ? ' is-zoomed' : ''}`} tabIndex={zoom ? 0 : undefined} aria-label={zoom ? 'Vergrößerte Skizze; bei Bedarf seitlich scrollen' : undefined}>{children}</div><button className="ef-zoom-button" type="button" aria-pressed={zoom} onClick={() => setZoom(!zoom)}>{zoom ? 'Skizze verkleinern' : 'Skizze vergrößern'}</button>{zoom && <p className="ef-model">Du kannst die vergrößerte Skizze seitlich verschieben.</p>}</div>;
 }
 export function RealExperiment({ title, children }: { title: string; children: ReactNode }) { return <details className="ef-real"><summary>Im Unterricht durchführen: {title}</summary><div>{children}<TeacherExamples experiment={title} /></div></details>; }
-export function Check({ question, unit, hint, solution }: { question: string; answer: number; unit: string; hint: string; solution: string }) {
-  return <section className="ef-check"><span className="ef-eyebrow">KURZ ÜBEN · IM HEFT</span><p><MathText>{question}</MathText></p><p>Schreibe Ansatz, Rechnung und Antwortsatz ins Heft. Gib dein Ergebnis in <MathText>{unit}</MathText> an.</p><details><summary>Bei Bedarf: Denkhilfe</summary><p><MathText>{hint}</MathText></p></details><details><summary>Erst danach: Rechenweg vergleichen</summary><p><MathText>{solution}</MathText></p></details></section>;
+export function Check({ question, unit, hint, solution, steps }: { question: string; answer: number; unit: string; hint: string; solution: string; steps?: FormulaStep[] }) {
+  return <section className="ef-check"><span className="ef-eyebrow">KURZ ÜBEN · IM HEFT</span><p><MathText>{question}</MathText></p><p>Schreibe Ansatz, Rechnung und Antwortsatz ins Heft. Gib dein Ergebnis in <MathText>{unit}</MathText> an.</p><details><summary>Bei Bedarf: Denkhilfe</summary><p><MathText>{hint}</MathText></p></details><details><summary>Erst danach: Rechenweg vergleichen</summary>{steps ? <FormulaSteps title="So gehst du vor" steps={steps} /> : <p><MathText>{solution}</MathText></p>}</details></section>;
 }
 export function SvgLabel({ text }: { text: string }) {
   return <>{text.split(/(_[A-Za-z]+)/g).map((part, i) => part.startsWith('_') ? <tspan key={i} baselineShift="sub" fontSize="70%">{part.slice(1)}</tspan> : <tspan key={i}>{part}</tspan>)}</>;
